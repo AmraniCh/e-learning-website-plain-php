@@ -1,0 +1,31 @@
+@font-face {
+  font-family: Ubuntu-Regular;
+  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Ubuntu-Bold;
+  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
+}
+
+/* index.php page css */
+
+.container{
+	padding: 20px 20px 5px 20px;
+	margin: 3% auto;
+}
+
+
+label, input {
+    display: block;
+}
+
+.btn{
+    text-align: center;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+}
+
+/* register.php page css */
+
+
