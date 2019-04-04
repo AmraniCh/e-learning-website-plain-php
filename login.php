@@ -10,6 +10,8 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="style/style.css">
+		<script src="js/jquery-3.3.1.js"></script>
+		<script src="js/validation.js"></script>
 	</head>
 	<body>
 	    <style scoped>
@@ -51,7 +53,7 @@
             }
         
 		?>
-		<div class="container" style="background:#fff;border-radius:3%;text-align:center">
+		<div class="container" style="background:#fff;border-radius:3%;text-align:center;">
            <!--768-576-375-320-992-1200 -->
             <style scoped>
                 @media (max-width:1920px){
@@ -73,28 +75,34 @@
                     }
                 }
             </style>
-            <form action="login.php" method="post">
+            <form id="login_form" action="login.php" method="post">
                 <!-- titre -->
                 <div class="titre">
-                    <h5  style="font-size:210%;color:#5a4e97">Welcome ! <span style="color:#54C5FF">login</span></h5>
+                    <h5  style="font-size:200%;color:#5a4e97">Welcome ! <span style="color:#54C5FF">login</span></h5>
                 </div>
                 <!-- logo -->
                 <div class="img">
-                    <img src="ressources/mortarboard.png" class="img-fluid" style="margin-bottom:5%;width:45%" >
+                    <img src="ressources/mortarboard.png" class="img-fluid" style="margin-bottom:2%;width:38%" >
                 </div>
                 <!-- inputs -->
                 <div class="form-group">
-                    <label for="pseudoEmail">Email or pseudo</label>
+                    <label for="pseudoEmail">Username</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
                          <!-- <div class="input-group input-group-lg"> <!-- large -->
-                        <input type="text" name="pseudoEmail" placeholder="Pseudo or email address" class="form-control" value="<?php         
+                        <input type="text" id="pseudoEmail" name="pseudoEmail" placeholder="Username" class="form-control" value="<?php         
                         if(isset($_SESSION['pseudo']))
                         {
                             echo $_SESSION['pseudo'];
-                        } ?>"> 
+                        } ?>">
+                        <div class="container" style="padding:0;text-align:left;margin:0;">
+                            <style scoped>
+                                .text-muted{color:red!important;}
+                            </style>
+                            <small id="pseudo_error_msg" class="form-text text-muted"></small>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -104,10 +112,16 @@
                             <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
                         </div>
                         <!-- <div class="input-group input-group-lg"> <!-- large --> 
-                        <input type="password" name="pass" placeholder="Password" class="form-control" value="<?php if(isset($_SESSION['pass']))
+                        <input type="password" id="password" name="pass" placeholder="Password" class="form-control" value="<?php if(isset($_SESSION['pass']))
                         {
                             echo $_SESSION['pass'];
                         } ?>">
+                        <div class="container" style="padding:0;text-align:left;margin:0;">
+                            <style scoped>
+                                .text-muted{color:red!important;}
+                            </style>
+                            <small id="password_error_msg" class="form-text text-muted"></small>
+                        </div>
                     </div>
                 </div>
                 <!-- check -->
@@ -116,7 +130,7 @@
                 </div>
                 <!-- btn -->
                 <div class="btn" style="width:100%">
-                    <input type="submit" name="submitLogin" value="Login" style="display:block;margin-bottom:3%;background-color:#5a4e97;width:70%" class="btn btn-primary">
+                    <input type="submit" name="submitLogin" value="Login" style="display:block;margin-bottom:2%;background-color:#5a4e97;width:70%" class="btn btn-primary">
                     <button type="submit" name="submitRegister" class="btn btn-outline-primary" style="display:block;width:70%">Register</button>
                 </div>
             </form>
