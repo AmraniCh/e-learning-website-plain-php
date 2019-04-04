@@ -1,6 +1,12 @@
 <?php 
     require 'config.php';
     session_start();
+
+    if (isset($_COOKIE["block"])==false){
+        $block=3;
+        setcookie("block",$block,time()+120);
+    }
+
 ?>
 <html>
 	<head>
@@ -40,11 +46,17 @@
 				
 				if($numRows == 1)
 				{
+
                     $row = mysqli_fetch_assoc($res);   
 					$pseudo = $row['pseudo'];
-					header ('Location: index.php?pseudo='.$pseudo);
+					header ('Location: login.php?pseudo='.$pseudo);
                     $_SESSION["pseudo"] = $pseudo;
 				}
+				else{
+                    $block=$_COOKIE["block"]-1;
+				    setcookie("block",$block,time()+120);
+
+                }
 			}
         
             if(isset($_POST['submitRegister']))
@@ -92,7 +104,7 @@
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
                          <!-- <div class="input-group input-group-lg"> <!-- large -->
-                        <input type="text" id="pseudoEmail" name="pseudoEmail" placeholder="Username" class="form-control" value="<?php         
+                        <input type="text" id="pseudoEmail"  name="pseudoEmail" placeholder="Username" class="form-control" value="<?php
                         if(isset($_SESSION['pseudo']))
                         {
                             echo $_SESSION['pseudo'];
@@ -130,12 +142,44 @@
                 </div>
                 <!-- btn -->
                 <div class="btn" style="width:100%">
-                    <input type="submit" name="submitLogin" value="Login" style="display:block;margin-bottom:2%;background-color:#5a4e97;width:70%" class="btn btn-primary">
-                    <button type="submit" name="submitRegister" class="btn btn-outline-primary" style="display:block;width:70%">Register</button>
+                    <input type="submit" name="submitLogin" id="submitLogin" value="Login" style="display:block;margin-bottom:2%;background-color:#5a4e97;width:70%" class="btn btn-primary">
+                    <button type="submit" name="submitRegister" id="submitRegister" class="btn btn-outline-primary" style="display:block;width:70%">Register</button>
                 </div>
             </form>
 		</div>
 	</body>
-</html>
 
-<-- test ></-->
+<script>
+
+    //disabled all
+    if (getCookie("block")<=0){
+
+        alert("you have tried more than 3 times , you must wait 2 min!");
+
+        $("*").attr("disabled", true);
+        $("#submitRegister").attr("disabled", false);
+
+
+
+    }
+
+
+    //get value of cookie by his name
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+</script>
+</html>
