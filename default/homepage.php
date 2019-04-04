@@ -20,7 +20,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span> 
               </button>
-              <a class="navbar-brand" style="padding:0px 15px 5px;float:left" href="#"><img style="height:110%" src="../ressources/w3newbie.png"></a>
+              <a class="navbar-brand" style="padding:0px 15px 5px;float:left" href="#"><img style="height:110%" src="ressources/w3newbie.png"></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">

@@ -1,5 +1,5 @@
 $(function() {
-
+	// login.php validation
 	$("#pseudo_error_msg").hide();
 	$("#password_error_msg").hide();
 
@@ -45,5 +45,5 @@ $(function() {
         }
     }
 
-
+    // register.php validation
 });
