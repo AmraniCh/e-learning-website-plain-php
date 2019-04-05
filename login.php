@@ -1,7 +1,8 @@
 <?php 
-    require 'config.php';
+    require 'includes/config.php';
     session_start();
 
+    //create cookie
     if (isset($_COOKIE["block"])==false){
         $block=3;
         setcookie("block",$block,time()+10);
@@ -18,6 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/validation.js"></script>
+        <script src="js/functions.js"></script>
 	</head>
 	<body>
 	    <style scoped>
@@ -103,7 +105,7 @@
                         } ?>">
                         <div class="container" style="padding:0;text-align:left;margin:0;">
                             <style scoped>
-                                .text-muted{color:red!important;}
+                                .text-muted{color:#e82626!important;}
                             </style>
                             <small id="pseudo_error_msg" class="form-text text-muted"></small>
                         </div>
@@ -122,7 +124,7 @@
                         } ?>">
                         <div class="container" style="padding:0;text-align:left;margin:0;">
                             <style scoped>
-                                .text-muted{color:red!important;}
+                                .text-muted{color:#e82626!important;}
                             </style>
                             <small id="password_error_msg" class="form-text text-muted"></small>
                         </div>
@@ -146,34 +148,12 @@
 	</body>
 
 <script>
-
-
     //disabled all
     if (getCookie("block")<=0){
-        $block=0;
+        
         window.setTimeout(function() {
-        window.location.href = 'loadingTime.php';
+        window.location.href = 'includes/loadingTime.php';
         }, 0);
-
-        $("#submitRegister").attr("disabled", false);
     }
-
-    //get value of cookie by his name
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
-
 </script>
 </html>
