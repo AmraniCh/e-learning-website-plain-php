@@ -64,7 +64,7 @@
                     }
                 }
             </style>
-            <form action="" method="post">
+            <form action="" method="post" onSubmit="return formValidation();">
                 <!-- titre -->
                 <div class="titre" style="text-align:-webkit-center;text-align:-moz-center;text-align:center;margin-bottom:5%">
                     <h5  style="font-size:250%;color:#54C5FF;">Sign <span style="color:#5a4e97">Up</span></h5>
@@ -76,7 +76,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" name="pseudo" placeholder="Pseudo" class="form-control">  
+                        <input type="text" id="pseudoScript" name="pseudo" placeholder="Pseudo" class="form-control">
                     </div>         
                 </div>
                 <!-- First name -->
@@ -86,7 +86,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">F</span>
                         </div>
-                        <input type="text" name="fs-name" placeholder="First name" class="form-control">
+                        <input type="text" name="fs-name" id="fs-nameScript" placeholder="First name" class="form-control">
                     </div>
                 </div>
                  <!-- Last name -->
@@ -96,7 +96,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">L</span>
                         </div>
-                        <input type="text" name="ls-name" placeholder="Last name" class="form-control">
+                        <input type="text" name="ls-name" id="ls-nameScript" placeholder="Last name" class="form-control">
                     </div>
                 </div>
                 <!-- Gender -->
@@ -119,7 +119,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">@</span>
                         </div>
-                        <input type="text" name="email" placeholder="email" class="form-control">
+                        <input type="text" name="email" id="emailScript" placeholder="email" class="form-control">
                     </div>
                 </div>
                 <!-- btn -->
@@ -130,4 +130,70 @@
             </form>
 		</div>
 	</body>
+
+<script>
+
+    function formValidation(){
+
+        //ila kan chi input khawi kanraj3o men lawal
+        if (document.getElementById("pseudoScript").value==="" || document.getElementById("fs-nameScript").value==="" || document.getElementById("ls-nameScript").value==="" || document.getElementById("emailScript").value ===""){
+            alert("you didnt put all your information")
+            return false;
+        }
+
+        //hna kan3ayat 3la ga3 les functions ila chi wahada raj3at false ...
+        if (pseudo_validation(document.getElementById("pseudoScript").value,5,12)===false|| allLetter(document.getElementById("fs-nameScript"))===false|| allLetter(document.getElementById("ls-nameScript"))===false  || ValidateEmail(document.getElementById("emailScript").value)===false){
+            console.debug("here");
+            return false;
+        }
+
+        return true;
+    }
+
+    // pseudo makhasoch ikon srir 3la my ou ola kbar men mx
+    function pseudo_validation(uid,mx,my)
+    {
+        var uid_len = uid.length;
+        if (uid_len == 0 || uid_len >= my || uid_len < mx)
+        {
+            alert("User Id should not be empty / length be between "+mx+" to "+my);
+            document.getElementById("pseudoScript").focus();
+            return false;
+        }
+        return true;
+    }
+
+
+    //smiya ou lakniya khas ikono string
+    function allLetter(uname)
+    {
+        var letters = /^[A-Za-z]+$/;
+        if(uname.value.match(letters))
+        {
+            return true;
+        }
+        else
+        {
+            alert('first and last name must have alphabet characters only');
+            uname.focus();
+            return false;
+        }
+    }
+
+    function ValidateEmail(uemail)
+    {
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(uemail.match(mailformat))
+        {
+            return true;
+        }
+        else
+        {
+            alert("You have entered an invalid email address!");
+            document.getElementById("emailScript").focus();
+            return false;
+        }
+    }
+
+</script>
 </html>
