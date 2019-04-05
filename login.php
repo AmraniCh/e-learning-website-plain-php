@@ -35,10 +35,10 @@
 		<?php
 			if(isset($_POST['submitLogin']))
 			{
-				$pseudoEmail = $_POST['pseudoEmail'];
+				$pseudo = $_POST['pseudo'];
 				$pass = $_POST['pass'];
 				
-				$rq = "SELECT pseudo,email FROM etudient WHERE pseudo='$pseudoEmail' OR email = '$pseudoEmail' AND pass='$pass'";
+				$rq = "SELECT pseudo,email FROM etudient WHERE pseudo = '$pseudo' AND pass='$pass'";
 				
 				$res = mysqli_query($con,$rq);
 				
@@ -46,7 +46,6 @@
 				
 				if($numRows == 1)
 				{
-
                     $row = mysqli_fetch_assoc($res);   
 					$pseudo = $row['pseudo'];
 					header ('Location: login.php?pseudo='.$pseudo);
@@ -57,12 +56,6 @@
 				    setcookie("block",$block,time()+10);
                 }
 			}
-        
-            if(isset($_POST['submitRegister']))
-            {
-                header ('location: register.php');
-            }
-        
 		?>
 		<div class="container" style="background:#fff;border-radius:3%;text-align:center;">
            <!--768-576-375-320-992-1200 -->
@@ -103,7 +96,7 @@
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
                          <!-- <div class="input-group input-group-lg"> <!-- large -->
-                        <input type="text" id="pseudoEmail"  name="pseudoEmail" placeholder="Username" class="form-control" value="<?php
+                        <input type="text" id="pseudo"  name="pseudo" placeholder="Username" class="form-control" value="<?php
                         if(isset($_SESSION['pseudo']))
                         {
                             echo $_SESSION['pseudo'];
@@ -136,13 +129,17 @@
                     </div>
                 </div>
                 <!-- check -->
-                <div class="form-check" style="text-align:initial;margin-bottom:2%">
+                <!-- <div class="form-check" style="text-align:initial;margin-bottom:2%">
                     <input type="checkbox" name="remember" class="form-check-input"><label class="form-check-label" for="remember">Remember me</label>
+                </div> -->
+                <!-- can't remember -->
+                <div class="form-group" style="text-align: left;margin-bottom:.5rem">
+                    <a href="#" id="link"><span style="color:#1273eb;font-size: 90%">Forgot password or username ?</span></a>
                 </div>
                 <!-- btn -->
                 <div class="btn" style="width:100%">
-                    <input type="submit" name="submitLogin" id="submitLogin" value="Login" style="display:block;margin-bottom:2%;background-color:#5a4e97;width:70%" class="btn btn-primary">
-                    <button type="submit" name="submitRegister" id="submitRegister" class="btn btn-outline-primary" style="display:block;width:70%">Register</button>
+                    <input type="submit" name="submitLogin" value="Login" style="display:block;margin-bottom:2%;background-color:#5a4e97;width:70%" class="btn btn-primary">
+                    <a id="link" href="register.php"><button type="button" id="link_register" name="submitRegister" class="btn btn-outline-primary" style="display:block;width:70%">Not a member? Sign up</button></a>
                 </div>
             </form>
 		</div>
@@ -152,7 +149,7 @@
 
     //disabled all
     if (getCookie("block")<=0){
-        
+        $block=0;
         window.setTimeout(function() {
         window.location.href = 'loadingTime.php';
         }, 0);

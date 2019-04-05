@@ -6,7 +6,7 @@ $(function() {
     var password_error = false;
     var username_error = false;
 
-	$("#pseudoEmail").focusout(function() {
+	$("#pseudo").focusout(function() {
 
 		check_username();
 		
@@ -21,7 +21,7 @@ $(function() {
 
 	function check_username() {
 	
-		var pseudo_length = $("#pseudoEmail").val().length;
+		var pseudo_length = $("#pseudo").val().length;
 		if(pseudo_length < 6 || pseudo_length > 20) {
 			$("#pseudo_error_msg").html("Username should be between 6-20 characters");
 			$("#pseudo_error_msg").show();
