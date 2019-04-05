@@ -154,7 +154,6 @@
         window.location.href = 'loadingTime.php';
         }, 0);
 
-        $("*").attr("disabled", true);
         $("#submitRegister").attr("disabled", false);
     }
 
