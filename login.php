@@ -4,7 +4,7 @@
 
     if (isset($_COOKIE["block"])==false){
         $block=3;
-        setcookie("block",$block,time()+30);
+        setcookie("block",$block,time()+10);
     }
 
 ?>
@@ -53,7 +53,7 @@
 				}
 				else{
                     $block=$_COOKIE["block"]-1;
-				    setcookie("block",$block,time()+30);
+				    setcookie("block",$block,time()+10);
                 }
 			}
 		?>

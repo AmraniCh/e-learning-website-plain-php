@@ -9,15 +9,11 @@
 <body>
    <script>
        // redirect to login page after 60s
-
-
        window.setInterval(function(){
-
-
            if (getCookie("block")==="" || getCookie("block")>0){
                window.location.href = 'login.php';
            }
-       }, 5000);
+       }, 10000);
 
 
        function getCookie(cname) {
