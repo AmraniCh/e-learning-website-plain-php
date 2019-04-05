@@ -8,7 +8,7 @@ $(function() {
 
 	$("#pseudoEmail").focusout(function() {
 
-		check_pseudo();
+		check_username();
 		
 	});
 
@@ -19,7 +19,7 @@ $(function() {
     });
 
 
-	function check_pseudo() {
+	function check_username() {
 	
 		var pseudo_length = $("#pseudoEmail").val().length;
 		if(pseudo_length < 6 || pseudo_length > 20) {
@@ -44,6 +44,23 @@ $(function() {
             $("#password_error_msg").hide();
         }
     }
+
+    $("#login_form").submit(function() {
+											
+		username_error = false;
+		password_error = false;
+											
+		check_username();
+		check_password();
+
+		
+		if(username_error == false && password_error == false) {
+			return true;
+		} else {
+			return false;	
+		}
+
+	});
 
     // register.php validation
 });
