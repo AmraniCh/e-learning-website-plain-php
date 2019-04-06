@@ -14,3 +14,35 @@ function getCookie(cname) {
   }
   return "";
 }
+
+// check if all letters are string words
+function allLetters(name)
+{
+    var letters = /^[A-Za-z]+$/;
+    if(name.val().match(letters))
+        return true;
+    else
+        return false;  
+}
+
+// check if email is valid
+function validEmail(email)
+{
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(email.val().match(mailformat))
+        return true;
+    else
+        return false;
+}
+
+// error color inputs && normal color inputs
+function error_color(element)
+{
+    element.css("background-color","#f7c4cb");
+}
+
+function normal_color(element)
+{
+    element.css("background-color","#fff");
+}
+

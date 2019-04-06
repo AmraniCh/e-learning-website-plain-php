@@ -8,6 +8,8 @@
   src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
 }
 
+.text-muted{color:#ca001c!important;}
+
 /* index.php page css */
 
 .container{

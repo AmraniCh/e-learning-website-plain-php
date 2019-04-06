@@ -16,10 +16,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="style/style.css">
+		<link rel="stylesheet" type="text/css" href="style/main.css">
 		<script src="js/jquery-3.3.1.js"></script>
+		<script src="js/functions.js"></script>
 		<script src="js/validation.js"></script>
-        <script src="js/functions.js"></script>
 	</head>
 	<body>
 	    <style scoped>
@@ -98,7 +98,7 @@
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
                          <!-- <div class="input-group input-group-lg"> <!-- large -->
-                        <input type="text" id="pseudo"  name="pseudo" placeholder="Username" class="form-control" value="<?php
+                        <input type="text" id="pseudo" name="pseudo" placeholder="Username" class="form-control" value="<?php
                         if(isset($_SESSION['pseudo']))
                         {
                             echo $_SESSION['pseudo'];
@@ -155,5 +155,61 @@
         window.location.href = 'includes/loadingTime.php';
         }, 0);
     }
+
+    $("#pseudo_error_msg").hide();
+    $("#password_error_msg").hide();
+
+    var password_error = false;
+    var username_error = false;
+
+    $("#pseudo").focusout(function() {
+
+        check_username();
+        
+    });
+
+    $("#password").focusout(function() {
+
+        check_password();
+        
+    });
+
+
+    function check_username() {
+    
+        var pseudo_length = $("#pseudo").val().length;
+        if(pseudo_length < 6 || pseudo_length > 20) {
+            $("#pseudo_error_msg").html("Username should be between 6-20 characters");
+            $("#pseudo_error_msg").show();
+            username_error = true;
+          } 
+        }
+    }
+
+    function check_password() {
+    
+        var password_length = $("#password").val().length;
+        if(password_length < 10 || password_length > 40) {
+            $("#password_error_msg").html("Password should be between 10-40 characters");
+            $("#password_error_msg").show();
+            password_error = true;
+        } 
+    }
+    $("#login_form").submit(function() {
+                                            
+        username_error = false;
+        password_error = false;
+                                            
+        check_username();
+        check_password();
+
+        
+        if(username_error == false && password_error == false) {
+            return true;
+        } else {
+            return false;   
+        }
+
+    });a
 </script>
 </html>
