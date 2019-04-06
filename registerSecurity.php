@@ -74,7 +74,7 @@
                     }
                 }
             </style>
-            <form action="" method="post">
+            <form action="" method="post" onsubmit="return validations()">
                 <!-- titre -->
                 <div class="titre" style="text-align:-webkit-center;text-align:-moz-center;text-align:center;margin-bottom:5%">
                     <h5  style="font-size:300%;color:#54C5FF;">Help us to <span style="color:#5a4e97">Secure</span> your account</h5>
@@ -86,7 +86,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
                         </div>
-                        <input type="password" name="pass1" placeholder="Password" class="form-control">  
+                        <input type="password" name="pass1" id="pass1Script" onfocusout="checkAllPassword(document.getElementById('pass1Script'))" placeholder="Password" class="form-control">
                     </div>         
                 </div>
                 <!-- pass2 -->
@@ -96,7 +96,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
                         </div>
-                        <input type="password" name="pass2" placeholder="Password" class="form-control">
+                        <input type="password" name="pass2" id="pass2Script" placeholder="Password" class="form-control">
                     </div>
                 </div>
                 <!-- security question -->
@@ -129,6 +129,106 @@
 	</body>
 
 <script>
+
+    let pas1 = document.getElementById("pass1Script");
+
+
+    function validations() {
+
+        //ila kano machi fhal fhal kandir focus
+        if (document.getElementById("pass1Script").value!==document.getElementById("pass2Script").value) {
+            alert("first and second password are not similar");
+            document.getElementById("pass2Script").focus();
+            return false;
+        }
+
+            return checkAllPassword(pas1);
+    }
+
+
+
+
+    function checkAllPassword(myInput) {
+
+
+        // had function mohima bach code ikoun 9sir , arguments.callee.caller.name , kanchof mnin jaya event wach men onsubmit ola focusout
+        // bach khona mankhalihch idoz page khra ila kan ghalat (onsubmit) , et aussi tala3 lih message mni ikhorj men focus (onfocusout)
+
+
+        // Validate lowercase letters
+        var lowerCaseLetters = /[a-z]/g;
+        if(myInput.value.match(lowerCaseLetters)) {
+
+            // nta radi dir message kayatla3 ta7t input , alors hna dir lih disable
+
+        } else {
+            alert("invalid password must contain lower Letter");
+
+            // hna enable
+
+            if(arguments.callee.caller.name==="validations"){
+                return false
+            }
+        }
+
+
+
+        // Validate capital letters
+        var upperCaseLetters = /[A-Z]/g;
+        if(myInput.value.match(upperCaseLetters)) {
+
+            // nta radi dir message kayatla3 ta7t input , alors hna dir lih disable
+
+        } else {
+            alert("invalid password must contain capital Letter");
+
+            // hna enable
+
+            if(arguments.callee.caller.name==="validations"){
+                return false
+            }
+        }
+
+        // Validate numbers
+        var numbers = /[0-9]/g;
+        if(myInput.value.match(numbers)) {
+
+            // nta radi dir message kayatla3 ta7t input , alors hna dir lih disable
+
+        } else {
+            alert("invalid password must contain at least one number");
+
+            // hna enable
+
+            if(arguments.callee.caller.name==="validations"){
+                return false
+            }
+        }
+
+        // Validate length
+        if(myInput.value.length >= 8) {
+
+            // nta radi dir message kayatla3 ta7t input , alors hna dir lih disable
+
+        } else {
+            alert("invalid length must be higher than 8");
+
+            // hna enable
+
+            if(arguments.callee.caller.name==="validations"){
+                return false
+            }
+        }
+
+        // ila daz 3la kolchi return true
+        if(arguments.callee.caller.name==="validations"){
+            return true
+        }
+
+
+
+
+    }
 
     
 </script>
