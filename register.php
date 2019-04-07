@@ -64,7 +64,7 @@
                     }
                 }
             </style>
-            <form id="register_form" action="register.php" method="post">
+            <form id="register_form" action="" method="post">
                 <!-- titre -->
                 <div class="titre" style="text-align:-webkit-center;text-align:-moz-center;text-align:center;margin-bottom:5%">
                     <h5  style="font-size:250%;color:#54C5FF;">Sign <span style="color:#5a4e97">Up</span></h5>
@@ -139,7 +139,7 @@
                 </div>
                 <!-- btn -->
                 <div class="form-group" style="text-align:-webkit-center;text-align:-moz-center;text-align:center;width:100%">
-                    <input type="submit" name="submitNext" value="Next" class="btn btn-primary btn-lg" style="background-color:#5a4e97;width:40%">
+                    <input type="submit" name="submitNext" id="submitNext" value="Next" class="btn btn-primary btn-lg" style="background-color:#5a4e97;width:40%">
                     <a href="login.php"><button type="button" name="submitLogin" class="btn btn-outline-primary btn-lg" style="width:40%">Login</button></a>
                 </div>
             </form>

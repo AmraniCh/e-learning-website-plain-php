@@ -24,13 +24,13 @@ $(function() {
 	
 		var pseudo_length = $("#pseudo").val().length;
 		if(pseudo_length < 6 || pseudo_length > 20) {
-            show_msg("pseudo_error_msg", "Username should be between 6-20 characters", $("#pseudo"));
+            show_msg("pseudo_error_msg", "Username should be between 6-20 characters");
 		    username_error = true;
 		  }
         else
         {
             username_error = false;
-            hide_msg("pseudo_error_msg", $("#pseudo"));
+            hide_msg("pseudo_error_msg");
         }
     }
 
@@ -38,12 +38,12 @@ $(function() {
     
         var password_length = $("#password").val().length;
         if(password_length < 10 || password_length > 40) {
-            show_msg("password_error_msg", "Password should be between 10-40 characters", $("#password"));
+            show_msg("password_error_msg", "Password should be between 10-40 characters");
             password_error = true;
         }
         else{
             password_error = false;
-            hide_msg("password_error_msg", $("#password"));
+            hide_msg("password_error_msg");
         }
     }
 
@@ -114,14 +114,17 @@ $(function(){
         var peseudo_len = pseudo.val().length;
         
         if (peseudo_len < 6 || peseudo_len >= 20)
-        { 
-            show_msg("pseudo_register__error_msg", "Username should be between 6-20 characters", $("#pseudoRegister"));
+        {  
+            error_color(pseudo);
+            $("#pseudo_register__error_msg").html("Username should be between 6-20 characters");
+            $("#pseudo_register__error_msg").show();
             username_error = true;
         }
         else
         {
             username_error = false;
-            hide_msg("pseudo_register__error_msg", $("#pseudoRegister"));
+            normal_color(pseudo);
+            $("#pseudo_register__error_msg").hide(); 
         }
     }
     
@@ -130,18 +133,23 @@ $(function(){
     {   
         if($("#fname").val().length < 3)
         {
-            show_msg("fname_error_msg", "First name should be between 3-20 characters", $("#fname"));
+            error_color(fname);
+            $("#fname_error_msg").html("First name should be between 3-20 characters");   
+            $("#fname_error_msg").show();
             fname_error = true;
         }
         else if(allLetters(fname) == false)
         {
-            show_msg("fname_error_msg", "First name should be not contain numbers", $("#fname"));
+            error_color(fname);
+            $("#fname_error_msg").html("First name should be not contain numbers");   
+            $("#fname_error_msg").show();
             fname_error = true;
         }
         else
         {
             fname_error = false;
-            hide_msg("fname_error_msg", $("#fname"));
+            $("#fname_error_msg").hide();
+            normal_color(fname);
         }
     }
     
@@ -150,18 +158,23 @@ $(function(){
     { 
         if($("#lname").val().length < 3)
         {
-            show_msg("lname_error_msg", "Last name should be between 3-20 characters", $("#lname"));
+            error_color(lname);
+            $("#lname_error_msg").html("Last name should be between 3-20 characters");   
+            $("#lname_error_msg").show();
             lname_error = true;
         }
         else if(allLetters(lname) == false)
-        {        
-            show_msg("lname_error_msg", "Last name should be not contain numbers", $("#lname"));
+        {
+            error_color(lname);          
+            $("#lname_error_msg").html("Last name should be not contain numbers");   
+            $("#lname_error_msg").show();
             lname_error = true;
         }
         else
         {
             lname_error = false;
-            hide_msg("lname_error_msg", $("#lname"));
+            normal_color(lname);
+            $("#lname_error_msg").hide();
         }
     }
 
@@ -170,28 +183,30 @@ $(function(){
         //email
         if(validEmail(email) == false)
         {
-            show_msg("email_error_msg", "Please enter an invalid email address!", $("#email"));
+            error_color(email); 
+            $("#email_error_msg").html("Please enter an invalid email address!");  
+            $("#email_error_msg").show();
             email_error = true;
         }
         else
         {
             email_error = false;
-            hide_msg("email_error_msg", $("#email"));
+            normal_color(email);
+            $("#email_error_msg").hide();
         }
     }
     
     // submit
     $("#register_form").submit(function() {
         
-        check_username();
-        check_fname();
-        check_lname();
-        check_email();
-        
 		if(username_error == false && fname_error == false && lname_error == false && email_error == false)
             return true;
         else
         {
+            check_username();
+            check_fname();
+            check_lname();
+            check_email();
             return false;
         }
     		
@@ -217,76 +232,111 @@ $(function(){
     $("#pass2").focusout(function(){
         checkPassword($("#pass2"));
     });
-    
+
     $("#answer").focusout(function(){
         checkAnswer();
     });
-
 
     function checkPassword(input) {
     
         var idInput = input.attr('id');  
         if(idInput == "pass1")
         {
+            if(check_lowercaseLetters(input) == true){
+                alert();
+                show_msg("pass1_error_msg", "invalid password must contain lower Letter");
+
+            }
+            else
+                hide_msg("pass1_error_msg");
+         
+            
+
+            if(check_uppercaseLetters(input) == true){
+                show_msg("pass1_error_msg", "invalid password must contain capital Letter");
+
+            }
+            else
+                hide_msg("pass1_error_msg");
+         
+            
+
+            if(validNumber(input) == false){
+                show_msg("pass1_error_msg", "invalid password must contain numbers");
+
+            }
+            else
+                hide_msg("pass1_error_msg");
+  
+            
+
             if(validLength(input,8,30) == false){
-                pass1_error = true;
-                show_msg("pass1_error_msg", "ivalid password length must be between 8 and 30", $("#pass1"));   
+                show_msg("pass1_error_msg", "invalid password length must be between 8 and 30");
+     
             }
-            else if(check_uppercaseLetters(input) == true){
-                pass1_error = true;
-                show_msg("pass1_error_msg", "invalid password must contain capital Letter", $("#pass1"));
-            }
-            else if(validNumber(input) == false){
-                pass1_error = true;
-                show_msg("pass1_error_msg", "invalid password must contain numbers", $("#pass1"));   
-            }
-            else if(check_lowercaseLetters(input) == true){
-                pass1_error = true;
-                show_msg("pass1_error_msg", "invalid password must contain lower Letter", $("#pass1"));
-            }
-            else{
-                pass1_error = false;
-                hide_msg("pass1_error_msg", $("#pass1"));
-            }
+            else
+                hide_msg("pass1_error_msg");
             
+            
+
         }
-        if(idInput == "pass2"){
+        /*if(idInput == "pass2"){
             
-            if($("#pass1").val() != $("#pass2").val()){
-                pass_match_error = true;
-                show_msg("pass2_error_msg", "password does not match", $("#pass2"));
+            if(check_lowercaseLetters(input) == true)
+                show_msg("pass2_error_msg", "invalid password must contain lower Letter");
+            else
+                hide_msg("pass2_error_msg");
+
+            if(check_uppercaseLetters(input) == true)
+                show_msg("pass2_error_msg", "invalid password must contain capital Letter");
+            else
+                hide_msg("pass2 _error_msg");
+
+            if(validNumber(input) == false)
+                show_msg("pass2_error_msg", "invalid password must contain numbers");
+            else
+                hide_msg("pass2 _error_msg");
+
+            if(validLength(input,8,30) == false)
+                show_msg("pass2_error_msg", "invalid password length must be between 8 and 30");
+            else
+                hide_msg("pass2 _error_msg");
+            
+            // check if password similar 
+            if($("#pass1").val() != input.val()){
+               show_msg("pass2_error_msg", "password does not match");
+                error_color($("#pass2"));
             }
             else{
+                hide_msg("pass2 _error_msg");
                 pass_match_error = false;
-                hide_msg("pass2_error_msg", $("#pass2"));
             }
-        }
+        }*/
     }
-    
+    /*
     function checkAnswer()
     {
         var answer = $("#answer");
-        if((validLength(answer,3,30) == false)){
-            answer_error = true;
-            show_msg("answer_error_msg", "invalid answer must be between 3 and 30 characters", $("#answer"));
-        }
+        if((validLength(answer,3,30) == false))
+            show_msg("answer_error_msg", "invalid answer must be between 3 and 30 characters");
         else{
-            hide_msg("answer_error_msg", $("#answer"));
+            hide_msg("answer_error_msg");
             answer_error = false;
         }
     }
   
     $("#register_security_form").submit(function() {
         
-        checkAnswer();
-        checkPassword($("#pass1"));
-        checkPassword($("#pass2"));
-        
 		if(pass1_error == false && pass_match_error == false && answer_error == false)
             return true;
         else
-            return false; 		
-	});
+        {
+            checkPassword($("#pass1"));
+            checkPassword($("#pass2"));
+            checkAnswer();
+            return false;
+        }
+    		
+	});*/
     
-  
 });

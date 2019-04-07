@@ -35,14 +35,56 @@ function validEmail(email)
         return false;
 }
 
-// error color inputs && normal color inputs
-function error_color(element)
+// Validate numbers
+function validNumber(number)
 {
-    element.css("background-color","#f7c4cb");
+    var numbers = /[0-9]/g;
+    if(number.val().match(numbers))
+        return true;
+    else
+        return false;
 }
 
-function normal_color(element)
+// Validate length
+function validLength(element, min, max)
 {
-    element.css("background-color","#fff");
+    if(element.val().length >= min && element.val().length <= max) 
+        return true;
+    else 
+        return false;   
 }
 
+// Validate lowercase letters
+function check_lowercaseLetters(element_id)
+{
+    var lowerCaseLetters = /[a-z]/g;
+    if(!(element_id.val().match(lowerCaseLetters)))
+        return true;
+    else
+        return false;
+}
+    
+// Validate uppercase letters
+function check_uppercaseLetters(element_id)
+{
+    var upperCaseLetters = /[A-Z]/g;
+    if(!(element_id.val().match(upperCaseLetters)))
+        return true;
+    else
+        return false;
+}
+
+// show error_msg
+function show_msg(element_id, msg, input_color)
+{           
+    $("#" + element_id).html(msg);
+    $("#" + element_id).show();
+    input_color.css("background-color","#f7c4cb");
+}
+     
+// hide error_msg
+function hide_msg(element_id, input_color)
+{
+    $("#" + element_id).hide(); 
+    input_color.css("background-color","#fff");
+}
