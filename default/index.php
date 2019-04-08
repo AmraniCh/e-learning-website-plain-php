@@ -77,7 +77,7 @@
 
     <!-- home
     ================================================== -->
-    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="" style="background-color: #5a4e97;" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="" style="background-image: url(home_slide.jpg)" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
 
         <div class="home-content" style="padding-top: 12%">
 
@@ -102,7 +102,7 @@ Everything you need to create stunning and interactive eLearning courses
                 </div> <!-- end home-content__left-->
 
                 <div class="home-content__right">
-                    <img src="images/home5-slider-min.png">
+                    
                 </div> <!-- end home-content__right -->
 
             </div> <!-- end home-content__main -->

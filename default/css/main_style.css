@@ -965,7 +965,6 @@ input[type="submit"].btn--primary:focus,
 input[type="reset"].btn--primary:focus,
 input[type="button"].btn--primary:focus {
   background: #092239;
-  border-color: #514686;
 }
 
 /* button modifiers
@@ -1637,7 +1636,7 @@ input::-moz-focus-inner {
 }
 
 .s-header.sticky {
-  background-color: #0e1113;
+  background-color: #092239;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   position: fixed;
@@ -3058,7 +3057,7 @@ html.no-csstransitions .home-content__main {
  * ## features list
  * ------------------------------------------------------------------- */
 .features {
-  margin-top: 7.2rem;
+  margin-top: 4rem;
 }
 
 .item-feature {
@@ -3117,7 +3116,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .features {
-    margin-top: 4.4rem;
+    margin-top: 4rem;
   }
 
   .features .item-feature:nth-child(n) {
@@ -3174,7 +3173,7 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .testimonials-wrap {
-  margin-top: 9.6rem;
+  margin-top: 1rem;
 }
 
 .testimonials-header {
@@ -3309,7 +3308,7 @@ html.no-csstransitions .home-content__main {
  * ## pricing plan blocks
  * ------------------------------------------------------------------- */
 .plans {
-  margin-top: 6.4rem;
+  margin-top: 1.4rem;
   max-width: 840px;
 }
 
@@ -3403,15 +3402,13 @@ html.no-csstransitions .home-content__main {
 }
 
 .item-plan--popular .btn {
-  background-color: #ffffff;
-  border: 0.2rem solid #ffffff;
-  color: #000000;
+  background-color: #fff;
+  color: #000;
 }
 
 .item-plan--popular .btn:hover,
 .item-plan--popular .btn:focus {
-  background-color: #433a6e;
-  border: 0.2rem solid #433a6e;
+  background-color: #092239;
   color: #ffffff;
 }
 
