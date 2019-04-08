@@ -1981,7 +1981,6 @@ input::-moz-focus-inner {
 .s-home {
   display: table;
   width: 100%;
-  min-height: 788px;
   background-color: transparent;
   position: relative;
 }
@@ -1998,7 +1997,6 @@ input::-moz-focus-inner {
   z-index: 4;
   display: table-cell;
   vertical-align: bottom;
-  padding-top: 24.8rem;
   width: 100%;
   position: relative;
 }
@@ -2358,7 +2356,6 @@ html.no-csstransitions .home-content__main {
   .s-home {
     display: block;
     overflow: hidden;
-    min-height: 740px;
   }
 
   .home-content {
