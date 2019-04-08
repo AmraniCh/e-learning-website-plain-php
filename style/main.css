@@ -1,14 +1,26 @@
+/* all pages css */
 @font-face {
-  font-family: Ubuntu-Regular;
-  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
+    src: url(../fonts/roboto/Roboto-regular.ttf); 
+    font-family: roboto-regular;
 }
 
 @font-face {
-  font-family: Ubuntu-Bold;
-  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
+    src: url(../fonts/roboto/Roboto-Medium.ttf); 
+    font-family: roboto-medium;
 }
 
-.text-muted{color:#ca001c!important;}
+@font-face {
+    src: url(../fonts/roboto/Roboto-bold.ttf); 
+    font-family: roboto-bold;
+}
+
+.text-muted{
+  color:#ca001c!important;
+}
+
+body{
+  font-family: 'roboto-regular', sans-serif;
+}
 
 /* index.php page css */
 

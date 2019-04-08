@@ -135,8 +135,8 @@
                     <input type="checkbox" name="remember" class="form-check-input"><label class="form-check-label" for="remember">Remember me</label>
                 </div> -->
                 <!-- can't remember -->
-                <div class="form-group" style="text-align: left;margin-bottom:.5rem">
-                    <a href="#" id="link"><span style="color:#1273eb;font-size: 90%">Forgot password or username ?</span></a>
+                <div class="form-group" style="text-align: left;margin-bottom:.5rem;">
+                    <a href="#" id="link"><span style="color:#1273eb;font-size: 90%;font-family: 'roboto-bold', sans-serif">Forgot password or username ?</span></a>
                 </div>
                 <!-- btn -->
                 <div class="btn" style="width:100%">

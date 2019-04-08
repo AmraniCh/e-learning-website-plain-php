@@ -65,7 +65,7 @@
                 </ul>
     
                 <div class="header-cta">
-                    <a href="#download" class="btn btn--primary header-cta__btn smoothscroll">Get The App</a>
+                    <a href="#download" class="btn btn--primary header-cta__btn smoothscroll">Get Started</a>
                 </div>
             </nav> <!-- end header-nav-wrap -->
     
@@ -96,7 +96,7 @@ Everything you need to create stunning and interactive eLearning courses
     
                     <div class="home-content__btn-wrap">
                         <a href="#download" class="btn btn--primary home-content__btn smoothscroll">
-                            Get The App
+                            Get Started
                         </a>
                     </div>
                 </div> <!-- end home-content__left-->
@@ -106,12 +106,6 @@ Everything you need to create stunning and interactive eLearning courses
                 </div> <!-- end home-content__right -->
 
             </div> <!-- end home-content__main -->
-
-            <ul class="home-content__social">
-                <li><a href="#0">Facebook</a></li>
-                <li><a href="#0">twitter</a></li>
-                <li><a href="#0">Instagram</a></li>
-            </ul>
 
         </div> <!-- end home-content -->
 
@@ -194,36 +188,6 @@ Everything you need to create stunning and interactive eLearning courses
     <!-- about-how
     ================================================== -->
     <section id="about-how" class="s-about-how">
-
-        <div class="row">
-           <div class="col-full video-bg" data-aos="fade-up">
-
-                <div class="shadow-overlay"></div>
-
-                <a class="btn-video" href="https://player.vimeo.com/video/14592941?color=00a650&title=0&byline=0&portrait=0" data-lity>
-                    <span class="video-icon"></span>
-                </a>
-
-                <div class="stats">
-                    <div class="item-stats">
-                        <span class="item-stats__num">
-                            3.1M
-                        </span>
-                        <span class="item-stats__title">
-                            Downloads
-                        </span>
-                    </div> <!-- end item-stats -->
-                    <div class="item-stats">
-                        <span class="item-stats__num">
-                            24K
-                        </span>
-                        <span class="item-stats__title">
-                            Positive Reviews
-                        </span>
-                    </div> <!-- end item-stats -->
-                </div>
-           </div> <!-- end video-bg -->
-        </div>
 
         <div class="row process-wrap">
 

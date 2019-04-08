@@ -1,67 +1,5 @@
 @charset "UTF-8";
 
-/* =================================================================== 
- *
- *  Kairos v1.0 Main Stylesheet
- *  11-06-2018
- *  ------------------------------------------------------------------
- *
- *  TOC:
- *  # base style overrides
- *    ## links
- *  # typography & general theme styles
- *    ## Lists
- *    ## responsive video container
- *    ## floated image
- *    ## tables
- *    ## Spacing
- *    ## pace.js styles - minimal
- *  # preloader 
- *  # forms 
- *    ## Style Placeholder Text
- *    ## Change Autocomplete styles in Chrome
- *  # buttons
- *  # additional components
- *    ## alert box 
- *    ## additional typo styles
- *    ## skillbars 
- *  # reusable and common theme styles
- *    ## display headings
- *    ## section header
- *    ## slick slider
- *  # header styles
- *    ## header logo
- *    ## navigation 
- *    ## menu trigger
- *  # home
- *    ## home content
- *    ## home button section
- *    ## home social
- *    ## home scroll
- *    ## home animations
- *  # about
- *    ## about-desc slider
- *  # s-about-how
- *    ## video button
- *    ## stats
- *    ## process
- *  # features
- *    ## features list
- *  # testimonials
- *  # pricing
- *    ## pricing plan blocks
- *  # download
- *  # footer
- *    ## subscribe form
- *    ## footer social
- *    ## footer site links
- *    ## copyright
- *    ## go to top
- *
- * =================================================================== */
-
-
-
 /* ===================================================================
  * # base style overrides
  *
@@ -84,7 +22,7 @@ body {
 
 body {
   background: #121619;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.8rem;
   font-style: normal;
   font-weight: normal;
@@ -94,12 +32,16 @@ body {
   padding: 0;
 }
 
+.home-content__btn{
+    background-color:#333;
+}
+
 
 /* ------------------------------------------------------------------- 
  * ## links
  * ------------------------------------------------------------------- */
 a {
-  color: #5b4f96;
+  color: #1C9BDD;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
@@ -196,7 +138,7 @@ p img {
 }
 
 p.lead {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 300;
   font-size: 2.8rem;
   line-height: 1.571;
@@ -228,13 +170,13 @@ b {
 
 em,
 i {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-style: italic;
 }
 
 strong,
 b {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 700;
 }
 
@@ -255,7 +197,7 @@ blockquote:before {
   line-height: 0px;
   margin: 0;
   color: #c2c2c2;
-  color: #5b4f96;
+  color: #1C9BDD;
   font-family: Arial, Sans-serif;
   position: absolute;
   top: 4.4rem;
@@ -263,7 +205,7 @@ blockquote:before {
 }
 
 blockquote p {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 400;
   padding: 0;
   font-size: 2.6rem;
@@ -273,7 +215,7 @@ blockquote p {
 
 blockquote cite {
   display: block;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-style: normal;
   font-size: 1.6rem;
   line-height: 1.25;
@@ -291,7 +233,7 @@ blockquote cite a:visited {
 }
 
 abbr {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 700;
   font-variant: small-caps;
   text-transform: lowercase;
@@ -405,7 +347,7 @@ ul.disc li::before {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #5b4f96;
+  background: #1C9BDD;
   position: absolute;
   left: -16px;
   top: 11px;
@@ -414,7 +356,7 @@ ul.disc li::before {
 
 dt {
   margin: 0;
-  color: #5b4f96;
+  color: #1C9BDD;
 }
 
 dd {
@@ -463,7 +405,7 @@ table {
   border-width: 0;
   width: 100%;
   max-width: 100%;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   border-collapse: collapse;
 }
 
@@ -476,7 +418,7 @@ td {
 
 th {
   color: #000000;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 700;
 }
 
@@ -540,7 +482,7 @@ form,
 
 .pace .pace-progress {
   z-index: 900;
-  background: #5b4f96;
+  background: #1C9BDD;
   width: 100%;
   height: 4px;
   position: fixed;
@@ -591,7 +533,7 @@ form,
 
 #loader > div {
   content: "";
-  background: #5b4f96;
+  background: #1C9BDD;
   width: 6px;
   height: 6px;
   position: absolute;
@@ -774,7 +716,7 @@ select {
   border: 0;
   outline: none;
   color: #545454;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-size: 1.6rem;
   line-height: 3.2rem;
   max-width: 100%;
@@ -854,12 +796,12 @@ textarea:focus,
 select:focus {
   color: #000000;
   box-shadow: 0 0 5px rgba(91, 79, 150, 0.8);
-  border: 1px solid #5b4f96;
+  border: 1px solid #1C9BDD;
 }
 
 label,
 legend {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 700;
   font-size: 1.4rem;
   line-height: 2;
@@ -876,7 +818,7 @@ input[type="radio"] {
 label > .label-text {
   display: inline-block;
   margin-left: 1rem;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   line-height: inherit;
 }
 
@@ -947,7 +889,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-text-fill-color: #5b4f96;
+  -webkit-text-fill-color: #1C9BDD;
   transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -963,11 +905,11 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"] {
   display: inline-block;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 700;
   font-size: 1.4rem;
   text-transform: uppercase;
-  letter-spacing: .4rem;
+  letter-spacing: .2rem;
   height: 6rem;
   line-height: 5.6rem;
   padding: 0 3.2rem;
@@ -1007,8 +949,8 @@ button.btn--primary,
 input[type="submit"].btn--primary,
 input[type="reset"].btn--primary,
 input[type="button"].btn--primary {
-  background: #5b4f96;
-  border-color: #5b4f96;
+  background: #1C9BDD;
+  border-color: #1C9BDD;
   color: #ffffff;
 }
 
@@ -1022,7 +964,7 @@ button.btn--primary:focus,
 input[type="submit"].btn--primary:focus,
 input[type="reset"].btn--primary:focus,
 input[type="button"].btn--primary:focus {
-  background: #514686;
+  background: #092239;
   border-color: #514686;
 }
 
@@ -1089,7 +1031,7 @@ input::-moz-focus-inner {
   position: relative;
   margin-bottom: 3.2rem;
   border-radius: 4px;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 600;
   font-size: 1.5rem;
   line-height: 1.6;
@@ -1217,7 +1159,7 @@ input::-moz-focus-inner {
   position: absolute;
   font-size: 10rem;
   font-family: Arial, Sans-serif;
-  color: #5b4f96;
+  color: #1C9BDD;
 }
 
 .pull-quote:before {
@@ -1240,7 +1182,7 @@ input::-moz-focus-inner {
 }
 
 .pull-quote blockquote p {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 400;
   padding: 0;
   font-size: 2.6rem;
@@ -1293,13 +1235,13 @@ input::-moz-focus-inner {
 }
 
 .stats-tabs li a:hover {
-  color: #5b4f96;
+  color: #1C9BDD;
 }
 
 .stats-tabs li a em {
   display: block;
   margin: .8rem 0 0 0;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-size: 1.5rem;
   line-height: 2.4rem;
   font-weight: normal;
@@ -1329,7 +1271,7 @@ input::-moz-focus-inner {
   position: absolute;
   left: 0;
   top: -4rem;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 700;
   color: #000000;
   text-transform: uppercase;
@@ -1339,7 +1281,7 @@ input::-moz-focus-inner {
 }
 
 .skill-bars li .progress {
-  background: #5b4f96;
+  background: #1C9BDD;
   position: relative;
   height: 100%;
 }
@@ -1349,7 +1291,7 @@ input::-moz-focus-inner {
   right: 0;
   top: -3.6rem;
   display: block;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   color: #ffffff;
   font-size: 1.1rem;
   line-height: 1;
@@ -1584,7 +1526,7 @@ input::-moz-focus-inner {
 
 .slick-slider .slick-dots li.slick-active button,
 .slick-slider .slick-dots li:hover button {
-  background: #5b4f96;
+  background: #1C9BDD;
 }
 
 
@@ -1684,7 +1626,7 @@ input::-moz-focus-inner {
   z-index: 600;
   width: 100%;
   height: 78px;
-  background-color: #333;
+  background-color: #092239;
   position: absolute;
 }
 
@@ -1738,7 +1680,7 @@ input::-moz-focus-inner {
  * ## navigation 
  * ------------------------------------------------------------------- */
 .header-nav-wrap {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 600;
   padding-left: 180px;
 }
@@ -1747,9 +1689,8 @@ input::-moz-focus-inner {
   display: inline-block;
   list-style: none;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
-  letter-spacing: 2px;
   margin: 0;
 }
 
@@ -1786,7 +1727,7 @@ input::-moz-focus-inner {
 }
 
 .header-nav-wrap .header-cta__btn {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   height: 5.2rem;
   line-height: 4.8rem;
   margin: 0;
@@ -1806,7 +1747,7 @@ input::-moz-focus-inner {
   height: 42px;
   width: 42px;
   line-height: 42px;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: .2rem;
@@ -2066,7 +2007,7 @@ input::-moz-focus-inner {
 .home-content h1 {
   font-family: "Chivo", sans-serif;
   font-weight: 600;
-  font-size: 7.2rem;
+  font-size: 5rem;
   line-height: 1.222;
   color: #ffffff;
   margin-top: 0;
@@ -2080,14 +2021,14 @@ input::-moz-focus-inner {
   content: "";
   height: 2px;
   width: 8rem;
-  background-color: #5b4f96;
+  background-color: #1C9BDD;
   position: absolute;
   left: 8px;
   top: 0;
 }
 
 .home-content h3 {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 300;
   font-size: 2.4rem;
   line-height: 1.667;
@@ -2099,7 +2040,7 @@ input::-moz-focus-inner {
 
 .home-content__main {
   position: relative;
-  padding-bottom: 9.6rem;
+  padding-bottom: 2rem;
   max-width: 1300px;
 }
 
@@ -2109,7 +2050,7 @@ input::-moz-focus-inner {
 
 .home-content__right {
   z-index: 500;
-  width: 580px;
+  width: 500px;
   position: absolute;
   right: 0;
   top: 0;
@@ -2117,22 +2058,20 @@ input::-moz-focus-inner {
 
 .home-content__right img {
   vertical-align: bottom;
-  margin-top: 5.2rem;
+  margin-top: 5rem;
 }
 
 
 /* ------------------------------------------------------------------- 
  * ## home button section
  * ------------------------------------------------------------------- */
-.home-content__btn-wrap {
-  margin-top: 7.2rem;
-}
 
 .home-content__btn-wrap .home-content__btn {
   width: 30rem;
   height: 6.4rem !important;
   line-height: 6rem !important;
   margin-right: 0;
+    background-color: #1C9BDD;
 }
 
 
@@ -2190,13 +2129,13 @@ input::-moz-focus-inner {
 
 .home-scroll__text {
   display: inline-block;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: 600;
   font-size: 11px;
   line-height: 5.6rem;
   text-transform: uppercase;
   letter-spacing: .3rem;
-  color: #5b4f96;
+  color: #1C9BDD;
   border-bottom: 1px solid transparent;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -2324,7 +2263,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 @media only screen and (max-width:1700px) {
   .home-content h1 {
-    font-size: 6.8rem;
+    font-size: 5rem;
   }
 
   .home-content h3 {
@@ -2350,7 +2289,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content h1 {
-    font-size: 6.2rem;
+    font-size: 5rem;
   }
 
   .home-content h3 {
@@ -2366,14 +2305,14 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content__right {
-    width: 570px;
+    width: 500px;
   }
 
 }
 
 @media only screen and (max-width:1400px) {
   .home-content h1 {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 
   .home-content h3 {
@@ -2386,7 +2325,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content__right {
-    width: 550px;
+    width: 500px;
     right: 40px;
   }
 
@@ -2398,7 +2337,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content h1 {
-    font-size: 5.6rem;
+    font-size: 5rem;
   }
 
   .home-content h3 {
@@ -2410,7 +2349,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content__right {
-    width: 530px;
+    width: 500px;
     right: 50px;
   }
 
@@ -2432,7 +2371,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content h1 {
-    font-size: 7.2rem;
+    font-size: 5rem;
     padding-top: 0;
   }
 
@@ -2478,7 +2417,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content h1 {
-    font-size: 6.2rem;
+    font-size: 5rem;
   }
 
   .home-content h3 {
@@ -2501,7 +2440,7 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:800px) {
   .home-content h1 {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 
   .home-content h3 {
@@ -2516,7 +2455,7 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:700px) {
   .home-content h1 {
-    font-size: 5.6rem;
+    font-size: 5rem;
   }
 
   .home-content h3 {
@@ -2532,7 +2471,7 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:600px) {
   .home-content h1 {
-    font-size: 5.2rem;
+    font-size: 5rem;
   }
 
   .home-content h3 {
@@ -2562,7 +2501,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content h1 {
-    font-size: 4.4rem;
+    font-size: 5rem;
   }
 
   .home-content__main {
@@ -2582,7 +2521,7 @@ html.no-csstransitions .home-content__main {
   }
 
   .home-content h1 {
-    font-size: 4.2rem;
+    font-size: 5rem;
   }
 
   .home-content__main {
@@ -2616,9 +2555,8 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-about {
-  padding-top: 23.2rem;
-  padding-bottom: calc((62.4rem/2) + 6.4rem);
-  background-color: #5b4f96;
+  padding-top: 4rem;
+  background-color: #1C9BDD;
   color: rgba(255, 255, 255, 0.8);
   overflow: hidden;
   position: relative;
@@ -2667,24 +2605,6 @@ html.no-csstransitions .home-content__main {
  * responsive:
  * about
  * ------------------------------------------------------------------- */
-@media only screen and (max-width:1400px) {
-  .s-about {
-    padding-bottom: calc((62.4rem/2) + 9.6rem);
-  }
-
-}
-
-@media only screen and (max-width:1200px) {
-  .s-about {
-    padding-top: 18.4rem;
-  }
-
-}
-
-@media only screen and (max-width:1000px) {
-  .s-about {
-    padding-top: 17.2rem;
-  }
 
   .about-desc__slide {
     padding: 0 20px;
@@ -2694,7 +2614,7 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:800px) {
   .s-about {
-    padding-top: 16rem;
+    padding-top: 2rem;
   }
 
 }
@@ -2714,7 +2634,6 @@ html.no-csstransitions .home-content__main {
 @media only screen and (max-width:600px) {
   .s-about {
     padding-top: 14.8rem;
-    padding-bottom: calc((60rem/2) + 9.6rem);
   }
 
   .about-desc {
@@ -2727,17 +2646,10 @@ html.no-csstransitions .home-content__main {
 
 }
 
-@media only screen and (max-width:500px) {
-  .s-about {
-    padding-bottom: calc((52rem/2) + 9.6rem);
-  }
-
-}
 
 @media only screen and (max-width:400px) {
   .s-about {
-    padding-top: 14rem;
-    padding-bottom: calc((48rem/2) + 9.6rem);
+    padding-top:1rem;
   }
 
 }
@@ -2750,7 +2662,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 .s-about-how {
   background-color: #ffffff;
-  padding-bottom: 16rem;
+  padding-bottom: 2rem;
 }
 
 .video-bg {
@@ -2803,7 +2715,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .btn-video:hover .video-icon {
-  background-color: #5b4f96;
+  background-color: #1C9BDD;
   background-image: url(../images/icons/icon-play.svg);
 }
 
@@ -2845,7 +2757,7 @@ html.no-csstransitions .home-content__main {
  * ## process
  * ------------------------------------------------------------------- */
 .process-wrap {
-  margin-top: 12rem;
+  padding-top: 3rem;
 }
 
 .process-wrap h2 {
@@ -2917,7 +2829,7 @@ html.no-csstransitions .home-content__main {
   line-height: 54px;
   text-align: center;
   border-radius: 50%;
-  background-color: #5b4f96;
+  background-color: #1C9BDD;
   box-shadow: 0 0 0 15px #ffffff;
   z-index: 500;
   position: absolute;
@@ -3058,7 +2970,7 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:600px) {
   .s-about-how {
-    padding-bottom: 14.4rem;
+    padding-bottom: 3rem;
   }
 
   .video-bg {
@@ -3092,7 +3004,7 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:400px) {
   .s-about-how {
-    padding-bottom: 12rem;
+    padding-bottom: 2rem;
   }
 
   .video-bg {
@@ -3134,8 +3046,8 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-features {
-  padding-top: 19.2rem;
-  padding-bottom: 20rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   background-color: #eaeaea;
   overflow: hidden;
   position: relative;
@@ -3154,7 +3066,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .item-feature__icon {
-  color: #5b4f96;
+  color: #1C9BDD;
   font-size: 4.8rem;
 }
 
@@ -3165,7 +3077,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 @media only screen and (max-width:1200px) {
   .s-features {
-    padding-top: 18.4rem;
+    padding-top: 3rem;
   }
 
   .features {
@@ -3184,8 +3096,8 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:1000px) {
   .s-features {
-    padding-top: 17.2rem;
-    padding-bottom: 17.2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   .features .item-feature:nth-child(2n+1) {
@@ -3200,8 +3112,8 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:800px) {
   .s-features {
-    padding-top: 16rem;
-    padding-bottom: 16rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   .features {
@@ -3230,8 +3142,8 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:600px) {
   .s-features {
-    padding-top: 14.8rem;
-    padding-bottom: 14.8rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   .features .item-feature:nth-child(n) {
@@ -3243,8 +3155,8 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:400px) {
   .s-features {
-    padding-top: 14rem;
-    padding-bottom: 14rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   .features .item-feature:nth-child(n) {
@@ -3286,7 +3198,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .testimonials {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-weight: normal;
   font-size: 1.7rem;
   line-height: 1.882;
@@ -3386,8 +3298,8 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-pricing {
-  padding-top: 19.2rem;
-  padding-bottom: 16rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
   background-color: #ffffff;
   position: relative;
 }
@@ -3464,7 +3376,7 @@ html.no-csstransitions .home-content__main {
   font-size: 1.2rem;
   font-weight: 900;
   display: inline-block;
-  color: #5b4f96;
+  color: #1C9BDD;
   margin-right: 18px;
 }
 
@@ -3477,7 +3389,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .item-plan--popular .item-plan__block {
-  background-color: #5b4f96;
+  background-color: #1C9BDD;
   border: none;
 }
 
@@ -3510,7 +3422,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 @media only screen and (max-width:1200px) {
   .s-pricing {
-    padding-top: 18.4rem;
+    padding-top: 4rem;
   }
 
   .plans {
@@ -3521,8 +3433,8 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:1000px) {
   .s-pricing {
-    padding-top: 17.2rem;
-    padding-bottom: 17.2rem;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
   }
 
 }
@@ -3572,8 +3484,8 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-download {
-  padding-top: 18.4rem;
-  background-color: #5b4f96;
+  padding-top: 4rem;
+  background-color: #1C9BDD;
   color: rgba(255, 255, 255, 0.8);
   overflow: hidden;
   position: relative;
@@ -3649,14 +3561,14 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:1000px) {
   .s-download {
-    padding-top: 17.2rem;
+    padding-top: 4rem;
   }
 
 }
 
 @media only screen and (max-width:800px) {
   .s-download {
-    padding-top: 16rem;
+    padding-top: 4rem;
   }
 
   .s-download .download-content__badges li a {
@@ -3669,11 +3581,11 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width:600px) {
   .s-download {
-    padding-top: 14.8rem;
+    padding-top: 4rem;
   }
 
   .s-download .download-bottom-image {
-    margin-top: 9.6rem;
+    margin-top: 4rem;
   }
 
 }
@@ -3698,11 +3610,11 @@ html.no-csstransitions .home-content__main {
 .s-footer a:hover,
 .s-footer a:focus,
 .s-footer a:active {
-  color: #5b4f96;
+  color: #1C9BDD;
 }
 
 .s-footer .display-1 {
-  color: #5b4f96;
+  color: #1C9BDD;
 }
 
 .s-footer h4 {
@@ -3717,7 +3629,7 @@ html.no-csstransitions .home-content__main {
 
 .s-footer .footer__mail-link {
   font-weight: 800;
-  color: #5b4f96;
+  color: #1C9BDD;
 }
 
 .s-footer .footer__mail-link:hover,
@@ -3809,8 +3721,8 @@ html.no-csstransitions .home-content__main {
 
 .footer__subscribe #mc-form input[type=submit] {
   color: #ffffff;
-  background: #5b4f96;
-  border-color: #5b4f96;
+  background: #1C9BDD;
+  border-color: #1C9BDD;
   margin-right: 0;
   padding: 0 20px 0 24px;
   height: 6.8rem;
@@ -3823,7 +3735,7 @@ html.no-csstransitions .home-content__main {
 
 .footer__subscribe #mc-form label {
   color: #ffffff;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "roboto", sans-serif;
   font-size: 1.3rem;
   padding: 0 2rem;
 }
@@ -3862,7 +3774,7 @@ html.no-csstransitions .home-content__main {
 .footer__social li a:hover,
 .footer__social li a:focus,
 .footer__social li a:active {
-  background-color: #5b4f96;
+  background-color: #1C9BDD;
   color: #ffffff;
 }
 
@@ -3896,7 +3808,7 @@ html.no-csstransitions .home-content__main {
 .footer__site-links li a:hover,
 .footer__site-links li a:focus,
 .footer__site-links li a:active {
-  color: #5b4f96;
+  color: #1C9BDD;
 }
 
 
@@ -3968,7 +3880,7 @@ html.no-csstransitions .home-content__main {
 .go-top a:hover,
 .go-top a:focus,
 .go-top a:active {
-  background-color: #514686;
+  background-color: #092239;
 }
 
 .go-top.link-is-visible {

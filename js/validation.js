@@ -232,7 +232,7 @@ $(function(){
                 pass1_error = true;
                 show_msg("pass1_error_msg", "ivalid password length must be between 8 and 30", $("#pass1"));   
             }
-            else if(check_uppercaseLetters(input) == true){
+            else if(check_uppercaseLetters(input) == false){
                 pass1_error = true;
                 show_msg("pass1_error_msg", "invalid password must contain capital Letter", $("#pass1"));
             }
