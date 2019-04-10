@@ -28,7 +28,22 @@
                 }
             </style>
 		<?php
-        
+            // apply style 
+            if(isset($_GET['plan']))
+            {
+                $plan = $_GET['plan'];
+                if($plan == 'student')
+                    echo '<link rel="stylesheet" type="text/css" href="style/student_theme.css">';
+                else if($plan == 'professor')
+                    echo '<link rel="stylesheet" type="text/css" href="style/prof_theme.css">';
+                else if($plan == 'admin')
+                    echo '<link rel="stylesheet" type="text/css" href="style/admin_theme.css">';
+                else
+                    header('location: plans/plans.php');
+            }
+            else
+                header('location: plans/plans.php');
+            // register inputs 
 			if(isset($_POST['submitNext']))
 			{
 				$_SESSION['pseudo'] = $_POST['pseudo'];
@@ -36,10 +51,9 @@
                 $_SESSION['nom'] = $_POST['lname'];
                 $_SESSION['gender'] = $_POST['menu'];
                 $_SESSION['email'] = $_POST['email'];
+                $_SESSION['plan'] = $plan;
                 header('location: registerSecurity.php');
 			}
-        
-           
         
 		?>
 		<div class="container" id="containerRegister" style="background:#fff;border-radius:3%; margin: 2% auto;">
@@ -67,11 +81,15 @@
             <form id="register_form" action="" method="post">
                 <!-- titre -->
                 <div class="titre" style="text-align:-webkit-center;text-align:-moz-center;text-align:center;margin-bottom:5%">
-                    <h5  style="font-size:250%;color:#54C5FF;">Sign <span style="color:#5a4e97">Up</span></h5>
+                    <h5 class="sign" style="font-size:250%;font-weight:900">Sign <span class="up">Up</span></h5>
+                </div>
+                <!-- register as -->
+                <div class="container" style="padding:0;text-align:center;margin:0;width:100%">
+                    <small class="register_as_text">Register As : <span class="register_as"><?php echo $plan ?></span></small>
                 </div>
                 <!-- Pseudo -->
                 <div class="form-group">
-                    <label for="pseudo">Pseudo</label>
+                    <label for="pseudo">Username</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -139,7 +157,7 @@
                 </div>
                 <!-- btn -->
                 <div class="form-group" style="text-align:-webkit-center;text-align:-moz-center;text-align:center;width:100%">
-                    <input type="submit" name="submitNext" id="submitNext" value="Next" class="btn btn-primary btn-lg" style="background-color:#5a4e97;width:40%">
+                    <input type="submit" name="submitNext" id="submitNext" value="Next" class="btn .btn-default btn-lg" style="width:40%">
                     <a href="login.php"><button type="button" name="submitLogin" class="btn btn-outline-primary btn-lg" style="width:40%">Login</button></a>
                 </div>
             </form>

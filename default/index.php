@@ -405,10 +405,9 @@ Everything you need to create stunning and interactive eLearning courses
             <div class="col-block item-plan" data-aos="fade-up">
                 <div class="item-plan__block"> 
 
-                    <div class="item-plan__top-part">
-                        <h3 class="item-plan__title">Free</h3>
-                        <p class="item-plan__price">$0</p>
-                        <p class="item-plan__per">Forever</p>
+                    <div class="item-plan__top-part" style="text-align:center">
+                        <h3 class="item-plan__title">Student</h3>
+                        <div class="container"><img src="images/student.png"></div>
                     </div>
 
                     <div class="item-plan__bottom-part">
@@ -428,10 +427,9 @@ Everything you need to create stunning and interactive eLearning courses
             <div class="col-block item-plan item-plan--popular" data-aos="fade-up">
                 <div class="item-plan__block"> 
 
-                    <div class="item-plan__top-part">
-                        <h3 class="item-plan__title">Pro Plan</h3>
-                        <p class="item-plan__price">$10</p>
-                        <p class="item-plan__per">Per Month</p>
+                    <div class="item-plan__top-part" style="text-align:center">
+                        <h3 class="item-plan__title">Professor</h3>
+                        <div class="container"><img src="images/prof.png"></div>
                     </div>
 
                     <div class="item-plan__bottom-part">

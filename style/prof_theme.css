@@ -1,0 +1,42 @@
+/* main css */
+.btn-outline-primary{
+    color: #64647e;
+    border-color: #2b2b33;
+}
+
+.btn-outline-primary:hover{
+    background-color: #2b2b33;
+    color: #fff;
+}
+
+/* register css */
+.sign{
+    color:#fa6e6f;
+}
+
+.up{
+    color:#64647e;
+}
+
+#submitNext{
+    background-color: #fa6e6f;
+    color: #fff;
+}
+
+/* registerSecurity css */
+.help_us_text{
+    color: #fa6e6f;
+}
+
+.secure_text{
+    color:#64647e;
+}
+
+input.btn{
+    background-color: #fa6e6f;
+}
+
+input.btn:hover{
+    background-color: #2b2b33;
+    color: #fff;
+}

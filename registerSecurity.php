@@ -16,12 +16,33 @@
 	</head>
 	<body>
 		<?php
+            
+            // theme
+            if(isset($_SESSION['plan']))
+            {
+                $plan = $_SESSION['plan'];
+                if($plan == 'student')
+                    echo '<link rel="stylesheet" type="text/css" href="style/student_theme.css">';
+                else if($plan == 'professor')
+                    echo '<link rel="stylesheet" type="text/css" href="style/prof_theme.css">';
+                else if($plan == 'admin')
+                    echo '<link rel="stylesheet" type="text/css" href="style/admin_theme.css">';
+                else
+                    header('location: plans/plans.php');
+            }
+            else
+                header('location: plans/plans.php');
         
+        
+            // unset session variables
             function unsetVar()
             {
-                global $pass;
                 unset($_SESSION['pseudo']);
                 unset($_SESSION['pass']);
+                unset($_SESSION['nom']);
+                unset($_SESSION['prenom']);
+                unset($_SESSION['gender']);
+                unset($_SESSION['email']);
             }
         
 			if(isset($_POST['submitFinish']))
@@ -44,9 +65,11 @@
                     $_SESSION['pass'] = $pass;
                 }
                 else
-                    unsetVar();      
+                    unsetVar();     
 			}
-        
+            
+            // no refresh 
+            unset($_SESSION['plan']);
 		?>
 		<div class="container" id="containerRegister" style="background:#fff;border-radius:3%; margin: 2% auto;">
            <!--768-576-375-320-992-1200 -->
@@ -73,7 +96,7 @@
             <form id="register_security_form" action="registerSecurity.php" method="post">
                 <!-- titre -->
                 <div class="titre" style="text-align:-webkit-center;text-align:-moz-center;text-align:center;margin-bottom:5%">
-                    <h5  style="font-size:300%;color:#54C5FF;">Help us to <span style="color:#5a4e97">Secure</span> your account</h5>
+                    <h5 class="help_us_text" style="font-size:300%;">Help us to <span class="secure_text" style="font-weight:900;">Secure</span> your account</h5>
                 </div>
                 <!-- pass1 -->
                 <div class="form-group">
@@ -126,7 +149,7 @@
                 </div>
                 <!-- btn -->
                 <div class="form-group" style="text-align:-webkit-center;text-align:-moz-center;text-align:center;width:100%">
-                    <input type="submit" name="submitFinish" value="Finish" class="btn btn-primary btn-lg" style="background-color:#5a4e97;width:40%">
+                    <input type="submit" name="submitFinish" value="Finish" class="btn btn-primary btn-lg" style="width:40%">
                     <a href="login.php"><button type="button" name="submitLogin" class="btn btn-outline-primary btn-lg" style="width:40%">Login</button></a>
                 </div>
             </form>

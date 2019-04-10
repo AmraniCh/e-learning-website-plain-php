@@ -141,7 +141,7 @@
                 <!-- btn -->
                 <div class="btn" style="width:100%">
                     <input type="submit" name="submitLogin" value="Login" style="display:block;margin-bottom:2%;background-color:#5a4e97;width:70%" class="btn btn-primary">
-                    <a id="link" href="register.php"><button type="button" id="link_register" name="submitRegister" class="btn btn-outline-primary" style="display:block;width:70%">Not a member? Sign up</button></a>
+                    <a id="link" href="plans/plans.php"><button type="button" id="link_register" name="submitRegister" class="btn btn-outline-primary" style="display:block;width:70%">Not a member? Sign up</button></a>
                 </div>
             </form>
 		</div>
@@ -155,61 +155,5 @@
         window.location.href = 'includes/loadingTime.php';
         }, 0);
     }
-
-    $("#pseudo_error_msg").hide();
-    $("#password_error_msg").hide();
-
-    var password_error = false;
-    var username_error = false;
-
-    $("#pseudo").focusout(function() {
-
-        check_username();
-        
-    });
-
-    $("#password").focusout(function() {
-
-        check_password();
-        
-    });
-
-
-    function check_username() {
-    
-        var pseudo_length = $("#pseudo").val().length;
-        if(pseudo_length < 6 || pseudo_length > 20) {
-            $("#pseudo_error_msg").html("Username should be between 6-20 characters");
-            $("#pseudo_error_msg").show();
-            username_error = true;
-          } 
-        }
-    }
-
-    function check_password() {
-    
-        var password_length = $("#password").val().length;
-        if(password_length < 10 || password_length > 40) {
-            $("#password_error_msg").html("Password should be between 10-40 characters");
-            $("#password_error_msg").show();
-            password_error = true;
-        } 
-    }
-    $("#login_form").submit(function() {
-                                            
-        username_error = false;
-        password_error = false;
-                                            
-        check_username();
-        check_password();
-
-        
-        if(username_error == false && password_error == false) {
-            return true;
-        } else {
-            return false;   
-        }
-
-    });a
 </script>
 </html>
