@@ -22,11 +22,11 @@
             {
                 $plan = $_SESSION['plan'];
                 if($plan == 'student')
-                    echo '<link rel="stylesheet" type="text/css" href="style/student_theme.css">';
+                    echo '<link rel="stylesheet" type="text/css" href="style/themes/student_theme.css">';
                 else if($plan == 'professor')
-                    echo '<link rel="stylesheet" type="text/css" href="style/prof_theme.css">';
+                    echo '<link rel="stylesheet" type="text/css" href="style/themes/prof_theme.css">';
                 else if($plan == 'admin')
-                    echo '<link rel="stylesheet" type="text/css" href="style/admin_theme.css">';
+                    echo '<link rel="stylesheet" type="text/css" href="style/themes/admin_theme.css">';
                 else
                     header('location: plans/plans.php');
             }
