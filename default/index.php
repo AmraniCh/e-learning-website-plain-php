@@ -124,7 +124,7 @@
     <div class="row section-header has-bottom-sep" data-aos="fade-up">
         <div class="col-full">
             <h1 class="display-1">
-                Simply The Best Messaging and file sharing App Out There.
+                Simply the best comminication and file sharing website out there.
             </h1>
             <p class="lead">
                 Et nihil atque ex. Reiciendis et rerum ut voluptate. Omnis molestiae nemo est.
@@ -143,8 +143,8 @@
 
                 <p>
                     we have used the best and the most safe algorithms to build
-                    website can safe all teachers informations and their
-                    student .
+                    the website that can safe all teachers' and
+                    students' information.
                 </p>
             </div>  <!-- end about-desc__slide -->
 
@@ -152,9 +152,9 @@
                 <h3 class="item-title">Smart.</h3>
 
                 <p>
-                    so dynamic website which will understand all what are
-                    you trying to do and make it so easy for you , which
-                    simple step , you can make huge work.
+                    a dynamic website which will understand all what you are
+                     trying to do and make it easy for you. following simple
+                    steps, you can easily complete your work work.
                 </p>
             </div>  <!-- end about-desc__slide -->
 
@@ -162,8 +162,7 @@
                 <h3 class="item-title">Powerful.</h3>
 
                 <p>
-                    so Powerful tools to give you the best experience with your student (with your teachers)
-                    now our website make it so easy for you .
+                    Powerful tools which will give you the best experience with your students and teachers.
                 </p>
             </div>  <!-- end about-desc__slide -->
 
@@ -171,9 +170,8 @@
                 <h3 class="item-title">update.</h3>
 
                 <p>
-                    our team work everyday to make your experience with us always good
-                    with fixing problems or difficulty which you found ,
-                    and always it is going to be new tools.
+                    our team works everyday to make your experience with us Always satisfactory
+                    by Fixing problems or difficulties which you encounter.
                 </p>
             </div>  <!-- end about-desc__slide -->
 
@@ -190,26 +188,26 @@
 
     <div class="row process-wrap">
 
-        <h2 class="display-2 text-center" data-aos="fade-up">How The App Works?</h2>
+        <h2 class="display-2 text-center" data-aos="fade-up">How The Website Works?</h2>
 
         <div class="process" data-aos="fade-up">
             <div class="process__steps block-1-2 block-tab-full group">
 
                 <div class="col-block step">
                     <h3 class="item-title">Sign-Up</h3>
-                    <p>all what you to do is choice the type of your profile (teacher/student) put your basics informations , and we are going to check your Email to give your the start.
+                    <p>All what you need to do is to mark whether you are a  student or a teacher and put your basic information. Then we are going to verify your e-mail and you can start your journey.
                     </p>
                 </div>
 
                 <div class="col-block step">
                     <h3 class="item-title">join/create</h3>
-                    <p>if you are a student , you wilm get a code from your teacher which you are going to use to join the classroom here , about teacher , will get a opportunity to create new group of student anytime he want.
+                    <p>if you are a student , you will get a code from your teacher which you are going to use to join the classroom on the website; With regards to teachers, they will have an opportunity to create new classrooms whenever they need it.
                     </p>
                 </div>
 
                 <div class="col-block step">
                     <h3 class="item-title">start</h3>
-                    <p>after doing all last steps , you are complety able to contact your teacher when ever you want , about teacher can send files and follow student's homework.
+                    <p>Having done all these steps, teachers and students will be able to communicate, send files and homework to each other.
                     </p>
                 </div>
                 <!--
@@ -239,7 +237,7 @@
                 Loaded With Features You Would Absolutely Love.
             </h1>
             <p class="lead">
-                those are simple Features examples .
+                Look at some of them:
             </p>
         </div>
     </div> <!-- end section-header -->
@@ -252,7 +250,7 @@
             </div>
             <div class="item-feature__text">
                 <h3 class="item-title">Cloud Based</h3>
-                <p>no limit cloud storage for teachers , for they can share all their knowledge without obstacles.
+                <p>No limit cloud storage allows teachers to share all their knowledge without obstacles.
                 </p>
             </div>
         </div>
@@ -263,7 +261,7 @@
             </div>
             <div class="item-feature__text">
                 <h3 class="item-title">messages</h3>
-                <p>a great messaging engine , where you can see if you (student/teacher) is online or no ,to have an idea about who seen your messages , and even get an Email to remember you about receiving a new message.
+                <p>You can check whether a student or a teacher is online and who has seen your messages; you will also receive notifications via E-mail which will inform you about new messages.
                 </p>
             </div>
         </div>
@@ -273,7 +271,7 @@
                 <i class="icon-shield"></i>
             </div>
             <div class="item-feature__text">
-                <h3 class="item-title">lesson</h3>
+                <h3 class="item-title">lessons</h3>
                 <p>any student is able to see whole lesson of the year on so clear method , depend on lesson and it type and date , so you can find what you want faster.
                 </p>
             </div>
