@@ -35,12 +35,16 @@
                 }
             </style>
 		<?php
+            
+            // unset session pseudo
+            unset($_SESSION['user']);
+            // login
 			if(isset($_POST['submitLogin']))
 			{
 				$pseudo = $_POST['pseudo'];
 				$pass = $_POST['pass'];
 				
-				$rq = "SELECT pseudo,email FROM etudient WHERE pseudo = '$pseudo' AND pass='$pass'";
+				$rq = "SELECT pseudo_etu,email FROM etudient WHERE pseudo_etu = '$pseudo' AND pass='$pass'";
 				
 				$res = mysqli_query($con,$rq);
 				
@@ -49,9 +53,9 @@
 				if($numRows == 1)
 				{
                     $row = mysqli_fetch_assoc($res);   
-					$pseudo = $row['pseudo'];
-					header ('Location: login.php?pseudo='.$pseudo);
-                    $_SESSION["pseudo"] = $pseudo;
+					$pseudo = $row['pseudo_etu'];
+					header ('location: index/home.php?user='.$pseudo);
+                    $_SESSION['user'] = $pseudo;
 				}
 				else{
                     $block=$_COOKIE["block"]-1;
@@ -99,9 +103,9 @@
                         </div>
                          <!-- <div class="input-group input-group-lg"> <!-- large -->
                         <input type="text" id="pseudo" name="pseudo" placeholder="Username" class="form-control" value="<?php
-                        if(isset($_SESSION['pseudo']))
+                        if(isset($_SESSION['user']))
                         {
-                            echo $_SESSION['pseudo'];
+                            echo $_SESSION['user'];
                         } ?>">
                         <div class="container" style="padding:0;text-align:left;margin:0;">
                             <style scoped>

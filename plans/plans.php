@@ -4,6 +4,7 @@
     <title>Register options</title> 
     <link href="style/style.css" rel='stylesheet' type='text/css' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/jquery-3.3.1.js"></script>
 </head>
 <body>
 

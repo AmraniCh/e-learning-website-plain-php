@@ -1,0 +1,21 @@
+.profile{
+    padding: 10px 5px 10px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+}
+
+.profile-img{
+    width: 40%;
+    height: 85px;
+    background-size: cover;
+    border-radius: 50%;
+    background-position: center;
+}
+
+.profile-info{
+    padding:  9% 0% 0% 5%;
+}
+
+.username, .groupe{
+    padding-bottom: 6% 0;
+}

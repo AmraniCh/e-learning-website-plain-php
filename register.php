@@ -1,5 +1,6 @@
 <?php 
     require 'includes/config.php';
+    include 'includes/functions.php';
     session_start();
 ?>
 <html>
@@ -10,6 +11,9 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style/main.css">
+		<?php 
+            get_theme();
+        ?>
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/functions.js"></script>
 		<script src="js/validation.js"></script>
@@ -28,31 +32,15 @@
                 }
             </style>
 		<?php
-            // apply style 
-            if(isset($_GET['plan']))
-            {
-                $plan = $_GET['plan'];
-                if($plan == 'student')
-                    echo '<link rel="stylesheet" type="text/css" href="style/themes/student_theme.css">';
-                else if($plan == 'professor')
-                    echo '<link rel="stylesheet" type="text/css" href="style/themes/prof_theme.css">';
-                else if($plan == 'admin')
-                    echo '<link rel="stylesheet" type="text/css" href="style/themes/admin_theme.css">';
-                else
-                    header('location: plans/plans.php');
-            }
-            else
-                header('location: plans/plans.php');
             // register inputs 
 			if(isset($_POST['submitNext']))
 			{
-				$_SESSION['pseudo'] = $_POST['pseudo'];
+				$_SESSION['user'] = $_POST['pseudo'];
                 $_SESSION['prenom'] = $_POST['fname'];
                 $_SESSION['nom'] = $_POST['lname'];
                 $_SESSION['gender'] = $_POST['menu'];
                 $_SESSION['email'] = $_POST['email'];
-                $_SESSION['plan'] = $plan;
-                header('location: registerSecurity.php');
+                header('location: registerSecurity.php?plan='.$_GET['plan'].'');
 			}
         
 		?>
@@ -85,7 +73,7 @@
                 </div>
                 <!-- register as -->
                 <div class="container" style="padding:0;text-align:center;margin:0;width:100%">
-                    <small class="register_as_text">Register As : <span class="register_as"><?php echo $plan ?></span></small>
+                    <small class="register_as_text">Register As : <span class="register_as"><?php echo $_GET['plan'] ?></span></small>
                 </div>
                 <!-- Pseudo -->
                 <div class="form-group">

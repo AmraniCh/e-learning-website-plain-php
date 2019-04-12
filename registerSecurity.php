@@ -1,5 +1,6 @@
 <?php 
     require 'includes/config.php';
+    include 'includes/functions.php';
     session_start();
 ?>
 <html>
@@ -10,17 +11,10 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style/main.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <script src="js/jquery-3.3.1.js"></script>
-		<script src="js/functions.js"></script>
-		<script src="js/validation.js"></script>
-	</head>
-	<body>
-		<?php
-            
-            // theme
-            if(isset($_SESSION['plan']))
+        <?php 
+            if(isset($_GET['plan']))
             {
-                $plan = $_SESSION['plan'];
+                $plan = $_GET['plan'];
                 if($plan == 'student')
                     echo '<link rel="stylesheet" type="text/css" href="style/themes/student_theme.css">';
                 else if($plan == 'professor')
@@ -29,15 +23,19 @@
                     echo '<link rel="stylesheet" type="text/css" href="style/themes/admin_theme.css">';
                 else
                     header('location: plans/plans.php');
-            }
-            else
-                header('location: plans/plans.php');
-        
+            }  
+        ?>
+        <script src="js/jquery-3.3.1.js"></script>
+		<script src="js/functions.js"></script>
+		<script src="js/validation.js"></script>
+	</head>
+	<body>
+		<?php
         
             // unset session variables
             function unsetVar()
             {
-                unset($_SESSION['pseudo']);
+                unset($_SESSION['user']);
                 unset($_SESSION['pass']);
                 unset($_SESSION['nom']);
                 unset($_SESSION['prenom']);
@@ -48,7 +46,7 @@
 			if(isset($_POST['submitFinish']))
 			{
                 // get account information
-				$pseudo = $_SESSION['pseudo'];
+				$pseudo = $_SESSION['user'];
                 $prenom = $_SESSION['prenom'];
                 $nom = $_SESSION['nom'];
                 $email = $_SESSION['email'];
@@ -59,9 +57,11 @@
                 $reponse = $_POST['answer'];
                 
                 $rq = "insert into etudient values('$pseudo','$email','$prenom','$nom','$pass','$gender',NULL,NULL,'$reponse','$question')";
-                if(mysqli_query($con,$rq))
+                $res = mysqli_query($con,$rq);
+                $count = mysqli_num_rows($res);
+                if($count == 1)
                 {
-                    header('location: login.php'); 
+                    header('location: login.php?user='.$pseudo.''); 
                     $_SESSION['pass'] = $pass;
                 }
                 else
