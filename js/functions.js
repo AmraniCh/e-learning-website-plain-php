@@ -88,3 +88,12 @@ function hide_msg(element_id, input_color)
     $("#" + element_id).hide(); 
     input_color.css("background-color","#fff");
 }
+
+function check_numberPhone(number) {
+    let numberPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
+
+    if(!(number.val().match(numberPhone)))
+        return true;
+    else
+        return false;
+}
