@@ -135,7 +135,7 @@ $(function(){
         }
         else if(allLetters(fname) == false)
         {
-            show_msg("fname_error_msg", "First name should be not contain numbers", $("#fname"));
+            show_msg("fname_error_msg", "First name should not contain numbers or spaces", $("#fname"));
             fname_error = true;
         }
         else
@@ -155,7 +155,7 @@ $(function(){
         }
         else if(allLetters(lname) == false)
         {        
-            show_msg("lname_error_msg", "Last name should be not contain numbers", $("#lname"));
+            show_msg("lname_error_msg", "Last name should not contain numbers or spaces", $("#lname"));
             lname_error = true;
         }
         else
