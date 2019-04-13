@@ -2216,10 +2216,6 @@ fieldset[disabled] .btn-neutral.active {
     transform-style: preserve-3d;
 }
 
-.card .image img {
-    width: 100%;
-}
-
 .card .filter {
     position: absolute;
     z-index: 2;

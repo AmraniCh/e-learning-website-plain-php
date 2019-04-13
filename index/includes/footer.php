@@ -18,8 +18,9 @@
 
     </div>
 </div>
-
-
+    
+    <!-- ajax upload image  -->
+    <script src="js/ajax_upload.js"></script>
 </body>
 
 

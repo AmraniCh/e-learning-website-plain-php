@@ -68,7 +68,8 @@
                 </div>
             </div>
             <div class="profile">
-                <div class="profile-img" id="profile-img" style="background-image: url(<?php echo $image_dir.$imageName ?>)"></div>
+                <div id="profile-img" class="profile-img" id="profile-img" style="background-image: url(<?php echo $image_dir.$imageName ?>)">
+                </div>
                 <div class="profile-info">
                     <div class="username"><i class="fa fa-user" aria-hidden="true"></i><span class="username-text"><?php echo $pseudo ?></span></div>
                     <div class="groupe"><i class="fa fa-users" aria-hidden="true"></i><span class="groupe-text"><?php echo $groupe ?></span></div>
@@ -195,9 +196,6 @@
                             <div class="content">
                                 <div class="author">
                                      <a href="#">
-                                     <script src="">
-                                        
-                                    </script>
                                         <div id="uploaded_image" class="image">
                                             <img class="avatar border-gray" src='<?php echo $image_dir.$imageName ?>' alt="..."/>
                                         </div>
