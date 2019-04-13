@@ -103,9 +103,9 @@
                         </div>
                          <!-- <div class="input-group input-group-lg"> <!-- large -->
                         <input type="text" id="pseudo" name="pseudo" placeholder="Username" class="form-control" value="<?php
-                        if(isset($_SESSION['user']))
+                        if(isset($_GET['user']))
                         {
-                            echo $_SESSION['user'];
+                            echo $_GET['user'];
                         } ?>">
                         <div class="container" style="padding:0;text-align:left;margin:0;">
                             <style scoped>
@@ -154,7 +154,6 @@
 <script>
     //disabled all
     if (getCookie("block")<=0){
-        
         window.setTimeout(function() {
         window.location.href = 'includes/loadingTime.php';
         }, 0);

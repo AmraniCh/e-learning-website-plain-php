@@ -56,16 +56,16 @@
                 $question = $_POST['question'];
                 $reponse = $_POST['answer'];
                 
-                $rq = "insert into etudient values('$pseudo','$email','$prenom','$nom','$pass','$gender',NULL,NULL,'$reponse','$question')";
-                $res = mysqli_query($con,$rq);
-                $count = mysqli_num_rows($res);
-                if($count == 1)
+                $rq = "insert into etudient values('$pseudo','$email','$prenom','$nom','$pass',NULL,'$gender',NULL,NULL,'$reponse','$question',NULL)";
+                if($res = mysqli_query($con,$rq))
                 {
                     header('location: login.php?user='.$pseudo.''); 
                     $_SESSION['pass'] = $pass;
                 }
-                else
-                    unsetVar();     
+                else{
+                    unsetVar();  
+                    header('location: login.php'); 
+                }
 			}
             
             // no refresh 

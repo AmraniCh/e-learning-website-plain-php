@@ -12,7 +12,18 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style/main.css">
 		<?php 
-            get_theme();
+            if(isset($_GET['plan']))
+            {
+                $plan = $_GET['plan'];
+                if($plan == 'student')
+                    echo '<link rel="stylesheet" type="text/css" href="style/themes/student_theme.css">';
+                else if($plan == 'professor')
+                    echo '<link rel="stylesheet" type="text/css" href="style/themes/prof_theme.css">';
+                else if($plan == 'admin')
+                    echo '<link rel="stylesheet" type="text/css" href="style/themes/admin_theme.css">';
+                else
+                    header('location: plans/plans.php');
+            }  
         ?>
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/functions.js"></script>
@@ -38,7 +49,7 @@
 				$_SESSION['user'] = $_POST['pseudo'];
                 $_SESSION['prenom'] = $_POST['fname'];
                 $_SESSION['nom'] = $_POST['lname'];
-                $_SESSION['gender'] = $_POST['menu'];
+                $_SESSION['gender'] = $_POST['gender'];
                 $_SESSION['email'] = $_POST['email'];
                 header('location: registerSecurity.php?plan='.$_GET['plan'].'');
 			}

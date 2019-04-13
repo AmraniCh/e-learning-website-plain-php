@@ -1,7 +1,28 @@
     <!-- include header -->
-    <?php include 'includes/header.php'; ?>
+    <?php 
+        include 'includes/header.php'; 
+        include 'includes/functions.php'; 
+    ?>
     
     <?php
+
+        // update
+        if(isset($_POST['update']))
+        {
+         
+            //$email = $_POST['email'];
+            $fname = $_POST['fname'];
+            $lname = $_POST['lname'];
+            $adress = $_POST['adress'];
+            $city = $_POST['city'];
+            $country = $_POST['country'];
+            $phone = $_POST['phone'];
+            $about = $_POST['about'];
+            $rq = "UPDATE etudient SET prenom = '$fname', nom = '$lname', adresse = '$adress', ville = '$city', pays = '$country', tele = '$phone', propos = '$about' WHERE pseudo_etu = 'kamal88'";
+            $res = mysqli_query($con,$rq);
+        }
+
+        // getting 
         if(isset($_GET['user']))
         {
             $pseudo = $_GET['user'];
@@ -11,7 +32,18 @@
                 $res = mysqli_query($con,$rq);
                 if($row = mysqli_fetch_assoc($res))
                 {
-                    $groupe = $row['groupe_etu'];
+                    // get grpupe name by id
+                    $groupe = get_groupeName($row['groupe_etu']);
+                    // user info
+                    $username = $row['pseudo_etu'];
+                    $fname = $row['prenom'];
+                    $lname = $row['nom'];
+                    $email = $row['email'];
+                    $adress = $row['adresse'];
+                    $city = $row['ville'];
+                    $country = $row['pays'];
+                    $about = $row['propos'];
+                    $tele = $row['tele'];
                     //image_query('etudient');
                     $imageName = $row['image_etu'];
                     $image_dir = 'images/';
@@ -36,7 +68,7 @@
                 </div>
             </div>
             <div class="profile">
-                <div class="profile-img" style="background-image: url(<?php echo $image_dir.$imageName?>)"></div>
+                <div class="profile-img" id="profile-img" style="background-image: url(<?php echo $image_dir.$imageName ?>)"></div>
                 <div class="profile-info">
                     <div class="username"><i class="fa fa-user" aria-hidden="true"></i><span class="username-text"><?php echo $pseudo ?></span></div>
                     <div class="groupe"><i class="fa fa-users" aria-hidden="true"></i><span class="groupe-text"><?php echo $groupe ?></span></div>
@@ -73,24 +105,24 @@
                                 <h4 class="title">Edit Profile</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form action="profile.php" method="post">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
+                                                <label>Actual groupe</label>
+                                                <input type="text" class="form-control" disabled placeholder="Company" value="<?php echo $groupe ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                                <input type="text" name="username" class="form-control" disabled placeholder="Username" value="<?php echo $username ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email">
+                                                <input type="email" name="email" class="form-control" disabled placeholder="Email" value="<?php echo $email ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -99,13 +131,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                                <input type="text" name="fname" class="form-control" placeholder="Company" value="<?php echo $fname ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                <input type="text" name="lname" class="form-control" placeholder="Last Name" value="<?php echo $lname ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +146,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                <input type="text" name="adress" class="form-control" placeholder="Home Address" value="<?php echo $adress ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -123,19 +155,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Mike">
+                                                <input type="text" name="city" class="form-control" placeholder="City" value="<?php echo $city ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
+                                                <input type="text" name="country" class="form-control" placeholder="Country" value="<?php echo $country ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
+                                                <label>Phone</label>
+                                                <input type="text" name="phone" class="form-control" placeholder="Phone number" value="<?php echo $tele ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -144,12 +176,12 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                                <textarea rows="5" name="about" class="form-control" placeholder="Here can be your description"><?php echo $about ?></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" name="update" class="btn btn-info btn-fill pull-right">Update Profile</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -163,16 +195,21 @@
                             <div class="content">
                                 <div class="author">
                                      <a href="#">
-                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
-
-                                      <h4 class="title">Mike Andrew<br />
-                                         <small>michael24</small>
+                                     <script src="">
+                                        
+                                    </script>
+                                        <div id="uploaded_image" class="image">
+                                            <img class="avatar border-gray" src='<?php echo $image_dir.$imageName ?>' alt="..."/>
+                                        </div>
+                                       <label id="file-button" class="btn btn-default btn-file">
+                                            Change My picture <input type="file" id="file" name="file" style="display: none;">
+                                        </label>
+                                      <h4 class="title"><?php echo $lname.' '.$fname ?><br/>
+                                         <small><?php echo $username ?></small>
                                       </h4>
                                     </a>
                                 </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                                    Your chick she so thirsty <br>
-                                                    I'm in that two seat Lambo"
+                                <p class="description text-center"><?php echo $about ?>
                                 </p>
                             </div>
                             <hr>
@@ -180,7 +217,6 @@
                                 <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
                                 <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
                                 <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
                             </div>
                         </div>
                     </div>
@@ -192,8 +228,10 @@
                         }
                     }
                     else 
-                    header ('location: ../login.php');
+                        header ('location: ../login.php');
                 }
+                else
+                    redirect_url('profile.php');
         ?>
 
     <!-- include footer -->

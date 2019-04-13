@@ -1,9 +1,13 @@
     <!-- include header -->
-    <?php include 'includes/header.php'; ?>
+    <?php
+        include 'includes/header.php'; 
+        include 'includes/functions.php';    
+    ?>
     
     <?php
         if(isset($_GET['user']))
         {
+            image_query('etudient');
             $pseudo = $_GET['user'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
@@ -11,7 +15,8 @@
                 $res = mysqli_query($con,$rq);
                 if($row = mysqli_fetch_assoc($res))
                 {
-                    $groupe = $row['groupe_etu'];
+                    // get groupe name by id
+                    $groupe = get_groupeName($row['groupe_etu']);
                     //image_query('etudient');
                     $imageName = $row['image_etu'];
                     $image_dir = 'images/';
@@ -37,7 +42,7 @@
                 </div>
             </div>
             <div class="profile">
-                <div class="profile-img" style="background-image: url(<?php echo $image_dir.$imageName?>)"></div>
+                <div class="profile-img" id="profile-img" style="background-image: url(<?php echo $image_dir.$imageName?>)"></div>
                 <div class="profile-info">
                     <div class="username"><i class="fa fa-user" aria-hidden="true"></i><span class="username-text"><?php echo $pseudo ?></span></div>
                     <div class="groupe"><i class="fa fa-users" aria-hidden="true"></i><span class="groupe-text"><?php echo $groupe ?></span></div>
@@ -99,6 +104,8 @@
                     else 
                     header ('location: ../login.php');
                 }
+                else
+                    redirect_url('home.php');
         ?>
 
     <!-- include footer -->

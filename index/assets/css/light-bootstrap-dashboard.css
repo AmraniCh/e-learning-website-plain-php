@@ -2375,7 +2375,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .card-user .image {
-    height: 110px;
+    height: 124px;
 }
 
 .card-user .image-plain {
@@ -2389,15 +2389,15 @@ fieldset[disabled] .btn-neutral.active {
     margin-top: -70px;
 }
 
-.card-user .avatar {
+.card-user .image .avatar {
     width: 124px;
     height: 124px;
     border: 5px solid #FFFFFF;
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
-.card-user .avatar.border-gray {
+.card-user .image .avatar.border-gray {
     border-color: #EEEEEE;
 }
 

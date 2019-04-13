@@ -15,6 +15,8 @@
         <meta name="viewport" content="width=device-width" />
 
         <link rel="stylesheet" href="style/style.css"/>
+        
+        <script src="../js/jquery-3.3.1.js"></script>
 
         <!-- Bootstrap core CSS     -->
         <link href="style/bootstrap.min.css" rel="stylesheet" />
