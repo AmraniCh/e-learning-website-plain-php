@@ -125,7 +125,7 @@ border-radius: 0.7em;
 	color:#fff;
 }
 .price-value,.price-value.two,.price-value.three {
-	background: #6457a4;
+	background: #4ca6e4;
 	padding: 1.8em 1.8em 2em;
 	border-bottom:2px solid#ffd500;
 	border-top-left-radius:0.7em;
@@ -193,8 +193,9 @@ padding: 11px 0;
 	-webkit-border-top-right-radius: 0.7em;
 }
 .sale-box span.on_sale{
+font-weight: 900;
 font-size: 14px;
-color: #444;
+color: #fff;
 background: #ffd400;
 text-transform: uppercase;
 padding: 58px 35px 17px 40px;
@@ -216,7 +217,7 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
 	background: #fa6e6f;
 }
 .sale-box.three.sale-box span.on_sale{
-	background:#59efe1;
+	background:#64647e;
 }
 .pricing-grid1 ul li a,.pricing-grid2 ul li a,.pricing-grid3 ul li a{
 	color: #C7C4C4;
@@ -279,7 +280,7 @@ border-bottom: 2px solid#1c9bdd;
 	background:#fa6e6f;
 }
 .cart3 a{
-	background: #59efe1;
+	background: #64647e;
 }
 .cart1 a:hover,.cart2 a:hover,.cart3 a:hover{
 	color: #2b2b33;

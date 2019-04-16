@@ -1,7 +1,6 @@
     <!-- include header -->
     <?php 
         include 'includes/header.php'; 
-        include 'includes/functions.php'; 
     ?>
     
     <?php
@@ -28,13 +27,15 @@
             $pseudo = $_GET['user'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
-                $rq = "SELECT * FROM etudient WHERE pseudo_etu = '$pseudo'";
-                $res = mysqli_query($con,$rq);
-                if($row = mysqli_fetch_assoc($res))
-                {
-                    // get grpupe name by id
-                    $groupe = get_groupeName($row['groupe_etu']);
-                    // user info
+                $plan = $_SESSION['plan'];
+                if($plan == 'student'){
+                    $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
+                    $count_student = mysqli_num_rows($res);
+                    $row = mysqli_fetch_assoc($res);
+                    // get groupe name by id
+                    $grp_name = get_groupeName($row['groupe_etu']);
+                    // get iinfo
+                    $imageName = $row['image_etu'];
                     $username = $row['pseudo_etu'];
                     $fname = $row['prenom'];
                     $lname = $row['nom'];
@@ -44,57 +45,41 @@
                     $country = $row['pays'];
                     $about = $row['propos'];
                     $tele = $row['tele'];
-                    //image_query('etudient');
-                    $imageName = $row['image_etu'];
-                    $image_dir = 'images/';
+                }
+                if($plan == 'professor'){
+                    $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
+                    $count_prof = mysqli_num_rows($res);
+                    $row = mysqli_fetch_assoc($res);
+                    // get groupe name by id
+                    $grp_name = get_groupeName($row['groupe_prof']);
+                    // get info
+                    $imageName = $row['image_prof'];
+                    $username = $row['pseudo_prof'];
+                    $fname = $row['prenom'];
+                    $lname = $row['nom'];
+                    $email = $row['email'];
+                    $adress = $row['adresse'];
+                    $city = $row['ville'];
+                    $country = $row['pays'];
+                    $about = $row['propos'];
+                    $tele = $row['tele'];
+                }   
+                if($res != NULL)
+                {
+                    $image_dir = 'assets/images/';
                     if($imageName == 'user-male.png' || $imageName == 'user-female.png')
-                        $image_dir = 'images/default/';
+                        $image_dir = 'assets/images/default/';
     ?>
 
     <div class="wrapper">
-        <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
-
-        <!--
-
-            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-            Tip 2: you can also add an image using data-image tag
-
-        -->
-
-    	<div class="sidebar-wrapper">
-            <div class="logo">
-                <div class="simple-text">
-                    Sharing files
-                </div>
-            </div>
-            <div class="profile">
-                <div id="profile-img" class="profile-img" id="profile-img" style="background-image: url(<?php echo $image_dir.$imageName ?>)">
-                </div>
-                <div class="profile-info">
-                    <div class="username"><i class="fa fa-user" aria-hidden="true"></i><span class="username-text"><?php echo $pseudo ?></span></div>
-                    <div class="groupe"><i class="fa fa-users" aria-hidden="true"></i><span class="groupe-text"><?php echo $groupe ?></span></div>
-                </div>
-            </div>
-            <ul class="nav">
-                <li class="active">
-                    <a href="home.php?pseudo=<?php echo $pseudo ?>">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        <p>Home</p>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="home.php">
-                        <i aria-hidden="true"><img src="icons/open-book.png"></i>
-                        <p>Courses</p>
-                    </a>
-                </li>
-            </ul>
-    	</div>
-    </div>
+       
+        <!-- include sidebar --> 
+        <?php include 'includes/sidebar.php'; ?>
    
-    <div class="main-panel">
-        <!-- include navigation -->
-        <?php include 'includes/navigation.php'; ?>
+        <div class="main-panel">
+       
+        <!-- include top navigation -->
+        <?php include 'includes/top_nav.php'; ?>
 
         <!-- content -->
         <div class="content">
@@ -111,7 +96,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Actual groupe</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="<?php echo $groupe ?>">
+                                                <input type="text" class="form-control" disabled placeholder="Company" value="<?php echo $grp_name ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -199,8 +184,8 @@
                                         <div id="uploaded_image" class="image">
                                             <img class="avatar border-gray" src='<?php echo $image_dir.$imageName ?>' alt="..."/>
                                         </div>
-                                       <label id="file-button" class="btn btn-default btn-file">
-                                            Change My picture <input type="file" id="file" name="file" style="display: none;">
+                                       <label id="file-button" class="btn btn-default btn-file" style="margin-bottom:5px;margin-top:5px;font-size:15px;">
+                                            Change My picture <input type="file" id="file_image" style="display: none;">
                                         </label>
                                       <h4 class="title"><?php echo $lname.' '.$fname ?><br/>
                                          <small><?php echo $username ?></small>

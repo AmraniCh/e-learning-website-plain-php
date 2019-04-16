@@ -1,5 +1,6 @@
 <?php 
     require 'includes/config.php';
+    require 'includes/functions.php';
     session_start();
 
     //create cookie
@@ -15,8 +16,8 @@
 		<title>Welcome ! Login</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="style/main.css">
+		<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="assets/style/main.css">
 		<script src="js/jquery-3.3.1.js"></script>
 		<script src="js/functions.js"></script>
 		<script src="js/validation.js"></script>
@@ -42,24 +43,35 @@
 			if(isset($_POST['submitLogin']))
 			{
 				$pseudo = $_POST['pseudo'];
-				$pass = $_POST['pass'];
-				
-				$rq = "SELECT pseudo_etu,email FROM etudient WHERE pseudo_etu = '$pseudo' AND pass='$pass'";
-				
-				$res = mysqli_query($con,$rq);
-				
-				$numRows = mysqli_num_rows($res);
-				
-				if($numRows == 1)
+				$pass = $_POST['pass'];		
+                
+				$res = select_login_query('pseudo_etu','etudient','pseudo_etu',$pseudo,$pass);
+				$count_student = mysqli_num_rows($res);
+                
+				$res2 = select_login_query('pseudo_prof','professeur','pseudo_prof',$pseudo,$pass);
+				$count_prof = mysqli_num_rows($res2);
+                
+				if($count_student>0)
 				{
                     $row = mysqli_fetch_assoc($res);   
 					$pseudo = $row['pseudo_etu'];
 					header ('location: index/home.php?user='.$pseudo);
                     $_SESSION['user'] = $pseudo;
+                    // plan session variable
+                    $_SESSION['plan'] = 'student';
 				}
+                else if($count_prof>0){
+                    $row = mysqli_fetch_assoc($res2);   
+					$pseudo = $row['pseudo_prof'];
+					header ('location: index/home.php?user='.$pseudo);
+                    $_SESSION['user'] = $pseudo;
+                    // plan session variable
+                    $_SESSION['plan'] = 'professor';
+                }
 				else{
-                    $block=$_COOKIE["block"]-1;
-				    setcookie("block",$block,time()+10);
+                    // cookie 
+                    $block = $_COOKIE["block"]-1;
+				    setcookie("block", $block, time()+10);
                 }
 			}
 		?>
@@ -92,7 +104,7 @@
                 </div>
                 <!-- logo -->
                 <div class="img">
-                    <img src="ressources/mortarboard.png" class="img-fluid" style="margin-bottom:2%;width:38%" >
+                    <img src="assets/icons/mortarboard.png" class="img-fluid" style="margin-bottom:2%;width:38%" >
                 </div>
                 <!-- inputs -->
                 <div class="form-group">

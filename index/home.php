@@ -1,76 +1,46 @@
     <!-- include header -->
     <?php
-        include 'includes/header.php'; 
-        include 'includes/functions.php';    
+        include 'includes/header.php';     
     ?>
-    
     <?php
         if(isset($_GET['user']))
         {
-            image_query('etudient');
+            image_query();
             $pseudo = $_GET['user'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
-                $rq = "SELECT * FROM etudient WHERE pseudo_etu = '$pseudo'";
-                $res = mysqli_query($con,$rq);
-                if($row = mysqli_fetch_assoc($res))
-                {
+                $plan = $_SESSION['plan'];
+                if($plan == 'student'){
+                    $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
+                    $row = mysqli_fetch_assoc($res);
                     // get groupe name by id
-                    $groupe = get_groupeName($row['groupe_etu']);
-                    //image_query('etudient');
+                    $grp_name = get_groupeName($row['groupe_etu']);
+                    // get image name
                     $imageName = $row['image_etu'];
-                    $image_dir = 'images/';
+                }
+                if($plan == 'professor'){
+                    $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
+                    $row = mysqli_fetch_assoc($res);
+                    // get groupe name by id
+                    $grp_name = get_groupeName($row['groupe_prof']);
+                    // get image name
+                    $imageName = $row['image_prof'];
+                }   
+                if($res != NULL)
+                {
+                    $image_dir = 'assets/images/';
                     if($imageName == 'user-male.png' || $imageName == 'user-female.png')
-                        $image_dir = 'images/default/';
+                        $image_dir = 'assets/images/default/';
     ?>
-
     <div class="wrapper">
       
-       <!-- start sidebar -->
-       
-        <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
-
-        <!--
-            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-            Tip 2: you can also add an image using data-image tag
-        -->
-
-    	<div class="sidebar-wrapper">
-            <div class="logo">
-                <div class="simple-text">
-                    Sharing files
-                </div>
-            </div>
-            <div class="profile">
-                <div class="profile-img" id="profile-img" style="background-image: url(<?php echo $image_dir.$imageName?>)"></div>
-                <div class="profile-info">
-                    <div class="username"><i class="fa fa-user" aria-hidden="true"></i><span class="username-text"><?php echo $pseudo ?></span></div>
-                    <div class="groupe"><i class="fa fa-users" aria-hidden="true"></i><span class="groupe-text"><?php echo $groupe ?></span></div>
-                </div>
-            </div>
-            <ul class="nav">
-                <li class="active">
-                    <a href="home.php?user=<?php echo $pseudo ?>">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        <p>Home</p>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="home.php">
-                        <i aria-hidden="true"><img src="icons/open-book.png"></i>
-                        <p>Courses</p>
-                    </a>
-                </li>
-            </ul>
-    	</div>
-    </div>
-    
-    <!-- end sidebar -->
+        <!-- include sidebar --> 
+        <?php include 'includes/sidebar.php'; ?>
    
-    <div class="main-panel">
+        <div class="main-panel">
        
-        <!-- include navigation -->
-        <?php include 'includes/navigation.php'; ?>
+        <!-- include top navigation -->
+        <?php include 'includes/top_nav.php'; ?>
 
         <!-- content -->
         <div class="content">

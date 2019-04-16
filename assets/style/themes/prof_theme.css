@@ -1,0 +1,48 @@
+:root{
+    --back-color: #64647e;
+    --main-color: #fa6e6f;
+    --second-color: #64647e;
+}
+
+/* main css */
+.btn-outline-primary{
+    color: #64647e;
+    border-color: #2b2b33;
+}
+
+.btn-outline-primary:hover{
+    background-color: #2b2b33;
+    color: #fff;
+}
+
+/* register css */
+.sign{
+    color: var(--main-color);
+}
+
+.up{
+    color: var(--second-color);
+}
+
+#submitNext{
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+/* registerSecurity css */
+.help_us_text{
+    color: var(--main-color);
+}
+
+.secure_text{
+    color: var(--second-color);
+}
+
+input.btn{
+    background-color: var(--main-color);
+}
+
+input.btn:hover{
+    background-color: var(--second-color);
+    color: #fff;
+}

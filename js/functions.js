@@ -15,6 +15,10 @@ function getCookie(cname) {
   return "";
 }
 
+/*********************************
+     START VALIDATION FUNCTIONS
+**********************************/
+
 // check if all letters are string words
 function allLetters(name)
 {
@@ -97,3 +101,20 @@ function check_numberPhone(number) {
     else
         return false;
 }
+
+/*********************************
+    END VALIDATION FUNCTIONS
+**********************************/
+
+// subtruct titles
+function subtruct_title(selector,max){
+    
+   
+        $(selector).each(function(){
+            var title =  $(this).html();
+            title = title.substr(0,max)+"...";
+            $(this).replaceWith(title);
+        });
+}
+
+

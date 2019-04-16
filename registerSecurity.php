@@ -9,21 +9,10 @@
 		<title>Account security</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="style/main.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="assets/style/main.css">
+        <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
         <?php 
-            if(isset($_GET['plan']))
-            {
-                $plan = $_GET['plan'];
-                if($plan == 'student')
-                    echo '<link rel="stylesheet" type="text/css" href="style/themes/student_theme.css">';
-                else if($plan == 'professor')
-                    echo '<link rel="stylesheet" type="text/css" href="style/themes/prof_theme.css">';
-                else if($plan == 'admin')
-                    echo '<link rel="stylesheet" type="text/css" href="style/themes/admin_theme.css">';
-                else
-                    header('location: plans/plans.php');
-            }  
+           
         ?>
         <script src="js/jquery-3.3.1.js"></script>
 		<script src="js/functions.js"></script>
@@ -43,6 +32,7 @@
                 unset($_SESSION['email']);
             }
         
+        
 			if(isset($_POST['submitFinish']))
 			{
                 // get account information
@@ -55,9 +45,18 @@
                 $pass = $_POST['pass2'];
                 $question = $_POST['question'];
                 $reponse = $_POST['answer'];
+             
+                // translate variable value
+                $plan = $_SESSION['plan'];
+                if($plan == 'student')
+                    $plan = 'etudient';
+                else if($plan = 'professor')
+                    $plan = 'professeur';
+                else
+                    $plan = 'admin';
                 
-                $rq = "insert into etudient values('$pseudo','$email','$prenom','$nom','$pass',NULL,'$gender',NULL,NULL,'$reponse','$question',NULL)";
-                if($res = mysqli_query($con,$rq))
+                // insert query
+                if($res = insert_register_query($plan,$pseudo,$email,$prenom,$nom,$pass,$gender,$reponse,$question))
                 {
                     header('location: login.php?user='.$pseudo.''); 
                     $_SESSION['pass'] = $pass;
@@ -65,11 +64,8 @@
                 else{
                     unsetVar();  
                     header('location: login.php'); 
-                }
-			}
-            
-            // no refresh 
-            unset($_SESSION['plan']);
+                }      
+			}                  
 		?>
 		<div class="container" id="containerRegister" style="background:#fff;border-radius:3%; margin: 2% auto;">
            <!--768-576-375-320-992-1200 -->

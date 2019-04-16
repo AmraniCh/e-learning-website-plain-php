@@ -20,7 +20,12 @@
 </div>
     
     <!-- ajax upload image  -->
-    <script src="js/ajax_upload.js"></script>
+    <script src="assets/js/ajax_load_image.js"></script>
+    <script src="assets/js/ajax_load_file.js"></script>
+    <script src="assets/js/ajax_delete_file.js"></script>
+    <script src="assets/js/ajax_delete_all.js"></script>
+    <script src="assets/js/ajax_download.js"></script>
+    
 </body>
 
 
