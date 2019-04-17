@@ -70,22 +70,33 @@
                  <div id="file_container">
                      
                  
-                  <script>
+                    <script>
 
-    $(document).ready(function(){
-        
-            $('#btn-download').click(function() {
-              
-            $('#ms-container').toggle("slide");
-            $('.ms-content-inside').click();
-            $('#btn-download').hide();
-
-             window.setTimeout(function() {
-             $('#ms-container').hide();
-             $('#btn-download').show();
-             }, 4000);
-        });
-    });
+                    $(document).ready(function(){     
+                        $(".btn-download").click(function(e){
+                            downloadAnimation(e);                     
+                        });
+                    });
+                      
+                    function downloadAnimation(e){
+                        // buttons list
+                        var btns = $(".btn-download");
+                        // default status
+                        for(b of btns){
+                            $(b).css("background-color","#333");
+                        }
+                        // hidden clicked button
+                        $(e.target).hide();
+                        // conatiner file < element < element < btn
+                        var container = $(e.target).parent().parent().parent();
+                        // conatiner file > ms_container
+                        var ms_container = $(container).children("#ms-container");
+                        $(ms_container).toggle("slide");               
+                        
+                        window.setTimeout(function() {
+                            $(ms_container).hide();
+                            $(e.target).show();
+                        }, 3000);
                     </script>
                    <?php
                         $current_page = get_pageName();
