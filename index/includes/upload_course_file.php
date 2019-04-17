@@ -16,7 +16,7 @@
             $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
             $row = mysqli_fetch_assoc($res);
             // get groupe name by id
-            $grp_id = $row['groupe_etu'];
+            $grp_id = $row['groupe_id'];
             // instert file
             insert_file_query($grp_id, $file_name, strtolower(get_pageName())); // groupe id, file name, actual page for type file
         }
@@ -24,8 +24,6 @@
             $pseudo = $_SESSION['user'];
             $res = select_home_query('*','professor','pseudo_prof',$pseudo);
             $row = mysqli_fetch_assoc($res);
-            // get groupe name by id
-            $grp_id = $row['groupe_prof'];
             // instert file
             insert_file_query($grp_id, $file_name, strtolower(get_pageName())); // groupe id, file name, actual page for type file
         }

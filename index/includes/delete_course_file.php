@@ -11,7 +11,7 @@
     if($plan == 'student'){
         $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
         $row = mysqli_fetch_assoc($res);
-        $grp_id = $row['groupe_etu'];
+        $grp_id = $row['groupe_id'];
     }
     if($plan == 'professor'){
         $res = select_home_query('*','professor','pseudo_prof',$pseudo);
@@ -21,7 +21,7 @@
         
     // delete file in database
     $file_name = $_POST['file_name'];
-    $rq = "DELETE FROM fichier_groupe WHERE nom_fich = '$file_name'";
+    $rq = "DELETE FROM fichier WHERE nom = '$file_name'";
     $res = mysqli_query($con, $rq);
 
     // ajax data -- load courses

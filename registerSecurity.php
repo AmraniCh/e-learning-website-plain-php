@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/style/main.css">
         <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
         <?php 
-           
+            echo $link = get_theme();
         ?>
         <script src="js/jquery-3.3.1.js"></script>
 		<script src="js/functions.js"></script>

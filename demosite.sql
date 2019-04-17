@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 05, 2019 at 04:45 AM
--- Server version: 5.7.24
+-- Generation Time: 18 أبريل 2019 الساعة 04:01
+-- إصدار الخادم: 5.7.24
 -- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,40 +25,139 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etudient`
+-- بنية الجدول `etudient`
 --
 
 DROP TABLE IF EXISTS `etudient`;
 CREATE TABLE IF NOT EXISTS `etudient` (
-  `pseudo` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `prenom` varchar(50) NOT NULL,
-  `nom` varchar(50) NOT NULL,
-  `pass` varchar(50) NOT NULL,
-  `gender` varchar(20) NOT NULL,
-  `adresse` varchar(50) DEFAULT NULL,
-  `tele` varchar(50) DEFAULT NULL,
-  `reponse` varchar(50) NOT NULL,
-  `quest` varchar(200) NOT NULL,
-  PRIMARY KEY (`pseudo`,`email`),
-  KEY `quest` (`quest`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `pseudo_etu` varchar(100) NOT NULL,
+  `email_etu` varchar(100) NOT NULL,
+  `prenom_etu` varchar(100) NOT NULL,
+  `nom_etu` varchar(100) NOT NULL,
+  `pass` varchar(100) NOT NULL,
+  `adresse_etu` varchar(100) DEFAULT NULL,
+  `pays_etu` varchar(100) DEFAULT NULL,
+  `ville_etu` varchar(100) DEFAULT NULL,
+  `tele_etu` varchar(100) DEFAULT NULL,
+  `sexe_etu` varchar(100) NOT NULL,
+  `propos_etu` text,
+  `image_etu` text,
+  `reponse` varchar(100) NOT NULL,
+  `question` varchar(100) NOT NULL,
+  `groupe_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pseudo_etu`),
+  KEY `question` (`question`),
+  KEY `groupe_id` (`groupe_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `etudient`
+--
+
+INSERT INTO `etudient` (`pseudo_etu`, `email_etu`, `prenom_etu`, `nom_etu`, `pass`, `adresse_etu`, `pays_etu`, `ville_etu`, `tele_etu`, `sexe_etu`, `propos_etu`, `image_etu`, `reponse`, `question`, `groupe_id`) VALUES
+('chou500', 'chakir_alhoceima_rifi8@hotmail.fr', 'EL AMRANI', '051487088', 'elamrani00', 'ARD DAOULA RUE 48 N 3, 90002', 'Morocco', 'Tangier', '$phone', 'Male', 'elamrani', 'background_close-up_fence_86066_1920x1080.jpg', 'aaa', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `question`
+-- بنية الجدول `fichier`
+--
+
+DROP TABLE IF EXISTS `fichier`;
+CREATE TABLE IF NOT EXISTS `fichier` (
+  `nom` varchar(200) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `fich_date` datetime DEFAULT NULL,
+  `groupe_id` int(11) NOT NULL,
+  PRIMARY KEY (`nom`),
+  KEY `groupe_id` (`groupe_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `fichier`
+--
+
+INSERT INTO `fichier` (`nom`, `type`, `fich_date`, `groupe_id`) VALUES
+('assassins_creed_logo_art_113285_1920x1080.jpg', 'autre', '2019-04-18 04:00:44', 1),
+('boat_sea_view_from_above_water_119937_1920x1080.jpg', 'autre', '2019-04-18 04:00:42', 1),
+('3d_balls_rendering_lines_105159_1920x1080.jpg', 'autre', '2019-04-18 04:00:45', 1),
+('architecture_city_view_from_above_buildings_river_118446_1920x1080.jpg', 'autre', '2019-04-18 04:00:48', 1),
+('bridge_railway_construction_129619_1920x1080.jpg', 'autre', '2019-04-18 04:00:51', 1),
+('Optimize.bat', 'autre', '2019-04-18 04:00:55', 1),
+('links.txt', 'autre', '2019-04-18 04:00:59', 1);
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `groupe`
+--
+
+DROP TABLE IF EXISTS `groupe`;
+CREATE TABLE IF NOT EXISTS `groupe` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `description` text,
+  `image_groupe` text,
+  `pseudo_prof` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pseudo_prof` (`pseudo_prof`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `groupe`
+--
+
+INSERT INTO `groupe` (`id`, `nom`, `description`, `image_groupe`, `pseudo_prof`) VALUES
+(1, 'TDI204', NULL, NULL, 'prof500');
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `professeur`
+--
+
+DROP TABLE IF EXISTS `professeur`;
+CREATE TABLE IF NOT EXISTS `professeur` (
+  `pseudo_prof` varchar(100) NOT NULL,
+  `email_prof` varchar(100) NOT NULL,
+  `prenom_prof` varchar(100) NOT NULL,
+  `nom_prof` varchar(100) NOT NULL,
+  `pass` varchar(100) NOT NULL,
+  `adresse_prof` varchar(100) DEFAULT NULL,
+  `pays_prof` varchar(100) DEFAULT NULL,
+  `ville_prof` varchar(100) DEFAULT NULL,
+  `tele_prof` varchar(100) DEFAULT NULL,
+  `sexe_prof` varchar(100) NOT NULL,
+  `propos_prof` text,
+  `image_prof` text,
+  `reponse` varchar(100) NOT NULL,
+  `question` varchar(100) NOT NULL,
+  PRIMARY KEY (`pseudo_prof`),
+  KEY `question` (`question`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `professeur`
+--
+
+INSERT INTO `professeur` (`pseudo_prof`, `email_prof`, `prenom_prof`, `nom_prof`, `pass`, `adresse_prof`, `pays_prof`, `ville_prof`, `tele_prof`, `sexe_prof`, `propos_prof`, `image_prof`, `reponse`, `question`) VALUES
+('prof500', 'elamrani.sv.laza@gmail.com', 'ddddddddd', 'ddddddddd', 'california744', NULL, NULL, NULL, NULL, 'Male', NULL, 'user-male.png', 'aaa', '');
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `question`
 --
 
 DROP TABLE IF EXISTS `question`;
 CREATE TABLE IF NOT EXISTS `question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `quest` varchar(200) DEFAULT NULL,
+  `quest` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `question`
+-- إرجاع أو استيراد بيانات الجدول `question`
 --
 
 INSERT INTO `question` (`id`, `quest`) VALUES

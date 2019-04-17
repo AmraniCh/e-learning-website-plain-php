@@ -5,13 +5,13 @@
     // add default pictures
     function image_query(){
         global $con;
-        $rq = "UPDATE etudient SET image_etu = 'user-male.png' WHERE gender = 'male' AND (image_etu IS NULL OR image_etu = '') ";
+        $rq = "UPDATE etudient SET image_etu = 'user-male.png' WHERE sexe_etu = 'male' AND (image_etu IS NULL OR image_etu = '') ";
         mysqli_query($con, $rq);
-        $rq = "UPDATE etudient SET image_etu = 'user-female.png' WHERE gender = 'female' AND (image_etu IS NULL OR image_etu = '') ";
+        $rq = "UPDATE etudient SET image_etu = 'user-female.png' WHERE sexe_etu = 'female' AND (image_etu IS NULL OR image_etu = '') ";
         mysqli_query($con, $rq);
-        $rq = "UPDATE professeur SET image_prof = 'user-female.png' WHERE gender = 'female' AND (image_prof IS NULL OR image_prof = '') ";
+        $rq = "UPDATE professeur SET image_prof = 'user-female.png' WHERE sexe_prof = 'female' AND (image_prof IS NULL OR image_prof = '') ";
         mysqli_query($con, $rq);
-        $rq = "UPDATE professeur SET image_prof = 'user-male.png' WHERE gender = 'male' AND (image_prof IS NULL OR image_prof = '') ";
+        $rq = "UPDATE professeur SET image_prof = 'user-male.png' WHERE sexe_prof = 'male' AND (image_prof IS NULL OR image_prof = '') ";
         mysqli_query($con, $rq);
     }
     
@@ -87,7 +87,11 @@
     // insert registerSecurity query
     function insert_register_query($table,$pseudo,$email,$prenom,$nom,$pass,$gender,$reponse,$quetion){
         global $con;
-        $rq = "insert into $table values('$pseudo','$email','$prenom','$nom','$pass',NULL, NULL, NULL, NULL,'$gender',NULL,NULL,'$reponse','$question',NULL)";
+        if($table == 'professeur')
+            $rq = "insert into $table values('$pseudo','$email','$prenom','$nom','$pass',NULL, NULL, NULL, NULL,'$gender',NULL,'$reponse','$question')";
+        else if($table == 'etudient')
+            $rq = "insert into $table values('$pseudo','$email','$prenom','$nom','$pass',NULL, NULL, NULL, NULL,'$gender',NULL,'$reponse','$question',null)";
+        // admin
         return mysqli_query($con,$rq);
     }
 
@@ -95,6 +99,7 @@
     function select_login_query($select,$table,$where,$pseudo,$pass){
         global $con;
         $rq = "SELECT $select FROM $table WHERE $where = '$pseudo' AND pass='$pass'";
+            
         return mysqli_query($con,$rq);
     }
 
@@ -108,13 +113,12 @@
     // insert file query
     function insert_file_query($grp_id, $file_name, $actual_page){
         global $con;
-        echo $_SERVER['REQUEST_URI'];
         switch($actual_page){
             case ($actual_page == 'courses'):
-                $rq = "INSERT INTO fichier_groupe VALUES('$grp_id','$file_name',now(),'course')";break;
+                $rq = "INSERT INTO fichier VALUES('$file_name','Leçon',now(),'$grp_id')";break;
             case ($actual_page == 'exercices'):
-                $rq = "INSERT INTO fichier_groupe VALUES('$grp_id','$file_name',now(),'exercice')";break;
-            default: $rq = "INSERT INTO fichier_groupe VALUES('$grp_id','$file_name',now(),'autre')";   
+                $rq = "INSERT INTO fichier VALUES('$file_name','exercice',now(),'$grp_id')";break;
+            default: $rq = "INSERT INTO fichier VALUES('$file_name','autre',now(),'$grp_id')";   
         }
         return mysqli_query($con,$rq);
     }
@@ -123,7 +127,7 @@
     function get_time_unit($fich_date){
         $datenow = time();
         $file_date = strtotime($fich_date);
-        $time_left = ($datenow - $file_date);
+        $time_left = $datenow - $file_date;
         switch($time_left){
             case ($time_left > 0 && $time_left < 20): // now before 20 seconds
                 $time_left = null;
@@ -155,13 +159,13 @@
     function load_coures_query($grp_id,$current_page){
         global $con;
         $courses = array();
-        $rq = "SELECT * FROM fichier_groupe WHERE id_groupe = '$grp_id' ORDER BY fich_date DESC";
+        $rq = "SELECT * FROM fichier WHERE groupe_id = '$grp_id' ORDER BY fich_date DESC";
         $res = mysqli_query($con,$rq);
         $i = 0;
         $courses[] = array();
     
         while($row = mysqli_fetch_assoc($res)){  
-            $file_name = $row['nom_fich'];
+            $file_name = $row['nom'];
             $fich_date = $row['fich_date']; 
             // get time left and time unit
             $unit_and_time_left = get_time_unit($fich_date); // use (get_time_unit) function
@@ -204,51 +208,41 @@
 
     // generate course icons
     function generate_icon($file_name,$current_page){
-        
-        $file_extension = get_file_extension($file_name);
         // variables
-        // set directory from page name
-        if($current_page == 'Upload_course_file') // upload_course_file
-            $dir = '../assets/icons/icons_files/';  
-        if($current_page == 'Delete_course_file') // delete_course_file
-            $dir = '../assets/icons/icons_files/';
-        if($current_page == 'Courses')
-            $dir = 'assets/icons/icons_files/'; // courses.php 
-       
-            
-        $icons = array();
         $icon_file_dir = null;
+        $icons = array();
+        // get file extension for generate icon
+        $file_extension = get_file_extension($file_name);
+        if($current_page != 'Delete_all_coursess'){
+            // set directory from page name
+            if($current_page == 'Upload_course_file' || $current_page == 'Delete_course_file') // upload_course_file - delete_course_file
+                $dir = '../assets/icons/icons_files/';  
+            if($current_page == 'Courses')
+                $dir = 'assets/icons/icons_files/'; // courses.php 
 
-        // get array of icons extensions
-        foreach (scandir($dir) as $icon) {
-            if ('.' === $icon) continue;
-            if ('..' === $icon) continue; 
-            // get first part of file name without extension
-            /*$ex = explode('.',$icon);
-            $icon_extension = reset($ex);*/
-            $ready = str_replace(array('.','-'),'.',$icon);
-            $icon_name = explode('.',$ready);
-            $icon_first_name = reset($icon_name);
-            $icons[] = $icon_first_name;
+            // get array of icons extensions
+            foreach (scandir($dir) as $icon) {
+                if ('.' === $icon) continue;
+                if ('..' === $icon) continue; 
+                // get first part of file name without extension
+                /*$ex = explode('.',$icon);
+                $icon_extension = reset($ex);*/
+                $ready = str_replace(array('.','-'),'.',$icon);
+                $icon_name = explode('.',$ready);
+                $icon_first_name = reset($icon_name);
+                $icons[] = $icon_first_name;
+            }
+
+            // get icon file directory 
+            foreach($icons as $icon_name){
+                if($icon_name == $file_extension)
+                    $icon_file_dir = 'assets/icons/icons_files/'.$icon_name.'.png'; 
+            }
         }
-   
-        // get icon file directory 
-        foreach($icons as $icon_name){
-            if($icon_name == $file_extension)
-                $icon_file_dir = 'assets/icons/icons_files/'.$icon_name.'.png'; 
-        }
-        
         // return icon file directory
         return $icon_file_dir;    
     }
 
-    // get courses count
-    function(){
-        global $con;
-        $res = mysqli_query($con,"select count(id_groupe) from fichier_groupe ");
-        $row = mysqli_fetch_assoc($res);
-        return $row['count(id_groupe)'];
-    }
 
  
 ?>
