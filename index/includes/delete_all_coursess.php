@@ -11,17 +11,15 @@
     if($plan == 'student'){
         $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
         $row = mysqli_fetch_assoc($res);
-        $grp_id = $row['groupe_etu'];
+        $grp_id = $row['groupe_id'];
     }
     if($plan == 'professor'){
         $res = select_home_query('*','professor','pseudo_prof',$pseudo);
         $row = mysqli_fetch_assoc($res);
-        $grp_id = $row['groupe_prof'];
     }
         
     // delete files in database
-    $file_nom = $_POST['file_name'];
-    $rq = "DELETE FROM fichier_groupe WHERE id_groupe = '$grp_id'";
+    $rq = "DELETE FROM fichier WHERE groupe_id = '$grp_id'";
     $res = mysqli_query($con, $rq);
 
     // ajax data -- load courses

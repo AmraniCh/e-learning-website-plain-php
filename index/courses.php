@@ -15,18 +15,16 @@
                     $count_student = mysqli_num_rows($res);
                     $row = mysqli_fetch_assoc($res);
                     // get groupe name by id
-                    $grp_name = get_groupeName($row['groupe_etu']);
+                    $grp_name = get_groupeName($row['groupe_id']);
                     // get image name
                     $imageName = $row['image_etu'];
                     // get groupe id
-                    $grp_id = $row['groupe_etu'];
+                    $grp_id = $row['groupe_id'];
                 }
                 if($plan == 'professor'){
                     $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
                     $count_prof = mysqli_num_rows($res);
                     $row = mysqli_fetch_assoc($res);
-                    // get groupe name by id
-                    $grp_name = get_groupeName($row['groupe_prof']);
                     // get image name
                     $imageName = $row['image_prof'];
                     // get groupe id
@@ -52,9 +50,13 @@
         <div class="content">
             <div class="container-fluid">
                <div class="top-panel row">
-                   <span class="courses_count" style="line-height:40px;font-size:x-large;"><?php $res = mysqli_query($con,"select count(id_groupe) from fichier_groupe ");
-    $row = mysqli_fetch_assoc($res);
-    echo $row['count(id_groupe)']; ?> Courses</span>
+                   <span class="courses_count" style="line-height:40px;font-size:x-large;">
+                   <?php 
+                       
+                        $res = mysqli_query($con,"select count(nom) from fichier WHERE groupe_id = '$grp_id' ");
+                        $row = mysqli_fetch_assoc($res);
+                        echo $row['count(nom)']; 
+                    ?> Courses</span>
                    <div class="upload">
                       <button type="button" id="delete-button" class="btn btn-primary">
                             Delete All

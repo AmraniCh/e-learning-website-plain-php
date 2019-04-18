@@ -14,15 +14,13 @@
                     $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
                     $row = mysqli_fetch_assoc($res);
                     // get groupe name by id
-                    $grp_name = get_groupeName($row['groupe_etu']);
+                    $grp_name = get_groupeName($row['groupe_id']);
                     // get image name
                     $imageName = $row['image_etu'];
                 }
                 if($plan == 'professor'){
                     $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
                     $row = mysqli_fetch_assoc($res);
-                    // get groupe name by id
-                    $grp_name = get_groupeName($row['groupe_prof']);
                     // get image name
                     $imageName = $row['image_prof'];
                 }   

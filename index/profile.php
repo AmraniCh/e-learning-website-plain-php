@@ -4,65 +4,78 @@
     ?>
     
     <?php
-
+        // global session variables
+        $plan = $_SESSION['plan'];
+        $pseudo = $_SESSION['user'];
+        
         // update
         if(isset($_POST['update']))
         {
-         
-            //$email = $_POST['email'];
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
-            $adress = $_POST['adress'];
-            $city = $_POST['city'];
-            $country = $_POST['country'];
-            $phone = $_POST['phone'];
-            $about = $_POST['about'];
-            $rq = "UPDATE etudient SET prenom = '$fname', nom = '$lname', adresse = '$adress', ville = '$city', pays = '$country', tele = '$phone', propos = '$about' WHERE pseudo_etu = 'kamal88'";
-            $res = mysqli_query($con,$rq);
+            if($plan == 'student'){
+                //$email = $_POST['email'];
+                $fname = $_POST['fname'];
+                $lname = $_POST['lname'];
+                $adress = $_POST['adress'];
+                $city = $_POST['city'];
+                $country = $_POST['country'];
+                $phone = $_POST['phone'];
+                $about = $_POST['about'];
+                $rq = "UPDATE etudient SET prenom_etu = '$fname', nom_etu = '$lname', adresse_etu = '$adress', ville_etu = '$city', pays_etu = '$country', tele_etu = '$phone', propos_etu = '$about' WHERE pseudo_etu = '$pseudo'";
+                $res = mysqli_query($con,$rq);
+               
+            }
+            if($plan == 'professeur'){
+                //$email = $_POST['email'];
+                $fname = $_POST['fname'];
+                $lname = $_POST['lname'];
+                $adress = $_POST['adress'];
+                $city = $_POST['city'];
+                $country = $_POST['country'];
+                $phone = $_POST['phone'];
+                $about = $_POST['about'];
+                $rq = "UPDATE etudient SET prenom_prof = '$fname', nom_prof = '$lname', adresse_prof = '$adress', ville_prof = '$city', pays_prof = '$country', tele_prof = '$phone', propos_prof = '$about' WHERE pseudo_prof = '$pseudo'";
+                $res = mysqli_query($con,$rq);
+            }
         }
 
         // getting 
         if(isset($_GET['user']))
         {
-            $pseudo = $_GET['user'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
-                $plan = $_SESSION['plan'];
                 if($plan == 'student'){
                     $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
                     $count_student = mysqli_num_rows($res);
                     $row = mysqli_fetch_assoc($res);
                     // get groupe name by id
-                    $grp_name = get_groupeName($row['groupe_etu']);
+                    $grp_name = get_groupeName($row['groupe_id']);
                     // get iinfo
                     $imageName = $row['image_etu'];
                     $username = $row['pseudo_etu'];
-                    $fname = $row['prenom'];
-                    $lname = $row['nom'];
-                    $email = $row['email'];
-                    $adress = $row['adresse'];
-                    $city = $row['ville'];
-                    $country = $row['pays'];
-                    $about = $row['propos'];
-                    $tele = $row['tele'];
+                    $fname = $row['prenom_etu'];
+                    $lname = $row['nom_etu'];
+                    $email = $row['email_etu'];
+                    $adress = $row['adresse_etu'];
+                    $city = $row['ville_etu'];
+                    $country = $row['pays_etu'];
+                    $about = $row['propos_etu'];
+                    $tele = $row['tele_etu'];
                 }
                 if($plan == 'professor'){
                     $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
                     $count_prof = mysqli_num_rows($res);
                     $row = mysqli_fetch_assoc($res);
-                    // get groupe name by id
-                    $grp_name = get_groupeName($row['groupe_prof']);
                     // get info
                     $imageName = $row['image_prof'];
                     $username = $row['pseudo_prof'];
-                    $fname = $row['prenom'];
-                    $lname = $row['nom'];
-                    $email = $row['email'];
-                    $adress = $row['adresse'];
-                    $city = $row['ville'];
-                    $country = $row['pays'];
-                    $about = $row['propos'];
-                    $tele = $row['tele'];
+                    $fname = $row['prenom_prof'];
+                    $lname = $row['nom_prof'];
+                    $email = $row['email_prof'];
+                    $adress = $row['adresse_prof'];
+                    $city = $row['ville_prof'];
+                    $country = $row['pays_prof'];
+                    $about = $row['propos_prof'];
+                    $tele = $row['tele_prof'];
                 }   
                 if($res != NULL)
                 {
