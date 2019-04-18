@@ -73,9 +73,9 @@ function check_uppercaseLetters(element_id)
 {
     var upperCaseLetters = /[A-Z]/g;
     if(!(element_id.val().match(upperCaseLetters)))
-        return true;
-    else
         return false;
+    else
+        return true;
 }
 
 // show error_msg
