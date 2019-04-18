@@ -97,6 +97,7 @@
                             $(ms_container).hide();
                             $(e.target).show();
                         }, 3000);
+                    }
                     </script>
                    <?php
                         $current_page = get_pageName();
