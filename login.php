@@ -55,7 +55,7 @@
 				{
                     $row = mysqli_fetch_assoc($res);   
 					$pseudo = $row['pseudo_etu'];
-					header ('location: index/home.php?user='.$pseudo);
+					header ('location: index/student/home.php?user='.$pseudo);
                     $_SESSION['user'] = $pseudo;
                     // plan session variable
                     $_SESSION['plan'] = 'student';
@@ -63,7 +63,7 @@
                 else if($count_prof>0){
                     $row = mysqli_fetch_assoc($res2);   
 					$pseudo = $row['pseudo_prof'];
-					header ('location: index/home.php?user='.$pseudo);
+					header ('location: index/professor/home.php?user='.$pseudo);
                     $_SESSION['user'] = $pseudo;
                     // plan session variable
                     $_SESSION['plan'] = 'professor';
@@ -106,44 +106,34 @@
                 <div class="img">
                     <img src="assets/icons/mortarboard.png" class="img-fluid" style="margin-bottom:2%;width:38%" >
                 </div>
-                <!-- inputs -->
-                <div class="form-group">
-                    <label for="pseudoEmail">Username</label>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                         <!-- <div class="input-group input-group-lg"> <!-- large -->
-                        <input type="text" id="pseudo" name="pseudo" placeholder="Username" class="form-control" value="<?php
-                        if(isset($_GET['user']))
-                        {
-                            echo $_GET['user'];
-                        } ?>">
-                        <div class="container" style="padding:0;text-align:left;margin:0;">
-                            <style scoped>
-                                .text-muted{color:#e82626!important;}
-                            </style>
-                            <small id="pseudo_error_msg" class="form-text text-muted"></small>
-                        </div>
+                <!-- inputs -->   
+                <label for="pseudoEmail">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                     <!-- <div class="input-group input-group-lg"> <!-- large -->
+                    <input type="text" id="pseudo" name="pseudo" placeholder="Username" class="form-control" value="<?php
+                    if(isset($_GET['user']))
+                    {
+                        echo $_GET['user'];
+                    } ?>">
+                    <div class="container" style="padding:0;text-align:left;margin:0;">
+                        <small id="pseudo_error_msg" class="form-text text-muted"></small>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="name">Password</label>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
-                        </div>
-                        <!-- <div class="input-group input-group-lg"> <!-- large --> 
-                        <input type="password" id="password" name="pass" placeholder="Password" class="form-control" value="<?php if(isset($_SESSION['pass']))
-                        {
-                            echo $_SESSION['pass'];
-                        } ?>">
-                        <div class="container" style="padding:0;text-align:left;margin:0;">
-                            <style scoped>
-                                .text-muted{color:#e82626!important;}
-                            </style>
-                            <small id="password_error_msg" class="form-text text-muted"></small>
-                        </div>
+                <label for="name">Password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+                    </div>
+                    <!-- <div class="input-group input-group-lg"> <!-- large --> 
+                    <input type="password" id="password" name="pass" placeholder="Password" class="form-control" value="<?php if(isset($_SESSION['pass']))
+                    {
+                        echo $_SESSION['pass'];
+                    } ?>">
+                    <div class="container" style="padding:0;text-align:left;margin:0;">
+                        <small id="password_error_msg" class="form-text text-muted"></small>
                     </div>
                 </div>
                 <!-- check -->
@@ -151,7 +141,7 @@
                     <input type="checkbox" name="remember" class="form-check-input"><label class="form-check-label" for="remember">Remember me</label>
                 </div> -->
                 <!-- can't remember -->
-                <div class="form-group" style="text-align: left;margin-bottom:.5rem;">
+                <div class="form-group" style="text-align: left;margin:0.5em 0 .5rem 0;">
                     <a href="#" id="link"><span style="color:#1273eb;font-size: 90%;font-family: 'roboto-bold', sans-serif">Forgot password or username ?</span></a>
                 </div>
                 <!-- btn -->

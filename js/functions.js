@@ -107,14 +107,34 @@ function check_numberPhone(number) {
 **********************************/
 
 // subtruct titles
-function subtruct_title(selector,max){
-    
-   
-        $(selector).each(function(){
-            var title =  $(this).html();
-            title = title.substr(0,max)+"...";
-            $(this).replaceWith(title);
-        });
+function subtruct_title(){ 
+    var titles = $(".title");
+    for(title of titles){
+        if($(title).html().length > 25){
+            var new_title = $(title).html().substr(0,25)+" ...";
+            $(title).replaceWith(new_title);
+        }
+    }
 }
 
+function downloadAnimation(e){
+    // buttons list
+    var btns = $(".btn-download");
+    // default status
+    for(b of btns){
+    $(b).css("background-color","#333");
+    }
+    // hidden clicked button
+    $(e.target).hide();
+    // conatiner file < element < element < btn
+    var container = $(e.target).parent().parent().parent();
+    // conatiner file > ms_container
+    var ms_container = $(container).children("#ms-container");
+    $(ms_container).toggle("slide"); 
+    
+    window.setTimeout(function() {
+        $(ms_container).hide();
+        $(e.target).show();
+    }, 5000);
+}
 

@@ -186,8 +186,6 @@
             <div class="file-date" style="padding:5px;color:#fff;background-color:#708ba2;opacity:0.7;width:100%"><span id="date">'.$time_left.' '.$unit.'</span>
             <i id="'.$file_name.'" style="float:right;font-size:large;cursor:pointer;" class="delete_file fas fa-times-circle"></i>
             </div>
-            
-
             <div id="ms-container">
                 <label class="label-ms"  for="ms-download">
                     <div class="ms-content">
@@ -200,13 +198,11 @@
                         </div>
                     </div>
                 </label>
-            </div>
-
-            
-            <div class="desc" style="padding:5px;color:#fff;background-color:#333;bottom:0;opacity:.9;position:absolute;width:100%"><span id="title">'.$file_name.'</span></div>
+            </div>          
+            <div class="desc" style="padding:5px;color:#fff;background-color:#333;bottom:0;opacity:.9;position:absolute;width:100%"><span class="title">'.$file_name.'</span></div>
             <div class="download-container text-center" style="height:0"><a href="cloud/'.$file_name.'" download><button type="button" class="btn-download btn btn-default" style="background-color:#333;color:#fff;z-index:999;margin-top:45px;">DOWNLOAD</button></a>
 		    </div>
-            </div><script>subtruct_title("#title",25);</script>';
+            </div>';
             $i= $i + 1;
         }
         
