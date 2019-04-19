@@ -18,7 +18,7 @@
             $country = $_POST['country'];
             $phone = $_POST['phone'];
             $about = $_POST['about'];
-            $rq = "UPDATE professeur SET prenom_prof = '$fname', nom_prof = '$lname', adresse_prof = '$adress', ville_prof '$city', pays_prof = '$country', tele_prof = '$phone', propos_prof = '$about' WHERE pseudo_prof = '$pseudo'";
+            $rq = "UPDATE professeur SET prenom_prof = '$fname', nom_prof = '$lname', adresse_prof = '$adress', ville_prof = '$city', pays_prof = '$country', tele_prof = '$phone', propos_prof = '$about' WHERE pseudo_prof = '$pseudo'";
             $res = mysqli_query($con,$rq);
         }
 
@@ -68,7 +68,7 @@
                                     <h4 class="title">Edit Profile</h4>
                                 </div>
                                 <div class="content">
-                                    <form action="profile.php" method="post">
+                                    <form action="profile.php?user=<?php echo $pseudo ?>" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group">

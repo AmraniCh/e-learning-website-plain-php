@@ -18,7 +18,7 @@
             $country = $_POST['country'];
             $phone = $_POST['phone'];
             $about = $_POST['about'];
-            $rq = "UPDATE etudient SET prenom_etu = '$fname', nom_etu = '$lname', adresse_etu = '$adress', ville_etu '$city', pays_etu = '$country', tele_etu = '$phone', propos_etu = '$about' WHERE pseudo_etu = '$pseudo'";
+            $rq = "UPDATE etudient SET prenom_etu = '$fname', nom_etu = '$lname', adresse_etu = '$adress', ville_etu = '$city', pays_etu = '$country', tele_etu = '$phone', propos_etu = '$about' WHERE pseudo_etu = '$pseudo'";
             $res = mysqli_query($con,$rq);
         }
 
