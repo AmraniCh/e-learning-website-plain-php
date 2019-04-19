@@ -1,0 +1,4 @@
+function load_add_groupe_form() {
+    $("#file_container").css("display", "none");
+    $("#container-fluid").append("<div class='container-fluid text-center'><div class='msg-container'><div id='error-msg'><h3>no files founded Please Create A New Group</h3></div><div id='not-found-image' style='text-align: center;text-align: -webkit-center;text-align: -moz-center;text-align: -ms-center;margin-bottom:1%'><img class='img-responsive' src='../assets/icons/exclamation-mark.png'></div><div id='btn-group'><a href='#'><button type='button' id='btn-add-groupe' class='btn btn-primary'>Create groupe</button></a></div></div></div>");
+}

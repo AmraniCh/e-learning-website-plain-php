@@ -1,0 +1,179 @@
+.profile{
+    background-color: #03334a;
+    padding: 10px 5px 10px 10px;
+    display: flex;
+}
+
+#profile-img{
+    width: 33%;
+    height: 70px;
+    background-size: cover;
+    border-radius: 50%;
+    background-position: center;
+    margin-left: 9%;
+}
+
+.profile-info{
+    padding:  7% 0% 0% 5%;
+}
+
+.username-text{
+    margin-left: 8px;
+}
+
+.groupe-text{
+    margin-left: 8px;
+}
+
+#file-button {
+    color: #fff;
+    background-color: #03334a;
+    border: none;
+    text-transform: inherit;
+}
+
+.line{
+	width: 100%;
+	height: 1px;
+	border-bottom: 3px solid #eee;
+}
+.file{
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.row{
+    margin-left: 0!important;
+}
+
+.upload{
+    display:inline;
+    float: right;
+}
+
+.top-panel{
+    margin-bottom: 10px;
+}
+
+ul.CTAs {
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 1em;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+a.download{
+	background: #fff;
+	color: #7386D5;
+}
+
+.user-name{
+    margin: 0;
+}
+
+/* download animation */
+#ms-container {
+	width: 100%;
+	height: 100%;
+	background: #1c9cf2;
+    opacity: .9;
+    position: absolute;
+    top: 0;
+    display: none;
+
+}
+.ms-content {
+    cursor: pointer;
+	position: absolute;
+	width: 69%;
+	height: 87%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	border: 10px solid #2ea4f2;
+	border-radius: 100%;
+}
+
+.ms-content-inside {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.ms-line-down-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transform: rotate(0deg);
+	transition: transform 0s ease;
+}
+#ms-download {
+	display: none;
+}
+
+.ms-line-down {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto;
+	width: 10px;
+	height: 125px;
+	background: #FFFFFF;
+	border-radius: 50px;
+	transition: height .5s ease;
+}
+
+
+.ms-line-point {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 58px;
+	height: 130px;
+	transition: height .15s ease .45s;
+}
+
+.ms-line-point:before,
+.ms-line-point:after {
+	content: '';
+	position: absolute;
+	width: 10px;
+	height: 75px;
+	bottom: -10px;
+	background: #FFFFFF;
+	border-radius: 50px;
+	transition: transform .15s ease .47s, left .15s ease .47s, right .15s ease .47s;
+}
+
+.ms-line-point:before {
+	right: 0px;
+	transform: rotate(45deg);
+}
+
+.ms-line-point:after {
+	left: 0px;
+	transform: rotate(-45deg);
+}
+
+.msg-container{
+    background: #fff5d1;
+    padding: 20px;
+    margin-top: 2%;
+    box-shadow: 0 0 2px 2px #eee;
+}

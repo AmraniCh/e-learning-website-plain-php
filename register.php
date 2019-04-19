@@ -128,8 +128,8 @@
                         </select>
                     </div>
                     <div class="container" style="padding:0;text-align:left;margin:0;">
-                            <small id="gender_error_msg" class="form-text text-muted"></small>
-                        </div>
+                        <small id="gender_error_msg" class="form-text text-muted"></small>
+                    </div>
                 </div>
                 <!-- Email -->
                 <div class="form-group">

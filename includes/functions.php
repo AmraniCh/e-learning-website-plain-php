@@ -63,11 +63,11 @@
         {
             $plan = $_SESSION['plan'];
             if($plan == 'student')
-                return '<link rel="stylesheet" type="text/css" href="assets/style/themes/student_theme.css">';
+                return '<link rel="stylesheet" type="text/css" href="../assets/style/themes/student_theme.css">';
             else if($plan == 'professor')
-                return '<link rel="stylesheet" type="text/css" href="assets/style/themes/prof_theme.css">';
+                return '<link rel="stylesheet" type="text/css" href="../assets/style/themes/prof_theme.css">';
             else if($plan == 'admin')
-                return '<link rel="stylesheet" type="text/css" href="assets/style/themes/admin_theme.css">';
+                return '<link rel="stylesheet" type="text/css" href="../assets/style/themes/admin_theme.css">';
             else
                 header('location: plans/plans.php');
             
@@ -228,9 +228,9 @@
         if($current_page != 'Delete_all_coursess'){
             // set directory from page name
             if($current_page == 'Upload_course_file' || $current_page == 'Delete_course_file') // upload_course_file - delete_course_file
-                $dir = '../assets/icons/icons_files/';  
+                $dir = '../../assets/icons/icons_files/';  
             if($current_page == 'Courses')
-                $dir = 'assets/icons/icons_files/'; // courses.php 
+                $dir = '../assets/icons/icons_files/'; // courses.php 
 
             // get array of icons extensions
             foreach (scandir($dir) as $icon) {
@@ -248,13 +248,21 @@
             // get icon file directory 
             foreach($icons as $icon_name){
                 if($icon_name == $file_extension)
-                    $icon_file_dir = 'assets/icons/icons_files/'.$icon_name.'.png'; 
+                    $icon_file_dir = '../assets/icons/icons_files/'.$icon_name.'.png'; 
             }
         }
         // return icon file directory
         return $icon_file_dir;    
     }
 
+    // get count groupes
+    function get_group_count($pseudo_prof){
+        global $con;
+        $rq = "SELECT count(id) FROM groupe WHERE pseudo_prof = '$pseudo_prof'";
+        $res = mysqli_query($con,$rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['count(id)'];
+    }
 
  
 ?>

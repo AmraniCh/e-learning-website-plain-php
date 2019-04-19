@@ -1,0 +1,38 @@
+if($plan == 'professeur'){
+                //$email = $_POST['email'];
+                $fname = $_POST['fname'];
+                $lname = $_POST['lname'];
+                $adress = $_POST['adress'];
+                $city = $_POST['city'];
+                $country = $_POST['country'];
+                $phone = $_POST['phone'];
+                $about = $_POST['about'];
+                $rq = "UPDATE etudient SET prenom_prof = '$fname', nom_prof = '$lname', adresse_prof = '$adress', ville_prof = '$city', pays_prof = '$country', tele_prof = '$phone', propos_prof = '$about' WHERE pseudo_prof = '$pseudo'";
+                $res = mysqli_query($con,$rq);
+            }
+
+
+if($plan == 'professor'){
+                    $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
+                    $count_prof = mysqli_num_rows($res);
+                    $row = mysqli_fetch_assoc($res);
+                    // get info
+                    $imageName = $row['image_prof'];
+                    $username = $row['pseudo_prof'];
+                    $fname = $row['prenom_prof'];
+                    $lname = $row['nom_prof'];
+                    $email = $row['email_prof'];
+                    $adress = $row['adresse_prof'];
+                    $city = $row['ville_prof'];
+                    $country = $row['pays_prof'];
+                    $about = $row['propos_prof'];
+                    $tele = $row['tele_prof'];
+                }  
+
+
+                if($plan == 'professor'){
+                    $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
+                    $row = mysqli_fetch_assoc($res);
+                    // get image name
+                    $imageName = $row['image_prof'];
+                }  

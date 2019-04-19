@@ -43,7 +43,7 @@
                 </li>
                 <li class="active">
                     <a href="courses.php?user=<?php echo $pseudo ?>">
-                        <i aria-hidden="true"><img src="assets/icons/open-book.png"></i>
+                        <i aria-hidden="true"><img src="../assets/icons/open-book.png"></i>
                         <p>Courses</p>
                     </a>
                 </li>

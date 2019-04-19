@@ -1,20 +1,18 @@
     <!-- include header -->
     <?php
-        include 'includes/header.php';     
+        include '../includes/header.php';     
     ?>
     <?php
+
         if(isset($_GET['user']))
         {
             image_query();
             $pseudo = $_GET['user'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
-
                 $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
                 $count_student = mysqli_num_rows($res);
                 $row = mysqli_fetch_assoc($res);
-                // get groupe name by id
-                $grp_name = get_groupeName($row['groupe_id']);
                 // get image name
                 $imageName = $row['image_etu'];
                 // get groupe id
@@ -22,21 +20,23 @@
     ?>
     <div class="wrapper">
       
-            <!-- include sidebar --> 
-            <?php include 'includes/sidebar.php'; ?>
+        <!-- include sidebar --> 
+        <?php include 'includes/sidebar.php'; ?>
 
-            <div class="main-panel">
+        <div class="main-panel">
 
-            <!-- include top navigation -->
-            <?php include 'includes/top_nav.php'; ?>
+        <!-- include top navigation -->
+        <?php include '../includes/top_nav.php'; ?>
 
             <!-- content -->
             <div class="content">
-                <div class="container-fluid">
-                   <div class="top-panel row">
+                <div id="container-fluid" class="container-fluid">
+                    <script>
+                        
+                    </script>
+                    <div id="top-panel" class="top-panel row">
                        <span class="courses_count" style="line-height:40px;font-size:x-large;">
                        <?php 
-
                             $res = mysqli_query($con,"select count(nom) from fichier WHERE groupe_id = '$grp_id' ");
                             $row = mysqli_fetch_assoc($res);
                             echo $row['count(nom)']; 
@@ -51,8 +51,26 @@
                         </div>
                     </div>
                     <div class="line"></div>
+                    <?php 
+                        // get group count
+                        $grp_count = get_group_count($pseudo);
+                        // if count = 0 => show notification no groupe founded
+                        if($grp_count == 0)
+                            echo '<script>
+                            load_add_groupe_notification();
+                            </script>
+                            ';
+                    ?>
+                    <script>
+                        // click add groupe => load group form for add group
+                        $(document).ready(function(){
+                            $(document).on("click","#btn-load-groupe-form",function(){
+                                load_add_groupe_form();               
+                            });
+                        })
+                    </script>
                     <div id="file_container">
-                       <!-- download animation -->
+                        <!-- download animation -->
                         <script>
                             $(document).ready(function(){     
                                 $(".btn-download").click(function(e){
@@ -61,7 +79,7 @@
                             });
                         </script>
                         <!-- load courses -->
-                       <?php
+                        <?php
                             $current_page = get_pageName();
                             $files = load_coures_query($grp_id,$current_page);
                             if($files[0] != null){
@@ -69,20 +87,19 @@
                                    echo $file;
                                 }     
                             }
-                        ?>
+                         ?>
                     </div>
-                </div>
             </div>
         </div>
-        <?php 
-                        }
-                    }
-                    else 
-                    header ('location: ../login.php');
-                }
-                else
-                    redirect_url('home.php');
-        ?>
+    </div>
+    <?php 
+            }
+            else 
+                header ('location: ../login.php');
+        }
+        else
+            redirect_url('home.php');
+    ?>
 
     <!-- include footer -->
-    <?php include 'includes/footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>

@@ -1,6 +1,6 @@
     <!-- include header -->
     <?php 
-        include 'includes/header.php'; 
+        include '../includes/header.php'; 
     ?>
 
     <?php
@@ -58,7 +58,7 @@
         <div class="main-panel">
 
             <!-- include top navigation -->
-            <?php include 'includes/top_nav.php'; ?>
+            <?php include '../includes/top_nav.php'; ?>
 
             <!-- content -->
             <div class="content">
@@ -217,4 +217,4 @@
         ?>
 
             <!-- include footer -->
-            <?php include 'includes/footer.php'; ?>
+            <?php include '../includes/footer.php'; ?>
