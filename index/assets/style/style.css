@@ -175,5 +175,37 @@ a.download{
     background: #fff5d1;
     padding: 20px;
     margin-top: 2%;
+}
+
+.grp-add-container{
+    margin: 2% auto;
+    float: initial!important;
+}
+
+
+.grp-add-second-container{
     box-shadow: 0 0 2px 2px #eee;
+    padding: 25px;
+    background-color: #fff;
+}
+
+.img-add-group{
+    margin-bottom: 2%;
+    text-align: center;
+    text-align: -moz-center;
+    text-align: -ms-center;
+}
+
+.add-group{
+    text-align: center;
+    text-align: -moz-center;
+    text-align: -ms-center;
+    margin-bottom: 2%;
+}
+
+#btn-add-group{
+    padding: 10px 25px 10px 25px;
+    background-color: #3472F7;
+    color: white;
+    border: none;
 }

@@ -65,7 +65,10 @@
                         // click add groupe => load group form for add group
                         $(document).ready(function(){
                             $(document).on("click","#btn-load-groupe-form",function(){
-                                load_add_groupe_form();               
+                                $(".msg-container").css("display","none");
+                                $("#top-panel").css("display","none");
+                                $(".line").css("display","none");
+                                load_add_groupe_form();            
                             });
                         })
                     </script>
