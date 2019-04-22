@@ -178,7 +178,7 @@
                 $css = 'background-size: contain;';
             }
             else{
-                $icon_dir = 'cloud/'.$file_name;
+                $icon_dir = '../cloud/'.$file_name;
                 $css = 'background-size: cover;';
             }
             // ajax data
@@ -255,7 +255,7 @@
         return $icon_file_dir;    
     }
 
-    // get count groupes
+    // get groupes count
     function get_group_count($pseudo_prof){
         global $con;
         $rq = "SELECT count(id) FROM groupe WHERE pseudo_prof = '$pseudo_prof'";
@@ -264,5 +264,21 @@
         return $row['count(id)'];
     }
 
- 
+    // get groupe id by prof username
+    function get_grpId_byProf($pseudo){
+        global $con;
+        $rq = "SELECT id FROM groupe WHERE pseudo_prof = '$pseudo'";
+        $res = mysqli_query($con,$rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['id'];
+    }
+
+    // get groupe id by student username
+    function get_grpId_byStud($pseudo){
+        global $con;
+        $rq = "SELECT groupe_id FROM etudient WHERE pseudo_etu = '$pseudo'";
+        $res = mysqli_query($con,$rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['groupe_id'];
+    }
 ?>

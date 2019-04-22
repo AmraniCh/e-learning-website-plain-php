@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 18 أبريل 2019 الساعة 04:01
+-- Generation Time: 22 أبريل 2019 الساعة 21:41
 -- إصدار الخادم: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -78,13 +78,9 @@ CREATE TABLE IF NOT EXISTS `fichier` (
 --
 
 INSERT INTO `fichier` (`nom`, `type`, `fich_date`, `groupe_id`) VALUES
-('assassins_creed_logo_art_113285_1920x1080.jpg', 'autre', '2019-04-18 04:00:44', 1),
-('boat_sea_view_from_above_water_119937_1920x1080.jpg', 'autre', '2019-04-18 04:00:42', 1),
-('3d_balls_rendering_lines_105159_1920x1080.jpg', 'autre', '2019-04-18 04:00:45', 1),
-('architecture_city_view_from_above_buildings_river_118446_1920x1080.jpg', 'autre', '2019-04-18 04:00:48', 1),
-('bridge_railway_construction_129619_1920x1080.jpg', 'autre', '2019-04-18 04:00:51', 1),
-('Optimize.bat', 'autre', '2019-04-18 04:00:55', 1),
-('links.txt', 'autre', '2019-04-18 04:00:59', 1);
+('glare_background_blur_dark_63553_1920x1080.jpg', 'autre', '2019-04-22 21:23:48', 1),
+('autumn_macro_red_foliage_background_84016_1920x1080.jpg', 'autre', '2019-04-21 20:27:17', 1),
+('images.jpg', 'autre', '2019-04-22 21:23:38', 1);
 
 -- --------------------------------------------------------
 
@@ -98,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `groupe` (
   `nom` varchar(255) NOT NULL,
   `description` text,
   `image_groupe` text,
+  `date_creation` datetime DEFAULT CURRENT_TIMESTAMP,
   `pseudo_prof` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `pseudo_prof` (`pseudo_prof`)
@@ -107,8 +104,9 @@ CREATE TABLE IF NOT EXISTS `groupe` (
 -- إرجاع أو استيراد بيانات الجدول `groupe`
 --
 
-INSERT INTO `groupe` (`id`, `nom`, `description`, `image_groupe`, `pseudo_prof`) VALUES
-(1, 'TDI204', NULL, NULL, 'prof500');
+INSERT INTO `groupe` (`id`, `nom`, `description`, `image_groupe`, `date_creation`, `pseudo_prof`) VALUES
+(1, 'TDI204', NULL, NULL, '2019-04-21 22:59:01', 'prof500'),
+(10, 'TRI202', NULL, NULL, '2019-04-21 22:59:01', 'prof500');
 
 -- --------------------------------------------------------
 
@@ -141,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `professeur` (
 --
 
 INSERT INTO `professeur` (`pseudo_prof`, `email_prof`, `prenom_prof`, `nom_prof`, `pass`, `adresse_prof`, `pays_prof`, `ville_prof`, `tele_prof`, `sexe_prof`, `propos_prof`, `image_prof`, `reponse`, `question`) VALUES
-('prof500', 'elamrani.sv.laza@gmail.com', 'ddddddddd', 'ddddddddd', 'california744', NULL, NULL, NULL, NULL, 'Male', NULL, 'user-male.png', 'aaa', '');
+('prof500', 'elamrani.sv.laza@gmail.com', 'prof', 'prof', 'california744', 'ssdq', 'qsd', 'qsd', 'qsd', 'Male', 'qsd', 'user-male.png', 'aaa', '');
 
 -- --------------------------------------------------------
 

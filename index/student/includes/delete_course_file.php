@@ -7,10 +7,8 @@
     $plan = $_SESSION['plan'];
     $pseudo = $_SESSION['user'];
         
-    // get groupe id
-    $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
-    $row = mysqli_fetch_assoc($res);
-    $grp_id = $row['groupe_id'];
+    // get groupe id by student username
+    $grp_id = get_grpId_byStud($pseudo);
         
     // delete file in database
     $file_name = $_POST['file_name'];

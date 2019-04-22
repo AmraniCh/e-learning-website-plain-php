@@ -1,10 +1,11 @@
 <?php
         if(isset($_GET['user']))
         {
-            image_query();
             $pseudo = $_GET['user'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
+                image_query();
+                // select
                 $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
                 $row = mysqli_fetch_assoc($res);
                 // get image name
@@ -31,7 +32,7 @@
                 <div class="profile-img" id="profile-img" style="background-image: url(<?php echo $image_dir.$imageName?>)"></div>
                 <div class="profile-info">
                     <div class="username"><i class="fa fa-user" aria-hidden="true"></i><span class="username-text"><?php echo $pseudo ?></span></div>
-                    <div class="groupe"><i class="fa fa-users" aria-hidden="true"></i><span class="groupe-text"><?php ?></span></div>
+                    <div class="groupe"><i class="fa fa-users" aria-hidden="true"></i><span class="groupe-text"></span></div>
                 </div>
             </div>
             <ul class="nav">

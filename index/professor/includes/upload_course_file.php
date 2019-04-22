@@ -7,14 +7,12 @@
     {
         // change upload file
         $file_name = $_FILES["file"]["name"];
-        move_uploaded_file($_FILES["file"]["tmp_name"], '../cloud/'.$file_name);
+        move_uploaded_file($_FILES["file"]["tmp_name"], '../../cloud/'.$file_name);
         
         // add file in database
         $pseudo = $_SESSION['user'];
-        $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
-        $row = mysqli_fetch_assoc($res);
-        // get groupe name by id
-        $grp_id = $row['groupe_id'];
+        // get groupe id by pseudo
+        $grp_id = get_grpId_byProf($pseudo);
         // instert file
         insert_file_query($grp_id, $file_name, strtolower(get_pageName())); // groupe id, file name, actual page for type file
 

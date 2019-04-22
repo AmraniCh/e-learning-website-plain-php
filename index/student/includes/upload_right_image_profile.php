@@ -11,10 +11,7 @@
         echo '<img class="avatar border-gray" src="assets/images/'.$imageName.'" alt="..."/>';
         // change image database
         $username = $_SESSION['user']; // GET method not working => ajax send method is POST
-        if($_SESSION['plan'] == 'student')
-            $rq = "UPDATE etudient SET image_etu = '$imageName' WHERE pseudo_etu = '$username'";
-        else
-            $rq = "UPDATE professeur SET image_prof = '$imageName' WHERE pseudo_prof = '$username'";
+        $rq = "UPDATE etudient SET image_etu = '$imageName' WHERE pseudo_etu = '$username'";
         mysqli_query($con,$rq);
     }
 ?>

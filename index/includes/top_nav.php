@@ -35,13 +35,28 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+               
+                <li>
+                    <a style="margin:2px 0 0 0">
+                        <select id="list-groupe" name="groupe" class="form-control">
+                            <?php
+                            if($plan == 'professor'){
+                                $rq = "SELECT * FROM groupe";
+                                $res = mysqli_query($con,$rq);
+                                while($row = mysqli_fetch_assoc($res))
+                                    echo '<option value='.$row['id'].'>'.$row['nom'].'</option>';
+                            }
+                            ?>
+                        </select>
+                    </a>
+                </li>
                 <li>
                     <a href="../../../demosite/index/<?php echo $plan ?>/profile.php?user=<?php echo $pseudo ?>">
                         <p>Account</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../../includes/logout.php">
+                    <a id="logout" href="../../includes/logout.php" onclick="run(this)">
                     <p>Log out</p>
                     </a>
                 </li>

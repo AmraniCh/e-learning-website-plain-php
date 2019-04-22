@@ -187,6 +187,7 @@ a.download{
     box-shadow: 0 0 2px 2px #eee;
     padding: 25px;
     background-color: #fff;
+    border-radius: 5%;
 }
 
 .img-add-group{

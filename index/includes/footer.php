@@ -25,6 +25,8 @@
     <script src="assets/js/ajax_delete_file.js"></script>
     <script src="assets/js/ajax_delete_all.js"></script>
     <script src="assets/js/ajax_create_groupe"></script>
+    <script src="assets/js/ajax_groupe_change.js"></script>
+    <script src="assets/js/ajax_logout_cookie.js"></script>
     <!-- substruct file titles  -->
     <script>subtruct_title()</script> 
 </body>

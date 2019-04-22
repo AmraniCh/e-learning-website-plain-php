@@ -31,21 +31,18 @@
             <!-- content -->
             <div class="content">
                 <div id="container-fluid" class="container-fluid">
-                    <script>
-                        
-                    </script>
                     <div id="top-panel" class="top-panel row">
-                       <span class="courses_count" style="line-height:40px;font-size:x-large;">
-                       <?php 
+                        <span class="courses_count" style="line-height:40px;font-size:x-large;">
+                            <?php 
                             $res = mysqli_query($con,"select count(nom) from fichier WHERE groupe_id = '$grp_id' ");
                             $row = mysqli_fetch_assoc($res);
                             echo $row['count(nom)']; 
                         ?> Courses</span>
-                       <div class="upload">
-                          <button type="button" id="delete-button" class="btn btn-primary">
+                        <div class="upload">
+                            <button type="button" id="delete-button" class="btn btn-primary">
                                 Delete All
                             </button>
-                           <label id="file-button" class="btn btn-default btn-file">
+                            <label id="file-button" class="btn btn-default btn-file">
                                 Upload new course <input type="file" id="file_course" style="display: none;">
                             </label>
                         </div>
@@ -60,37 +57,38 @@
                             load_add_groupe_notification();
                             </script>
                             ';
-                    ?>
-                    <script>
-                        // click add groupe => load group form for add group
-                        $(document).ready(function(){
-                            $(document).on("click","#btn-load-groupe-form",function(){
-                                $(".msg-container").css("display","none");
-                                $("#top-panel").css("display","none");
-                                $(".line").css("display","none");
-                                load_add_groupe_form();            
-                            });
-                        })
-                    </script>
-                    <div id="file_container">
-                        <!-- download animation -->
-                        <script>
-                            $(document).ready(function(){     
-                                $(".btn-download").click(function(e){
-                                    downloadAnimation(e);                     
-                                });
-                            });
-                        </script>
-                        <!-- load courses -->
-                        <?php
+                        else
+                        {
+                            $grp_id = get_grpId_byProf($pseudo);
                             $current_page = get_pageName();
                             $files = load_coures_query($grp_id,$current_page);
                             if($files[0] != null){
                                 foreach ($files as $file) {
-                                   echo $file;
-                                }     
+                                echo $file;
+                                }
                             }
-                         ?>
+                        }
+                    ?>
+                    <script>
+                        // click add groupe => load group form for add group
+                        $(document).ready(function() {
+                            $(document).on("click", "#btn-load-groupe-form", function() {
+                                $(".msg-container").css("display", "none");
+                                $("#top-panel").css("display", "none");
+                                $(".line").css("display", "none");
+                                load_add_groupe_form();
+                            });
+                        });
+                    </script>
+                    <div id="file_container">
+                        <!-- download animation -->
+                        <script>
+                            $(document).ready(function() {
+                                $(".btn-download").click(function(e) {
+                                    downloadAnimation(e);
+                                });
+                            });
+                        </script>
                     </div>
             </div>
         </div>

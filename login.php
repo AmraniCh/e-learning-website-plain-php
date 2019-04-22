@@ -3,11 +3,13 @@
     require 'includes/functions.php';
     session_start();
 
-    //create cookie
+    //create cookie block
     if (isset($_COOKIE["block"])==false){
         $block=3;
         setcookie("block",$block,time()+10);
     }
+    
+
 
 ?>
 <html>
@@ -23,6 +25,7 @@
 		<script src="js/validation.js"></script>
 	</head>
 	<body>
+        echo $grp;
 	    <style scoped>
                 @media (max-width:1920px){
                     body{
