@@ -29,6 +29,17 @@ function allLetters(name)
         return false;  
 }
 
+function allLettersWithSpace(name)
+{
+    var letters = /^[A-Za-z\s]+$/g;
+    if(name.val().match(letters))
+        return true;
+    else
+        return false;
+}
+
+
+
 // check if email is valid
 function validEmail(email)
 {
@@ -96,7 +107,7 @@ function hide_msg(element_id, input_color)
 function check_numberPhone(number) {
     let numberPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
 
-    if(!(number.val().match(numberPhone)))
+    if((number.val().match(numberPhone)))
         return true;
     else
         return false;
