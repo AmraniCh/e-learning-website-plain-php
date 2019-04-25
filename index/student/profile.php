@@ -96,7 +96,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>First Name</label>
-                                                    <input type="text" name="fname" class="form-control" placeholder="Company" value="<?php echo $fname ?>">
+                                                    <input type="text" name="fname" id="fname" class="form-control" placeholder="Company" value="<?php echo $fname ?>">
                                                     <div class="container" style="padding:0;text-align:left;margin:0;">
                                                         <small id="fname_error_msg" class="form-text text-muted"></small>
                                                     </div>
@@ -105,7 +105,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Last Name</label>
-                                                    <input type="text" name="lname" class="form-control" placeholder="Last Name" value="<?php echo $lname ?>">
+                                                    <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name" value="<?php echo $lname ?>">
                                                     <div class="container" style="padding:0;text-align:left;margin:0;">
                                                         <small id="lname_error_msg" class="form-text text-muted"></small>
                                                     </div>

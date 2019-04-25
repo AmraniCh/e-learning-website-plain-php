@@ -28,7 +28,10 @@
     <script src="assets/js/ajax_groupe_change.js"></script>
     <script src="assets/js/ajax_logout_cookie.js"></script>
     <!-- substruct file titles  -->
-    <script>subtruct_title()</script> 
+    <script>subtruct_title()</script>
+
+        <script src="../js/validation.js"></script>
+
 </body>
 
 

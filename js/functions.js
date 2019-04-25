@@ -79,11 +79,11 @@ function check_uppercaseLetters(element_id)
 }
 
 // show error_msg
-function show_msg(element_id, msg, input_color)
+function show_msg(id_small_error, msg, input_selector)
 {           
-    $("#" + element_id).html(msg);
-    $("#" + element_id).show();
-    input_color.css("background-color","#f7c4cb");
+    $("#" + id_small_error).html(msg);
+    $("#" + id_small_error).show();
+    input_selector.css("background-color","#f7c4cb");
 }
      
 // hide error_msg
