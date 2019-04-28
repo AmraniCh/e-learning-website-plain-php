@@ -8,17 +8,11 @@ function checkFname(){
         show_msg("fname_error_msg","your first name must contain only letters",$("#fname"));
 }
 
-
-$("#fname").focusout(checkFname);
-
-
 function checkLname(){
     hide_msg("lname_error_msg",$("#lname"));
     if(!allLettersWithSpace($("#lname")))
         show_msg("lname_error_msg","your last name must contain only letters",$("#lname"));
 }
-
-$("#lname").focusout(checkLname);
 
 function checkCity(){
     hide_msg("city_error_msg",$("#city"));
@@ -26,34 +20,22 @@ function checkCity(){
         show_msg("city_error_msg","you have to put a correct city",$("#city"));
 }
 
-$("#city").focusout(checkCity);
-
 function checkPhone(){
     hide_msg("phone_error_msg",$("#phone_error_msg"));
-
-
-    if(!check_numberPhone($("#phone"))){
+    if(!check_numberPhone($("#phone")))
         show_msg("phone_error_msg","put your correct number",$("#phone_error_msg"));
-    }
-
 }
 
+$("#fname").focusout(checkFname);
+$("#lname").focusout(checkLname);
+$("#city").focusout(checkCity);
 $("#phone").focusout(checkPhone);
 
-
-$("#profile").submit(
-    function ValidationUpdateProfile (){
-        var isVisible = $('#fname_error_msg').is(':visible');
-        var isHidden = $('#fname_error_msg').is(':hidden');
-
-        alert(isVisible);
-        alert(isHidden);
-
-        /*
-    if (!$("#phone_error_msg").hidden||!$("#city_error_msg").hidden||!$("#lname_error_msg").hidden||!$("#fname_error_msg").hidden){
-        alert($("#phone_error_msg").hidden+$("#city_error_msg").hidden+$("#lname_error_msg").hidden+$("#fname_error_msg").hidden);
+$("#profile").submit( function () {
+    if ($('#fname_error_msg').attr("style")==''||$('#lname_error_msg').attr("style")==''||$('#city_error_msg').attr("style")==''||$('#phone_error_msg').attr("style")=='background-color: rgb(247, 196, 203);')
+        return false;
+        return true;
     }
-    */
-        }
-        );
+);
+
 

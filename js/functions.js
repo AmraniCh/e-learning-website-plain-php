@@ -100,7 +100,7 @@ function show_msg(id_small_error, msg, input_selector)
 // hide error_msg
 function hide_msg(element_id, input_color)
 {
-    $("#" + element_id).hide(); 
+    $("#" + element_id).hide();
     input_color.css("background-color","#fff");
 }
 

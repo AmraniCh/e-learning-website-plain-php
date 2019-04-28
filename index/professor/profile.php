@@ -68,7 +68,7 @@
                                     <h4 class="title">Edit Profile</h4>
                                 </div>
                                 <div class="content">
-                                    <form action="profile.php?user=<?php echo $pseudo ?>" method="post">
+                                    <form action="profile.php?user=<?php echo $pseudo ?>" id="profile" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group">
