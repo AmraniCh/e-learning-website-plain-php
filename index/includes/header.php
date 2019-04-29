@@ -2,6 +2,9 @@
     require '../../includes/config.php';
     include '../../includes/functions.php';
     session_start();
+    
+    // set groupe first login && set group if groupe history is not exists
+    set_groupe_history($_SESSION['user']);
 ?>
 <!doctype html>
 <html lang="en">

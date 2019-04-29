@@ -38,16 +38,36 @@
                
                 <li>
                     <a style="margin:2px 0 0 0">
-                        <select id="list-groupe" name="groupe" class="form-control">
-                            <?php
-                            if($plan == 'professor'){
-                                $rq = "SELECT * FROM groupe";
-                                $res = mysqli_query($con,$rq);
-                                while($row = mysqli_fetch_assoc($res))
-                                    echo '<option value='.$row['id'].'>'.$row['nom'].'</option>';
-                            }
-                            ?>
-                        </select>
+                        <form id="select_groupe_form" action="includes/change_groupe.php" method="post">
+                            <select id="list-groupe" name="groupe" class="form-control">
+                                <?php
+                                if($plan == 'professor'){
+                                    // get all groupes
+                                    $rq = "SELECT * FROM groupe";
+                                    $res = mysqli_query($con,$rq);
+
+                                    // get last groupe used
+                                    $rq2 = "SELECT grp_id FROM groupe_historique WHERE pseudo_prof ='$pseudo'";
+                                    $res2 = mysqli_query($con,$rq2);
+                                    $row2 = mysqli_fetch_assoc($res2);
+                                    $grp_id_histo = $row2['grp_id'];
+                                    $grp_name_histo = get_groupeName($grp_id_histo);             
+
+                                    while($row = mysqli_fetch_assoc($res)){
+                                        if($row['id'] == $grp_id_histo && mysqli_num_rows($res2) != 0){
+                                            echo '<option value='.$grp_id_histo.' selected>'.$grp_name_histo.'</option>';
+                                            // store selected grp id
+                                            $_SESSION['grp_id'] = $grp_id_histo;
+                                        }
+                                        else
+                                             echo '<option value='.$row['id'].'>'.$row['nom'].'</option>'; 
+                                    }   
+                                    
+                                    
+                                }
+                                ?>
+                            </select>
+                        </form>
                     </a>
                 </li>
                 <li>
@@ -56,7 +76,7 @@
                     </a>
                 </li>
                 <li>
-                    <a id="logout" href="../../includes/logout.php" onclick="run(this)">
+                    <a id="logout" href="#">
                     <p>Log out</p>
                     </a>
                 </li>

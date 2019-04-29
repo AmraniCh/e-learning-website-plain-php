@@ -15,6 +15,9 @@
         mysqli_query($con, $rq);
     }
     
+/***********************************
+    START GROUPES FUNCTIONS
+***********************************/
     // get groupe name
     function get_groupeName($id){
         global $con;
@@ -23,6 +26,37 @@
         $row = mysqli_fetch_assoc($res);
         return $row['nom'];
     }
+
+    // get groupes count
+    function get_group_count($pseudo_prof){
+        global $con;
+        $rq = "SELECT count(id) FROM groupe WHERE pseudo_prof = '$pseudo_prof'";
+        $res = mysqli_query($con,$rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['count(id)'];
+    }
+
+    // get groupe id by prof username
+    function get_grpId_byProf($pseudo){
+        global $con;
+        $rq = "SELECT id FROM groupe WHERE pseudo_prof = '$pseudo'";
+        $res = mysqli_query($con,$rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['id'];
+    }
+
+    // get groupe id by student username
+    function get_grpId_byStud($pseudo){
+        global $con;
+        $rq = "SELECT groupe_id FROM etudient WHERE pseudo_etu = '$pseudo'";
+        $res = mysqli_query($con,$rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['groupe_id'];
+    }
+
+/***********************************
+    END GROUPES FUNCTIONS
+***********************************/
 
     // redirect url
     function redirect_url($page)
@@ -255,30 +289,18 @@
         return $icon_file_dir;    
     }
 
-    // get groupes count
-    function get_group_count($pseudo_prof){
+    // set groupe first login && set group if groupe history is not exists
+    function set_groupe_history($pseudo){
         global $con;
-        $rq = "SELECT count(id) FROM groupe WHERE pseudo_prof = '$pseudo_prof'";
-        $res = mysqli_query($con,$rq);
-        $row = mysqli_fetch_assoc($res);
-        return $row['count(id)'];
+        // check
+        $res = mysqli_query($con,"SELECT grp_id FROM groupe_historique WHERE pseudo_prof ='$pseudo'");
+        if(mysqli_num_rows($res) == 0){
+            $rq = "select id FROM groupe order by date_creation desc";
+            $res = mysqli_query($con,$rq);
+            $row = mysqli_fetch_assoc($res);
+            $rq = " INSERT INTO groupe_historique VALUES('$pseudo','".$row['id']."')";
+            mysqli_query($con,$rq);
+        }
     }
 
-    // get groupe id by prof username
-    function get_grpId_byProf($pseudo){
-        global $con;
-        $rq = "SELECT id FROM groupe WHERE pseudo_prof = '$pseudo'";
-        $res = mysqli_query($con,$rq);
-        $row = mysqli_fetch_assoc($res);
-        return $row['id'];
-    }
-
-    // get groupe id by student username
-    function get_grpId_byStud($pseudo){
-        global $con;
-        $rq = "SELECT groupe_id FROM etudient WHERE pseudo_etu = '$pseudo'";
-        $res = mysqli_query($con,$rq);
-        $row = mysqli_fetch_assoc($res);
-        return $row['groupe_id'];
-    }
 ?>

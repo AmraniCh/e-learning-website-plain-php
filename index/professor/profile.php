@@ -73,7 +73,7 @@
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Actual groupe</label>
-                                                    <input type="text" class="form-control" disabled placeholder="N/A" value="<?php ?>">
+                                                    <input id="actual_groupe" type="text" class="form-control" disabled value="<?php echo $_SESSION['grp_id'] ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">

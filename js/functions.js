@@ -1,19 +1,21 @@
-//get value of cookie by his name
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
+/*********************************
+    START COOKIES FUNCTIONS
+**********************************/
+
+function setCookie(key, value) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
 }
+
+function getCookie(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+}
+
+/*********************************
+    END COOKIES FUNCTIONS
+**********************************/
 
 /*********************************
      START VALIDATION FUNCTIONS
@@ -37,8 +39,6 @@ function allLettersWithSpace(name)
     else
         return false;
 }
-
-
 
 // check if email is valid
 function validEmail(email)
@@ -128,6 +128,7 @@ function subtruct_title(){
     }
 }
 
+// download animation control
 function downloadAnimation(e){
     // buttons list
     var btns = $(".btn-download");
@@ -149,11 +150,13 @@ function downloadAnimation(e){
     }, 5000);
 }
 
+// add groupe notification
 function load_add_groupe_notification() {
     $("#file_container").css("display", "none");
     $("#container-fluid").append("<div class='msg-container container-fluid text-center'><div class='msg-container'><div id='error-msg'><h3>no files founded Please Create A New Group</h3></div><div id='not-found-image' style='text-align: center;text-align: -webkit-center;text-align: -moz-center;text-align: -ms-center;margin-bottom:1%'><img class='img-responsive' src='../assets/icons/exclamation-mark.png'></div><div id='btn-group'><a href='#'><button type='button' id='btn-load-groupe-form' class='btn btn-primary'>Create groupe</button></a></div></div></div>");
 }
 
+// add groupe div
 function load_add_groupe_form() {
     $("#container-fluid").html("<div class='grp-add-container col-12 col-sm-12 col-md-6'><div class='grp-add-second-container container-fluid text-center'><div class='img-add-group'><img class='img-responsive' style='width:45%' src='../assets/icons/group.png'></div><div class='form-group'><label for='grp-name'>Group name : </label><input type='text' id='grp-name' class='form-control'></div><div class='form-group'><label for='grp-name'>Description : </label><input type='text' id='grp-desc' class='form-control'></div><div class='add-group from-group'><label for='file_image'>Group picture</label><input type='file' id='file_image' class='btn btn-primaty' style=''></div><div class='form-group'><button type='button' id='btn-add-group' class='btn btn-primary'>Add group</button></div></div></div></div>");
 }

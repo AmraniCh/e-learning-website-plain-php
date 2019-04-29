@@ -32,7 +32,7 @@
                 <div class="profile-img" id="profile-img" style="background-image: url(<?php echo $image_dir.$imageName?>)"></div>
                 <div class="profile-info">
                     <div class="username"><i class="fa fa-user" aria-hidden="true"></i><span class="username-text"><?php echo $pseudo ?></span></div>
-                    <div class="groupe"><i class="fa fa-users" aria-hidden="true"></i><span class="groupe-text"></span></div>
+                    <div class="groupe"><i class="fa fa-users" aria-hidden="true"></i><span class="groupe-text"><?php echo $_SESSION['grp_id'] ?></span></div>
                 </div>
             </div>
             <ul class="nav">

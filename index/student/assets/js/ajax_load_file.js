@@ -37,11 +37,6 @@ $(document).ready(function(){
             });
             $.ajax({
                 url:"includes/refresh_courses_count.php",
-                method:"POST",
-                data: form_data,
-                contentType: false,
-                cache: false,
-                processData: false,
                 beforeSend:function(){
                     $('.courses_count').html("<img style='' class='avatar border-gray' src='assets/icons/Rolling-1s-20px.svg' alt='...'/>");
                 },   

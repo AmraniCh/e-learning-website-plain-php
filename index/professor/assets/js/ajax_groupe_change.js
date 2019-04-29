@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
     $("#list-groupe").on("change",function(){
                 $.urlParam = function(name){
             var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -11,5 +11,12 @@ $(document).ready(function(){
         
         var group_id = $("#list-groupe option:selected").val();
         alert(group_id);
+    $("#list-groupe option:selected").html("ddd");
+        
+        $(document).on("change","#list-groupe",function(){
+            setCookie("groupe", group_id);
+            
+     
+        });
     });
-});
+});*/
