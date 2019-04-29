@@ -100,7 +100,7 @@ function show_msg(id_small_error, msg, input_selector)
 // hide error_msg
 function hide_msg(element_id, input_color)
 {
-    $("#" + element_id).hide(); 
+    $("#" + element_id).hide();
     input_color.css("background-color","#fff");
 }
 
@@ -150,7 +150,11 @@ function downloadAnimation(e){
     }, 5000);
 }
 
+<<<<<<< HEAD
 // add groupe notification
+=======
+//there is a mistake here , near -ms-center , try to fix it
+>>>>>>> 386d0ce35a492fdcff0e48e1e8193b8702deaa17
 function load_add_groupe_notification() {
     $("#file_container").css("display", "none");
     $("#container-fluid").append("<div class='msg-container container-fluid text-center'><div class='msg-container'><div id='error-msg'><h3>no files founded Please Create A New Group</h3></div><div id='not-found-image' style='text-align: center;text-align: -webkit-center;text-align: -moz-center;text-align: -ms-center;margin-bottom:1%'><img class='img-responsive' src='../assets/icons/exclamation-mark.png'></div><div id='btn-group'><a href='#'><button type='button' id='btn-load-groupe-form' class='btn btn-primary'>Create groupe</button></a></div></div></div>");

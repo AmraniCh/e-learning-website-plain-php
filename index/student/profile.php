@@ -70,7 +70,7 @@
                                     <h4 class="title">Edit Profile</h4>
                                 </div>
                                 <div class="content">
-                                    <form action="profile.php" method="post">
+                                    <form action="profile.php" id="profile" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group">
@@ -413,7 +413,7 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" name="update" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                        <button type="submit" name="update" id="update" class="btn btn-info btn-fill pull-right">Update Profile</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>

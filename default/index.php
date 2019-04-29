@@ -294,7 +294,7 @@
             </div>
             <div class="item-feature__text">
                 <h3 class="item-title">Group Chat</h3>
-                <p>as you share beautiful moment with your friend on school , it's going to be continued here , and you can ask them and help each other to solve hard exercises, and build project.
+                <p>On our website you are able to communicate with your classmates, help each other and brainstorm all exercises that you must solve for classes.
                 </p>
             </div>
         </div>
@@ -305,7 +305,7 @@
             </div>
             <div class="item-feature__text">
                 <h3 class="item-title">administrator</h3>
-                <p>the admin of school has too so strong tools to follow the work of teachers and keep watching the situation on school.
+                <p>The admin of school has very strong ability to follow the work of other students and teachers, e.g. by checking school's statistics.
                 </p>
             </div>
         </div>
@@ -327,7 +327,7 @@
                 <div class="testimonials__slide">
                     <img src="images/avatars/user-03.jpg" alt="Author image" class="testimonials__avatar">
 
-                    <p>Since i start using this website , it becomes so easy for me to keep following the progress of my student.</p>
+                    <p>Since I've started using the website, it became so easy for me to follow the progress of my students</p>
 
                     <div class="testimonials__author">
                         <span class="testimonials__name">Naruto Uzumaki</span>
@@ -338,7 +338,7 @@
                 <div class="testimonials__slide">
                     <img src="images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">
 
-                    <p>since now i don't need stay waiting until classroom to ask my teacher about hard things , i can just use this website , and have answer soon.</p>
+                    <p>I don't need to wait until the beginning of classes to ask my teacher for help anymore, I can just use this website!</p>
 
                     <div class="testimonials__author">
                         <span class="testimonials__name">Sasuke Uchiha</span>
@@ -349,7 +349,7 @@
                 <div class="testimonials__slide">
                     <img src="images/avatars/user-01.jpg" alt="Author image" class="testimonials__avatar">
 
-                    <p>all what i need to revise and prepere for my exams i found it made by my teacher here.</p>
+                    <p>All what I need to revise and prepare for my exams I found it here made by my teacher.</p>
 
                     <div class="testimonials__author">
                         <span class="testimonials__name">Shikamaru Nara</span>
@@ -376,7 +376,7 @@
                 Our website <br> is complety free.
             </h1>
             <p class="lead">
-                to start is so simple , you have to choice who you are.
+                in order to start, choose who you are
             </p>
         </div>
     </div> <!-- end section-header -->
@@ -442,7 +442,7 @@
                 Join Our Community of 100,000+ administrators.
             </h1>
             <p class="lead">
-                a desktop software bring to you all what you need , to keep watching teacher work , and student feedback.
+                Our desktop software has everything you need to follow teachers' and students' progress.
             </p>
         </div>
     </div> <!-- end section-header -->
