@@ -4,7 +4,6 @@
     <list default="true" id="7b9deebb-6ebf-4f21-a090-29dc268ccdc1" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/index/js/validation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/default/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/index/includes/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/professor/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/index/professor/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index/student/assets/js/validation.js" beforeDir="false" />
@@ -50,6 +49,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index/js/validation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/253e3e7a-6af9-4cda-abf1-a18b1de170ee/console.sql">
           <provider selected="true" editor-type-id="text-editor">
@@ -59,11 +80,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/default/index.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index/student/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1504">
-              <caret line="444" column="60" selection-start-line="444" selection-start-column="60" selection-end-line="444" selection-end-column="60" />
+            <state relative-caret-position="458">
+              <caret line="109" column="82" selection-start-line="109" selection-start-column="67" selection-end-line="109" selection-end-column="82" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index/professor/profile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="70" column="101" selection-start-line="70" selection-start-column="101" selection-end-line="70" selection-end-column="101" />
             </state>
           </provider>
         </entry>
@@ -81,7 +111,6 @@
       <find>hidden</find>
       <find>form</find>
       <find>country</find>
-      <find>admin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,6 +119,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/default/index.php" />
         <option value="$PROJECT_DIR$/js/validation.js" />
         <option value="$PROJECT_DIR$/index/student/assets/js/validation.js" />
         <option value="$PROJECT_DIR$/index/student/home.php" />
@@ -99,7 +129,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/253e3e7a-6af9-4cda-abf1-a18b1de170ee/console.sql" />
         <option value="$PROJECT_DIR$/index/professor/profile.php" />
         <option value="$PROJECT_DIR$/index/js/validation.js" />
-        <option value="$PROJECT_DIR$/default/index.php" />
       </list>
     </option>
   </component>
@@ -125,7 +154,7 @@
             <path>
               <item name="demosite" type="b2602c69:ProjectViewProjectNode" />
               <item name="demosite" type="462c0819:PsiDirectoryNode" />
-              <item name="default" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -175,19 +204,18 @@
       <workItem from="1556150640337" duration="4396000" />
       <workItem from="1556156137093" duration="4851000" />
       <workItem from="1556161184015" duration="72000" />
-      <workItem from="1556434624524" duration="11073000" />
-      <workItem from="1556458100520" duration="426000" />
+      <workItem from="1556434624524" duration="10806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31872000" />
+    <option name="totallyTimeSpent" value="31179000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16747573" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16504854" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -213,6 +241,13 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/default/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="958">
+          <caret line="572" column="7" selection-start-line="572" selection-start-column="7" selection-end-line="572" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="785">
@@ -277,24 +312,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index/js/validation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index/student/profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
+        <state relative-caret-position="458">
           <caret line="109" column="82" selection-start-line="109" selection-start-column="67" selection-end-line="109" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index/professor/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="101" selection-start-line="70" selection-start-column="101" selection-end-line="70" selection-end-column="101" />
         </state>
       </provider>
     </entry>
@@ -316,10 +337,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/default/index.php">
+    <entry file="file://$PROJECT_DIR$/index/professor/profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1504">
-          <caret line="444" column="60" selection-start-line="444" selection-start-column="60" selection-end-line="444" selection-end-column="60" />
+        <state relative-caret-position="342">
+          <caret line="70" column="101" selection-start-line="70" selection-start-column="101" selection-end-line="70" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index/js/validation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
         </state>
       </provider>
     </entry>
