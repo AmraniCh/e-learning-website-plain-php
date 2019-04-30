@@ -35,7 +35,6 @@
                <div class="top-panel row">
                    <span class="courses_count" style="line-height:40px;font-size:x-large;">
                    <?php 
-
                         $res = mysqli_query($con,"select count(nom) from fichier WHERE groupe_id = '$grp_id' ");
                         $row = mysqli_fetch_assoc($res);
                         echo $row['count(nom)']; 

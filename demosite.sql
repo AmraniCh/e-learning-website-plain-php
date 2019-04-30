@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 22 أبريل 2019 الساعة 21:41
+-- Generation Time: 30 أبريل 2019 الساعة 07:04
 -- إصدار الخادم: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `etudient` (
 --
 
 INSERT INTO `etudient` (`pseudo_etu`, `email_etu`, `prenom_etu`, `nom_etu`, `pass`, `adresse_etu`, `pays_etu`, `ville_etu`, `tele_etu`, `sexe_etu`, `propos_etu`, `image_etu`, `reponse`, `question`, `groupe_id`) VALUES
-('chou500', 'chakir_alhoceima_rifi8@hotmail.fr', 'EL AMRANI', '051487088', 'elamrani00', 'ARD DAOULA RUE 48 N 3, 90002', 'Morocco', 'Tangier', '$phone', 'Male', 'elamrani', 'background_close-up_fence_86066_1920x1080.jpg', 'aaa', '', 1);
+('chou500', 'chakir_alhoceima_rifi8@hotmail.fr', '44', 'fff', 'elamrani00', 'dd', 'Maldives', 'Tangier', '$phone', 'Male', '', 'background_close-up_fence_86066_1920x1080.jpg', 'aaa', '', 1);
 
 -- --------------------------------------------------------
 
@@ -78,9 +78,10 @@ CREATE TABLE IF NOT EXISTS `fichier` (
 --
 
 INSERT INTO `fichier` (`nom`, `type`, `fich_date`, `groupe_id`) VALUES
-('glare_background_blur_dark_63553_1920x1080.jpg', 'autre', '2019-04-22 21:23:48', 1),
-('autumn_macro_red_foliage_background_84016_1920x1080.jpg', 'autre', '2019-04-21 20:27:17', 1),
-('images.jpg', 'autre', '2019-04-22 21:23:38', 1);
+('background_bumps_light_86951_1920x1080.jpg', 'autre', '2019-04-29 18:53:08', 1),
+('glare_background_blur_dark_63553_1920x1080.jpg', 'autre', '2019-04-29 18:53:06', 1),
+('line_multi-colored_black_background_85540_1920x1080.jpg', 'autre', '2019-04-29 18:53:04', 1),
+('light_spots_background_texture_surface_50503_1920x1080.jpg', 'autre', '2019-04-29 18:53:02', 1);
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,31 @@ CREATE TABLE IF NOT EXISTS `groupe` (
 
 INSERT INTO `groupe` (`id`, `nom`, `description`, `image_groupe`, `date_creation`, `pseudo_prof`) VALUES
 (1, 'TDI204', NULL, NULL, '2019-04-21 22:59:01', 'prof500'),
-(10, 'TRI202', NULL, NULL, '2019-04-21 22:59:01', 'prof500');
+(10, 'TRI202', NULL, NULL, '2019-04-21 22:59:01', 'prof500'),
+(99, 'dddddddd', 'ddddddddddd', NULL, '2019-04-28 03:31:04', 'prof500'),
+(77, 'abcd', NULL, NULL, '2019-04-28 03:40:19', '');
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `groupe_historique`
+--
+
+DROP TABLE IF EXISTS `groupe_historique`;
+CREATE TABLE IF NOT EXISTS `groupe_historique` (
+  `pseudo_prof` varchar(255) NOT NULL,
+  `grp_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pseudo_prof`),
+  KEY `grp_id` (`grp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `groupe_historique`
+--
+
+INSERT INTO `groupe_historique` (`pseudo_prof`, `grp_id`) VALUES
+('prof500', 99),
+('chou500', 77);
 
 -- --------------------------------------------------------
 
@@ -139,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `professeur` (
 --
 
 INSERT INTO `professeur` (`pseudo_prof`, `email_prof`, `prenom_prof`, `nom_prof`, `pass`, `adresse_prof`, `pays_prof`, `ville_prof`, `tele_prof`, `sexe_prof`, `propos_prof`, `image_prof`, `reponse`, `question`) VALUES
-('prof500', 'elamrani.sv.laza@gmail.com', 'prof', 'prof', 'california744', 'ssdq', 'qsd', 'qsd', 'qsd', 'Male', 'qsd', 'user-male.png', 'aaa', '');
+('prof500', 'elamrani.sv.laza@gmail.com', 'prof', 'prof', 'california744', 'ssdq', 'qsd', 'qsd', 'qsd', 'Male', 'qsd', 'background_bumps_light_86951_1920x1080.jpg', 'aaa', '');
 
 -- --------------------------------------------------------
 

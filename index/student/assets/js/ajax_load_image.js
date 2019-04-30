@@ -28,7 +28,7 @@ $(document).ready(function(){
                 cache: false,
                 processData: false,
                 beforeSend:function(){
-                    $('#uploaded_image').html("<img class='avatar border-gray' src='assets/icons/Rolling-1s-20px.svg' alt='...'/>");
+                    $('#uploaded_image').html("<img class='avatar border-gray' src='../assets/icons/Rolling-1s-20px.svg' alt='...'/>");
                 },   
                 success:function(data){
                     $('#uploaded_image').html(data);
@@ -36,13 +36,9 @@ $(document).ready(function(){
             });
             $.ajax({
                 url:"includes/upload_left_image_profile.php",
-                method:"POST",
-                data: form_data,
-                contentType: false,
-                cache: false,
-                processData: false,
+                data: form_data,          
                 beforeSend:function(){
-                    $('#profile-img').replaceWith("<div id='profile-img' class='profile-img' id='profile-img' style='background-image: url(assets/icons/Rolling-1s-20px.svg)'></div>");
+                    $('#profile-img').replaceWith("<div id='profile-img' class='profile-img' id='profile-img' style='background-image: url(../assets/icons/Rolling-1s-20px.svg)'></div>");
                 },   
                 success:function(data){
                     $('#profile-img').replaceWith(data);

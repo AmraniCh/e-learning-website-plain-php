@@ -26,21 +26,24 @@ $(document).ready(function(){
                 method:"POST",
                 data: form_data,
                 contentType: false,
-                cache: false,
                 processData: false,
                 beforeSend:function(){
-                    $('#file_container').prepend("<div class='loading col-xs-6 col-sm-4 col-md-2 col-lg-3 text-center' style='height:auto;margin-top:20px;padding:0'><img style='width:50%;' class='avatar border-gray' src='assets/icons/Rolling-1s-20px.svg' alt='...'/></div>");
+                    $('#file_container').prepend("<div class='loading col-xs-6 col-sm-4 col-md-2 col-lg-3 text-center' style='height:auto;margin-top:20px;padding:0'><img style='width:50%;' class='avatar border-gray' src='../assets/icons/Rolling-1s-20px.svg' alt='...'/></div>");
                 },   
                 success:function(data){
                     $('#file_container').html(data);  
                 }
             });
+            // refersh courses counts
             $.ajax({
-                url:"includes/refresh_courses_count.php",
-                beforeSend:function(){
-                    $('.courses_count').html("<img style='' class='avatar border-gray' src='assets/icons/Rolling-1s-20px.svg' alt='...'/>");
-                },   
-                success:function(data){
+                url: "includes/refresh_courses_count.php",
+                method:"POST",
+                data: form_data,
+                processData: false,
+                beforeSend: function () {
+                    $('.courses_count').html("<img style='' class='avatar border-gray' src='../assets/icons/Rolling-1s-20px.svg' alt='...'/>");
+                },
+                success: function (data) {
                     $('.courses_count').html(data + " Courses");
                 }
             });
