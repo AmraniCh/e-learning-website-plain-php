@@ -307,7 +307,7 @@
     function hide_controls(){
         return $script = '<script>
             $(document).ready(function(){
-                $(".file-controls, #list-groupe-li").hide();
+                $(".file-controls, #list-groupe-li").show();
             });
         </script>';
     }

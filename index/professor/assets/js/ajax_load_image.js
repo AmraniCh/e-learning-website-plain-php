@@ -39,7 +39,6 @@ $(document).ready(function(){
                 method:"POST",
                 data: form_data,
                 contentType: false,
-                cache: false,
                 processData: false,
                 beforeSend:function(){
                     $('#profile-img').replaceWith("<div id='profile-img' class='profile-img' id='profile-img' style='background-image: url(../assets/icons/Rolling-1s-20px.svg)'></div>");

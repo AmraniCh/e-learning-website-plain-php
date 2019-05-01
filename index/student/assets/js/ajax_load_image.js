@@ -25,7 +25,6 @@ $(document).ready(function(){
                 method:"POST",
                 data: form_data,
                 contentType: false,
-                cache: false,
                 processData: false,
                 beforeSend:function(){
                     $('#uploaded_image').html("<img class='avatar border-gray' src='../assets/icons/Rolling-1s-20px.svg' alt='...'/>");
@@ -36,7 +35,10 @@ $(document).ready(function(){
             });
             $.ajax({
                 url:"includes/upload_left_image_profile.php",
-                data: form_data,          
+                method:"POST",
+                data: form_data,
+                contentType: false,
+                processData: false,      
                 beforeSend:function(){
                     $('#profile-img').replaceWith("<div id='profile-img' class='profile-img' id='profile-img' style='background-image: url(../assets/icons/Rolling-1s-20px.svg)'></div>");
                 },   
