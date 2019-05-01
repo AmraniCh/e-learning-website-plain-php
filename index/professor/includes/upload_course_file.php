@@ -15,7 +15,6 @@
         $grp_id = get_grpId_byProf($pseudo);
         // instert file
         insert_file_query($grp_id, $file_name, strtolower(get_pageName())); // groupe id, file name, actual page for type file
-
         
         // ajax data -- load courses 
         $current_page = get_pageName();

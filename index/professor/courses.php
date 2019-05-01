@@ -47,27 +47,6 @@
                         </div>
                     </div>
                     <div class="line"></div>
-                    <?php 
-                        // get group count
-                        $grp_count = get_group_count($pseudo);
-                        // if count = 0 => show notification no groupe founded
-                        if($grp_count == 0)
-                            echo '<script>
-                            load_add_groupe_notification();
-                            </script>
-                            ';
-                        else
-                        {
-                            $grp_id = get_grpId_byProf($pseudo);
-                            $current_page = get_pageName();
-                            $files = load_coures_query($grp_id,$current_page);
-                            if($files[0] != null){
-                                foreach ($files as $file) {
-                                    echo $file;
-                                }
-                            }
-                        }
-                    ?>
                     <script>
                         // click add groupe => load group form for add group
                         $(document).ready(function() {
@@ -88,6 +67,27 @@
                                 });
                             });
                         </script>
+                        <?php 
+                        // get group count
+                        $grp_count = get_group_count($pseudo);
+                        // if count = 0 => show notification no groupe founded
+                        if($grp_count == 0)
+                            echo '<script>
+                            load_add_groupe_notification();
+                            </script>
+                            ';
+                        else
+                        {
+                            $grp_id = get_grpId_byProf($pseudo);
+                            $current_page = get_pageName();
+                            $files = load_coures_query($grp_id,$current_page);
+                            if($files[0] != null){
+                                foreach ($files as $file) {
+                                    echo $file;
+                                }
+                            }
+                        }
+                    ?>
                     </div>
             </div>
         </div>
