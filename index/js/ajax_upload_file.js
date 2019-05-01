@@ -1,6 +1,6 @@
 $(document).ready(function(){
+    
     $(document).on('change', '#file_course', function(){
-        
         var name = document.getElementById("file_course").files[0].name;
         var form_data = new FormData();
         var ext = name.split('.').pop().toLowerCase();
@@ -20,9 +20,21 @@ $(document).ready(function(){
         }
         else
         {
+            // get type file from current page using function
+            var page_name = get_page_name(window.location.pathname);
+            switch(page_name){
+                case "courses.php":
+                    type = "course";break;
+                case "exams.php":
+                    type = "exercice";break;
+                default: type = "autre";
+            }
+            
+            // formdata parameters
             form_data.append("file", document.getElementById('file_course').files[0]);
+            form_data.append("type", type);
             $.ajax({
-                url:"includes/upload_course_file.php",
+                url:"../includes/upload_file.php",
                 method:"POST",
                 data: form_data,
                 contentType: false,
@@ -36,7 +48,7 @@ $(document).ready(function(){
             });
             // refersh courses counts
             $.ajax({
-                url: "includes/refresh_courses_count.php",
+                url: "../includes/files_count.php",
                 method:"POST",
                 data: form_data,
                 contentType: false,

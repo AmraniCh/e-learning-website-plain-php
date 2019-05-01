@@ -28,13 +28,13 @@
             <div class="content">
                 <div id="container-fluid" class="container-fluid">
                     <div id="top-panel" class="top-panel row">
-                        <span class="courses_count" style="line-height:40px;font-size:x-large;"><?php echo get_files_count($current_page = get_pageName(), $grp_id); ?> Courses</span>
+                        <span class="courses_count" style="line-height:40px;font-size:x-large;"><?php echo get_files_count($current_page = get_pageName(), $grp_id); ?> Exams</span>
                         <div class="file-controls" style="display:none;">
                             <button type="button" id="delete-button" class="btn btn-primary">
                                 Delete All
                             </button>
                             <label id="file-button" class="btn btn-default btn-file">
-                                Upload new course <input type="file" id="file_course" style="display: none;">
+                                Upload new exam <input type="file" id="file_course" style="display: none;">
                             </label>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         {
                             $grp_id = get_grpId_byProf($pseudo);
                             $current_page = get_pageName();
-                            $files = load_coures_query($grp_id,'course',$current_page);
+                            $files = load_coures_query($grp_id,'exercice',$current_page);
                             if($files[0] != null){
                                 foreach ($files as $file) {
                                     echo $file;

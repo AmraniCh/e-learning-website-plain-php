@@ -21,12 +21,13 @@
     
     <!-- ajax  -->
     <script src="assets/js/ajax_load_image.js"></script>
-    <script src="assets/js/ajax_load_file.js"></script>
-    <script src="assets/js/ajax_delete_file.js"></script>
-    <script src="assets/js/ajax_delete_all.js"></script>
     <script src="assets/js/ajax_create_groupe"></script>
     <script src="assets/js/ajax_change_groupe"></script>
     <script src="../../js/ajax_logout.js"></script>
+    <script src="../js/ajax_upload_file.js"></script>
+    <script src="../js/ajax_delete_file.js"></script>
+    <script src="../js/ajax_delete_all.js"></script>
+    
     <!-- substruct file titles  -->
     <script>subtruct_title()</script>
 

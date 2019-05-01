@@ -37,16 +37,25 @@
                 </div>
             </div>
             <ul class="nav">
-                <li class="active">
+                <?php 
+                    $page_name = get_pageName();    
+                ?>
+                <li <?php if($page_name == 'Home') echo 'class="active"'; ?> >
                     <a href="home.php?user=<?php echo $pseudo ?>">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <p>Home</p>
                     </a>
                 </li>
-                <li class="active">
+                <li  <?php if($page_name == 'Courses') echo 'class="active"'; ?> >
                     <a href="courses.php?user=<?php echo $pseudo ?>">
                         <i aria-hidden="true"><img src="../assets/icons/open-book.png"></i>
                         <p>Courses</p>
+                    </a>
+                </li>
+                <li  <?php if($page_name == 'Exams') echo 'class="active"'; ?> >
+                    <a href="exams.php?user=<?php echo $pseudo ?>">
+                        <i aria-hidden="true"><img src="../assets/icons/report.png"></i>
+                        <p>Exams</p>
                     </a>
                 </li>
             </ul>
@@ -58,11 +67,11 @@
     	</div>
     </div>
     <?php 
-                        }
-                    }
-                    else 
-                    header ('location: ../login.php');
                 }
-                else
-                    redirect_url('home.php');
+            }
+            else 
+            header ('location: ../login.php');
+        }
+        else
+            redirect_url('home.php');
         ?>

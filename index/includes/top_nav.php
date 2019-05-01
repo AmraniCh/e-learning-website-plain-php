@@ -23,13 +23,15 @@
                     <a href="<?php $page = lcfirst(get_pageName()); echo ''.$page.'.php?user='.$pseudo.'' ?>" class="dropdown-toggle" data-toggle="dropdown">
                        <?php
                         $actual_pageName = lcfirst(get_pageName());
-                        switch($actual_pageName){                          
+                        switch($actual_pageName){         
                             case 'courses':
                                 echo "<i class='fas fa-book-open' aria-hidden='true'></i>"; break;
+                            case 'exams':
+                                echo "<i class='fas fa-file-alt' aria-hidden='true'></i>"; break;
                             case 'profile':
                                 echo "<i class='fas fa-user-circle' aria-hidden='true'></i>"; break;
                             default: echo "<i class='fa fa-home' aria-hidden='true'></i>";
-                        }  
+                        } 
                         ?>
                     </a>
                 </li>
@@ -61,9 +63,7 @@
                                         }
                                         else
                                              echo '<option value='.$row['id'].'>'.$row['nom'].'</option>'; 
-                                    }   
-                                    
-                                    
+                                    }               
                                 }
                                 ?>
                             </select>

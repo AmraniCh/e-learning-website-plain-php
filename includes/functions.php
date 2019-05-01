@@ -145,15 +145,9 @@
     }
 
     // insert file query
-    function insert_file_query($grp_id, $file_name, $actual_page){
+    function insert_file_query($grp_id, $file_name, $file_type){
         global $con;
-        switch($actual_page){
-            case ($actual_page == 'courses'):
-                $rq = "INSERT INTO fichier VALUES('$file_name','Leçon',now(),'$grp_id')";break;
-            case ($actual_page == 'exercices'):
-                $rq = "INSERT INTO fichier VALUES('$file_name','exercice',now(),'$grp_id')";break;
-            default: $rq = "INSERT INTO fichier VALUES('$file_name','autre',now(),'$grp_id')";   
-        }
+        $rq = "INSERT INTO fichier VALUES('$file_name','$file_type',now(),'$grp_id')";
         return mysqli_query($con,$rq);
     }
 
@@ -190,10 +184,10 @@
     }
 
     // load courses
-    function load_coures_query($grp_id,$current_page){
+    function load_coures_query($grp_id,$file_type,$current_page){
         global $con;
         $courses = array();
-        $rq = "SELECT * FROM fichier WHERE groupe_id = '$grp_id' ORDER BY fich_date DESC";
+        $rq = "SELECT * FROM fichier WHERE type = '$file_type' AND groupe_id = '$grp_id' ORDER BY fich_date DESC";
         $res = mysqli_query($con,$rq);
         $i = 0;
         $courses[] = array();
@@ -234,7 +228,7 @@
                 </label>
             </div>          
             <div class="desc" style="padding:5px;color:#fff;background-color:#333;bottom:0;opacity:.9;position:absolute;width:100%"><span class="title">'.$file_name.'</span></div>
-            <div class="download-container text-center" style="height:0"><a href="cloud/'.$file_name.'" download><button type="button" class="btn-download btn btn-default" style="background-color:#333;color:#fff;z-index:999;margin-top:45px;">DOWNLOAD</button></a>
+            <div class="download-container text-center" style="height:0"><a href="../cloud/'.$file_name.'" download><button type="button" class="btn-download btn btn-default" style="background-color:#333;color:#fff;z-index:999;margin-top:45px;">DOWNLOAD</button></a>
 		    </div>
             </div>';
             $i= $i + 1;
@@ -259,13 +253,9 @@
         $icons = array();
         // get file extension for generate icon
         $file_extension = get_file_extension($file_name);
-        if($current_page != 'Delete_all_coursess'){
-            // set directory from page name
-            if($current_page == 'Upload_course_file' || $current_page == 'Delete_course_file') // upload_course_file - delete_course_file
-                $dir = '../../assets/icons/icons_files/';  
-            if($current_page == 'Courses')
-                $dir = '../assets/icons/icons_files/'; // courses.php -> load courses function
+        if($current_page != 'Delete_all_files'){
 
+            $dir = '../assets/icons/icons_files/';
             // get array of icons extensions
             foreach (scandir($dir) as $icon) {
                 if ('.' === $icon) continue;
@@ -284,6 +274,7 @@
                 if($icon_name == $file_extension)
                     $icon_file_dir = '../assets/icons/icons_files/'.$icon_name.'.png'; 
             }
+            
         }
         // return icon file directory
         return $icon_file_dir;    
@@ -307,7 +298,7 @@
     function hide_controls(){
         return $script = '<script>
             $(document).ready(function(){
-                $(".file-controls, #list-groupe-li").show();
+                $(".file-controls, #list-groupe-li, .delete_file").show();
             });
         </script>';
     }
@@ -319,5 +310,18 @@
                 $(".file-controls, #list-groupe-li").show();
             });
         </script>';
+    }
+
+    // get count count
+    function get_files_count($current_page, $grp_id){
+        global $con;
+        if($current_page == 'Courses')
+            $type = "course";
+        if($current_page == 'Exams')
+            $type = "exercice";
+        $res = mysqli_query($con,"select count(nom) from fichier WHERE type = '$type' AND groupe_id = '$grp_id' ");
+        $row = mysqli_fetch_assoc($res);
+        return $row['count(nom)']; 
+    
     }
 ?>

@@ -160,3 +160,8 @@ function load_add_groupe_notification() {
 function load_add_groupe_form() {
     $("#container-fluid").html("<div class='grp-add-container col-12 col-sm-12 col-md-6'><div class='grp-add-second-container container-fluid text-center'><div class='img-add-group'><img class='img-responsive' style='width:45%' src='../assets/icons/group.png'></div><div class='form-group'><label for='grp-name'>Group name : </label><input type='text' id='grp-name' class='form-control'></div><div class='form-group'><label for='grp-name'>Description : </label><input type='text' id='grp-desc' class='form-control'></div><div class='add-group from-group'><label for='file_image'>Group picture</label><input type='file' id='file_image' class='btn btn-primaty' style=''></div><div class='form-group'><button type='button' id='btn-add-group' class='btn btn-primary'>Add group</button></div></div></div></div>");
 }
+
+// get page name -> exemple : test.php
+function get_page_name(path){
+     return path.substring(path.lastIndexOf('/') + 1);
+}
