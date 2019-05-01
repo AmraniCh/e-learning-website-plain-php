@@ -20,7 +20,7 @@
                 $grp_id = $row['groupe_id'];
     ?>
     <div class="wrapper">
-      
+       
         <!-- include sidebar --> 
         <?php include 'includes/sidebar.php'; ?>
 
@@ -39,7 +39,7 @@
                         $row = mysqli_fetch_assoc($res);
                         echo $row['count(nom)']; 
                     ?> Courses</span>
-                   <div class="upload">
+                   <div class="file-controls" style="display:none;">
                       <button type="button" id="delete-button" class="btn btn-primary">
                             Delete All
                         </button>

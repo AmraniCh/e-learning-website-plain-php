@@ -264,7 +264,7 @@
             if($current_page == 'Upload_course_file' || $current_page == 'Delete_course_file') // upload_course_file - delete_course_file
                 $dir = '../../assets/icons/icons_files/';  
             if($current_page == 'Courses')
-                $dir = '../assets/icons/icons_files/'; // courses.php 
+                $dir = '../assets/icons/icons_files/'; // courses.php -> load courses function
 
             // get array of icons extensions
             foreach (scandir($dir) as $icon) {
@@ -303,4 +303,21 @@
         }
     }
 
+    // hide controls (student)
+    function hide_controls(){
+        return $script = '<script>
+            $(document).ready(function(){
+                $(".file-controls, #list-groupe-li").hide();
+            });
+        </script>';
+    }
+
+    // show controls (prof)
+    function show_controls(){
+        return $script = '<script>
+            $(document).ready(function(){
+                $(".file-controls, #list-groupe-li").show();
+            });
+        </script>';
+    }
 ?>

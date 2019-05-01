@@ -36,7 +36,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                
-                <li>
+                <li id="list-groupe-li" style="display:none;">
                     <a style="margin:2px 0 0 0">
                         <form id="select_groupe_form" action="includes/change_groupe.php" method="post">
                             <select id="list-groupe" name="groupe" class="form-control">

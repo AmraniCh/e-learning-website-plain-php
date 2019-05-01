@@ -10,16 +10,15 @@
             $pseudo = $_GET['user'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
-                $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
+                $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
                 $count_student = mysqli_num_rows($res);
                 $row = mysqli_fetch_assoc($res);
                 // get image name
-                $imageName = $row['image_etu'];
-                // get groupe id
-                $grp_id = $row['groupe_id'];
+                $imageName = $row['image_prof'];
+                // get groupe id using function
+                 $grp_id = get_grpId_byProf($row['pseudo_prof']);
     ?>
     <div class="wrapper">
-      
         <!-- include sidebar --> 
         <?php include 'includes/sidebar.php'; ?>
 
@@ -38,7 +37,7 @@
                             $row = mysqli_fetch_assoc($res);
                             echo $row['count(nom)']; 
                         ?> Courses</span>
-                        <div class="upload">
+                        <div class="file-controls" style="display:none;">
                             <button type="button" id="delete-button" class="btn btn-primary">
                                 Delete All
                             </button>
@@ -64,7 +63,7 @@
                             $files = load_coures_query($grp_id,$current_page);
                             if($files[0] != null){
                                 foreach ($files as $file) {
-                                echo $file;
+                                    echo $file;
                                 }
                             }
                         }
