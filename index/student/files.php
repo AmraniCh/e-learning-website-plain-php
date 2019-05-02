@@ -27,7 +27,7 @@
         <div class="content">
             <div class="container-fluid">
                <div class="top-panel row">
-                   <span class="courses_count" style="line-height:40px;font-size:x-large;"><?php echo get_files_count($current_page = get_pageName(), $grp_id); ?> Courses</span>
+                   <span class="courses_count" style="line-height:40px;font-size:x-large;"><?php echo get_files_count($current_page = get_pageName(), $grp_id); ?> Files</span>
                    <div class="file-controls" style="display:none;">
                       <button type="button" id="delete-button" class="btn btn-primary">
                             Delete All
@@ -50,7 +50,7 @@
                     <!-- load courses -->
                    <?php
                         $current_page = get_pageName();
-                        $files = load_coures_query($grp_id,'course',$current_page);
+                        $files = load_coures_query($grp_id,'autre',$current_page);
                         if($files[0] != null){
                             foreach ($files as $file) {
                                echo $file;

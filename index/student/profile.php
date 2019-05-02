@@ -28,8 +28,6 @@
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
                 $row = select_index_query('*','etudient','pseudo_etu',$pseudo);
-                // get groupe name by id
-                $grp_name = get_groupeName($row['groupe_id']);
                 // get iinfo
                 $imageName = $row['image_etu'];
                 $username = $row['pseudo_etu'];
