@@ -10,14 +10,13 @@
             $pseudo = $_GET['user'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
-                $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
-                $row = mysqli_fetch_assoc($res);
+                $row = select_index_query('*','professeur','pseudo_prof',$pseudo);
                 // get groupe id using function
                 $grp_id = get_grpId_byProf($row['pseudo_prof']);
     ?>
     <div class="wrapper">
         <!-- include sidebar --> 
-        <?php include 'includes/sidebar.php'; ?>
+        <?php include '../includes/sidebar.php'; ?>
 
         <div class="main-panel">
 

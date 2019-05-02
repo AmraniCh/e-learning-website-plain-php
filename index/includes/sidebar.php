@@ -2,19 +2,30 @@
         if(isset($_GET['user']))
         {
             $pseudo = $_GET['user'];
+            $plan = $_SESSION['plan'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
                 image_query();
-                // select
-                $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
-                $row = mysqli_fetch_assoc($res);
-                // get image name
-                $imageName = $row['image_prof'];
-                if($res != NULL)
+                
+                // getting data -- image profile -- directory image -- groupe id
+                if($plan == 'professor'){
+                    $row = select_index_query('*','professeur','pseudo_prof',$pseudo);
+                    $imageName = $row['image_prof'];
+                    $image_dir = '../professeur/assets/images/';
+                    $grp_id = get_grpId_byProf($row['pseudo_prof']);
+                }
+                else{
+                    $row = select_index_query('*','etudient','pseudo_etu',$pseudo);
+                    $imageName = $row['image_etu'];
+                    $image_dir = '../student/assets/images/';
+                    $grp_id = get_grpId_byStud($row['pseudo_etu']);
+                }
+            
+                if($row != NULL)
                 {
                     $image_dir = 'assets/images/';
                     if($imageName == 'user-male.png' || $imageName == 'user-female.png')
-                        $image_dir = 'assets/images/default/'; ?>
+                        $image_dir = '../assets/default-images/'; ?>
         <div class="sidebar" >
 
         <!--
@@ -55,6 +66,12 @@
                     <a href="exams.php?user=<?php echo $pseudo ?>">
                         <i aria-hidden="true"><img src="../assets/icons/report.png"></i>
                         <p>Exams</p>
+                    </a>
+                </li>
+                <li  <?php if($page_name == 'Files') echo 'class="active"'; ?> >
+                    <a href="files.php?user=<?php echo $pseudo ?>">
+                        <i aria-hidden="true"><img src="../assets/icons/folder.png"></i>
+                        <p>Other files</p>
                     </a>
                 </li>
             </ul>

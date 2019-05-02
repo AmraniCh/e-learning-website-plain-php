@@ -14,7 +14,7 @@
     <div class="wrapper">
       
         <!-- include sidebar --> 
-        <?php include 'includes/sidebar.php'; ?>
+        <?php include '../includes/sidebar.php'; ?>
    
         <div class="main-panel">
         

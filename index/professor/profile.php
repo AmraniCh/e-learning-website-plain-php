@@ -27,10 +27,8 @@
         {
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
-                $res = select_home_query('*','professeur','pseudo_prof',$pseudo);
-                $count_student = mysqli_num_rows($res);
-                $row = mysqli_fetch_assoc($res);
-                // get iinfo
+                $row = select_index_query('*','professeur','pseudo_prof',$pseudo);
+                // getting data
                 $imageName = $row['image_prof'];
                 $username = $row['pseudo_prof'];
                 $fname = $row['prenom_prof'];
@@ -41,17 +39,18 @@
                 $country = $row['pays_prof'];
                 $about = $row['propos_prof'];
                 $tele = $row['tele_prof'];
-                if($res != NULL)
+                if($row != NULL)
                 {
                     $image_dir = 'assets/images/';
                     if($imageName == 'user-male.png' || $imageName == 'user-female.png')
-                        $image_dir = 'assets/images/default/';
+                        $image_dir = '../assets/default-images/';
+                    
     ?>
 
         <div class="wrapper">
        
             <!-- include sidebar --> 
-            <?php include 'includes/sidebar.php'; ?>
+            <?php include '../includes/sidebar.php'; ?>
    
             <div class="main-panel">
        
@@ -425,7 +424,7 @@
                                     <div class="author">
                                          <a href="#">
                                             <div id="uploaded_image" class="image">
-                                                <img class="avatar border-gray" src='<?php echo $image_dir.$imageName ?>' alt="..."/>
+                                                <img class="avatar border-gray" src='<?php echo $image_dir.$imageName ?>' />
                                             </div>
                                            <label id="file-button" class="btn btn-default btn-file" style="margin-bottom:5px;margin-top:5px;font-size:15px;">
                                                 Change My picture <input type="file" id="file_image" style="display: none;">

@@ -30,6 +30,8 @@
                                 echo "<i class='fas fa-file-alt' aria-hidden='true'></i>"; break;
                             case 'profile':
                                 echo "<i class='fas fa-user-circle' aria-hidden='true'></i>"; break;
+                            case 'files':
+                                echo "<i class='fas fa-folder-open' aria-hidden='true'></i>"; break;
                             default: echo "<i class='fa fa-home' aria-hidden='true'></i>";
                         } 
                         ?>

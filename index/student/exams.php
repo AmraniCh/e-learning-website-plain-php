@@ -9,20 +9,16 @@
             $pseudo = $_GET['user'];
             if(!empty($pseudo) && $pseudo == $_SESSION['user'])
             {
-                $res = select_home_query('*','etudient','pseudo_etu',$pseudo);
-                $count_student = mysqli_num_rows($res);
-                $row = mysqli_fetch_assoc($res);
+                $row = select_index_query('*','etudient','pseudo_etu',$pseudo);
                 // get groupe name by id
                 $grp_name = get_groupeName($row['groupe_id']);
-                // get image name
-                $imageName = $row['image_etu'];
                 // get groupe id
                 $grp_id = $row['groupe_id'];
     ?>
     <div class="wrapper">
        
         <!-- include sidebar --> 
-        <?php include 'includes/sidebar.php'; ?>
+        <?php include '../includes/sidebar.php'; ?>
 
         <div class="main-panel">
 

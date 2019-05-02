@@ -132,16 +132,16 @@
     // select login query 
     function select_login_query($select,$table,$where,$pseudo,$pass){
         global $con;
-        $rq = "SELECT $select FROM $table WHERE $where = '$pseudo' AND pass='$pass'";
-            
+        $rq = "SELECT $select FROM $table WHERE $where = '$pseudo' AND pass='$pass'";      
         return mysqli_query($con,$rq);
     }
 
     // select home query 
-    function select_home_query($select,$table,$where,$pseudo){
+    function select_index_query($select,$table,$where,$pseudo){
         global $con;
         $rq = "SELECT $select FROM $table WHERE $where = '$pseudo'";
-        return mysqli_query($con,$rq);
+        $res = mysqli_query($con,$rq);
+        return mysqli_fetch_assoc($res);
     }
 
     // insert file query
@@ -315,10 +315,14 @@
     // get count count
     function get_files_count($current_page, $grp_id){
         global $con;
-        if($current_page == 'Courses')
-            $type = "course";
-        if($current_page == 'Exams')
-            $type = "exercice";
+        switch($current_page){
+            case ($current_page == 'Courses'):
+                $type = 'course';break;
+            case ($current_page == 'Exams'):
+                $type = 'exercice';break;
+            default: $type = 'autre';
+        }
+      
         $res = mysqli_query($con,"select count(nom) from fichier WHERE type = '$type' AND groupe_id = '$grp_id' ");
         $row = mysqli_fetch_assoc($res);
         return $row['count(nom)']; 
