@@ -25,7 +25,6 @@ $(document).ready(function(){
                 method:"POST",
                 data: form_data,
                 contentType: false,
-                cache: false,
                 processData: false,
                 beforeSend:function(){
                     $('#uploaded_image').html("<img class='avatar border-gray' src='../assets/icons/Rolling-1s-20px.svg' alt='...'/>");

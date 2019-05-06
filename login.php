@@ -8,9 +8,6 @@
         $block=3;
         setcookie("block",$block,time()+10);
     }
-    
-
-
 ?>
 <html>
 	<head>
@@ -25,7 +22,7 @@
 		<script src="js/validation.js"></script>
 	</head>
 	<body>
-        echo $grp;
+
 	    <style scoped>
                 @media (max-width:1920px){
                     body{
@@ -45,30 +42,21 @@
             // login
 			if(isset($_POST['submitLogin']))
 			{
-				$pseudo = $_POST['pseudo'];
+				$username = $_POST['pseudo'];
 				$pass = $_POST['pass'];		
                 
-				$res = select_login_query('pseudo_etu','etudient','pseudo_etu',$pseudo,$pass);
-				$count_student = mysqli_num_rows($res);
+				$res = select_login_query('pseudo_etu','etudient','pseudo_etu',$username,$pass); 
+				$res2 = select_login_query('pseudo_prof','professeur','pseudo_prof',$username,$pass);
                 
-				$res2 = select_login_query('pseudo_prof','professeur','pseudo_prof',$pseudo,$pass);
-				$count_prof = mysqli_num_rows($res2);
-                
-				if($count_student>0)
+				if(mysqli_num_rows($res)>0)
 				{
-                    $row = mysqli_fetch_assoc($res);   
-					$pseudo = $row['pseudo_etu'];
-					header ('location: index/student/home.php?user='.$pseudo);
-                    $_SESSION['user'] = $pseudo;
-                    // plan session variable
+					header ('location: index/student/home.php?user='.$username);
+                    $_SESSION['user'] = $username;
                     $_SESSION['plan'] = 'student';
 				}
-                else if($count_prof>0){
-                    $row = mysqli_fetch_assoc($res2);   
-					$pseudo = $row['pseudo_prof'];
-					header ('location: index/professor/home.php?user='.$pseudo);
-                    $_SESSION['user'] = $pseudo;
-                    // plan session variable
+                else if(mysqli_num_rows($res2)>0){
+					header ('location: index/professor/home.php?user='.$username);
+                    $_SESSION['user'] = $username;
                     $_SESSION['plan'] = 'professor';
                 }
 				else{

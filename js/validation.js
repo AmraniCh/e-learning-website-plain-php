@@ -37,8 +37,8 @@ $(function() {
     function check_password() {
     
         var password_length = $("#password").val().length;
-        if(password_length < 10 || password_length > 40) {
-            show_msg("password_error_msg", "Password should be between 10-40 characters", $("#password"));
+        if(password_length < 8 || password_length > 40) {
+            show_msg("password_error_msg", "Password should be between 8-40 characters", $("#password"));
             password_error = true;
         }
         else{
@@ -228,7 +228,7 @@ $(function(){
         var idInput = input.attr('id');  
         if(idInput == "pass1")
         {
-            if(validLength(input,8,30) == false){
+            if(validLength(input,8,40) == false){
                 pass1_error = true;
                 show_msg("pass1_error_msg", "ivalid password length must be between 8 and 30", $("#pass1"));   
             }
@@ -250,7 +250,7 @@ $(function(){
             }
             
         }
-        if(idInput == "pass2"){
+        if(idInput == "pass2" && idInput == "pass"){
             
             if($("#pass1").val() != $("#pass2").val()){
                 pass_match_error = true;

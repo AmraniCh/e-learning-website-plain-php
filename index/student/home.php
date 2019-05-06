@@ -5,21 +5,21 @@
     <?php
         if(isset($_GET['user']))
         {
-            image_query();
-            $pseudo = $_GET['user'];
-            if(!empty($pseudo) && $pseudo == $_SESSION['user'])
+
+            $username = $_GET['user'];
+            if(!empty($username) && $username == $_SESSION['user'])
             {
 
     ?>
     <div class="wrapper">
       
-        <!-- include sidebar --> 
-        <?php include '../includes/sidebar.php'; ?>
-   
         <div class="main-panel">
-        
-        <!-- include top navigation -->
-        <?php include '../includes/top_nav.php'; ?>
+            
+            <!-- include top navigation -->
+            <?php include '../includes/top_nav.php'; ?>
+                
+            <!-- include sidebar --> 
+            <?php include '../includes/sidebar.php'; ?>
 
         <!-- content -->
         <div class="content">

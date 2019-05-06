@@ -3,6 +3,7 @@ $(document).ready(function() {
     $(document).on('click','.delete_file',function(){
         // get type file from current page using function
         var page_name = get_page_name(window.location.pathname);
+        var type = null;
         switch (page_name) {
             case "courses.php":
                 type = "course";
@@ -35,7 +36,12 @@ $(document).ready(function() {
                 $('.courses_count').html("<img style='' class='avatar border-gray' src='../assets/icons/Rolling-1s-20px.svg' alt='...'/>");
             },   
             success:function(data){
-                    $('.courses_count').html(data + " Courses");
+                if(type == "course")
+                    $('.courses_count').html(data + "Courses");
+                else if(type == "exercice")
+                    $('.courses_count').html(data + "Exams");
+                else
+                    $('.courses_count').html(data + "Files");
             }
         });
     });   

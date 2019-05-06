@@ -15,7 +15,7 @@
 		<script src="js/functions.js"></script>
 		<script src="js/validation.js"></script>
 		<?php 
-            echo $link = get_theme();
+            echo $link = get_register_theme();
         ?>
 	</head>
 	<body>

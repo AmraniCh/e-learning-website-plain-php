@@ -3,32 +3,33 @@
         include '../includes/header.php';     
     ?>
     <?php
-
-        if(isset($_GET['user']))
+            
+        if(isset($_GET['user']) && isset($_SESSION['plan']) && isset($_SESSION['user']))
         {
-            image_query();
-            $pseudo = $_GET['user'];
-            if(!empty($pseudo) && $pseudo == $_SESSION['user'])
+            $get_username = $_GET['user'];
+            if(!empty($get_username) && $get_username == $_SESSION['user'])
             {
-                $row = select_index_query('*','professeur','pseudo_prof',$pseudo);
+                $row = select_index_query('*','professeur','pseudo_prof',$get_username);
                 // get groupe id using function
-                $grp_id = get_grpId_byProf($row['pseudo_prof']);
-    ?>
-    <div class="wrapper">
-        <!-- include sidebar --> 
-        <?php include '../includes/sidebar.php'; ?>
+                $_SESSION['grp_id'] = get_grpId_byProf($row['pseudo_prof']);
+        ?>
 
-        <div class="main-panel">
-
-        <!-- include top navigation -->
-        <?php include '../includes/top_nav.php'; ?>
+        <div class="wrapper">
+        
+            <div class="main-panel">
+            
+            <!-- include top navigation -->
+            <?php include '../includes/top_nav.php'; ?>
+                
+            <!-- include sidebar --> 
+            <?php include '../includes/sidebar.php'; ?>
 
             <!-- content -->
             <div class="content">
-                <div id="container-fluid" class="container-fluid">
+                <div id="files-container" class="container-fluid">
                     <div id="top-panel" class="top-panel row">
-                        <span class="courses_count" style="line-height:40px;font-size:x-large;"><?php echo get_files_count($current_page = get_pageName(), $grp_id); ?> Files</span>
-                        <div class="file-controls" style="display:none;">
+                        <span class="courses_count" style="line-height:40px;font-size:x-large;"><?php echo get_files_count($current_page = get_pageName(), $_SESSION['grp_id']); ?> Files</span>
+                        <div class="file-controls" style="display:none">
                             <button type="button" id="delete-button" class="btn btn-primary">
                                 Delete All
                             </button>
@@ -38,59 +39,28 @@
                         </div>
                     </div>
                     <div class="line"></div>
-                    <script>
-                        // click add groupe => load group form for add group
-                        $(document).ready(function() {
-                            $(document).on("click", "#btn-load-groupe-form", function() {
-                                $(".msg-container").css("display", "none");
-                                $("#top-panel").css("display", "none");
-                                $(".line").css("display", "none");
-                                load_add_groupe_form();
-                            });
-                        });
-                    </script>
                     <div id="file_container">
-                        <!-- download animation -->
-                        <script>
-                            $(document).ready(function() {
-                                $(".btn-download").click(function(e) {
-                                    downloadAnimation(e);
-                                });
-                            });
-                        </script>
                         <?php 
-                        // get group count
-                        $grp_count = get_group_count($pseudo);
-                        // if count = 0 => show notification no groupe founded
-                        if($grp_count == 0)
-                            echo '<script>
-                            load_add_groupe_notification();
-                            </script>
-                            ';
-                        else
-                        {
-                            $grp_id = get_grpId_byProf($pseudo);
-                            $current_page = get_pageName();
-                            $files = load_coures_query($grp_id,'autre',$current_page);
-                            if($files[0] != null){
-                                foreach ($files as $file) {
-                                    echo $file;
+                            if(isset($_SESSION['grp_id'])){
+                                $current_page = get_pageName();
+                                $files = load_files_query($_SESSION['grp_id'],'autre',$current_page);
+                                if($files[0] != null){
+                                    foreach ($files as $file) {
+                                        echo $file;
+                                    }
                                 }
-                            }
-                        }
-                    ?>
+                            }  
+                        ?>
                     </div>
             </div>
         </div>
-    </div>
-    <?php 
-            }
-            else 
-                header ('location: ../login.php');
-        }
-        else
-            redirect_url('home.php');
-    ?>
-
+                
     <!-- include footer -->
     <?php include '../includes/footer.php'; ?>
+                
+    <?php 
+            }
+            else
+                header ('location: home.php?user='.$_SESSION['user']);
+        }
+    ?>

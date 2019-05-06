@@ -1,78 +1,13 @@
 <?php 
 
     require 'config.php';
+
+/**************************************************************
+    START login.php / register.php / registerSecurity.php  FUNCTIONS
+**************************************************************/
     
-    // add default pictures
-    function image_query(){
-        global $con;
-        $rq = "UPDATE etudient SET image_etu = 'user-male.png' WHERE sexe_etu = 'male' AND (image_etu IS NULL OR image_etu = '') ";
-        mysqli_query($con, $rq);
-        $rq = "UPDATE etudient SET image_etu = 'user-female.png' WHERE sexe_etu = 'female' AND (image_etu IS NULL OR image_etu = '') ";
-        mysqli_query($con, $rq);
-        $rq = "UPDATE professeur SET image_prof = 'user-female.png' WHERE sexe_prof = 'female' AND (image_prof IS NULL OR image_prof = '') ";
-        mysqli_query($con, $rq);
-        $rq = "UPDATE professeur SET image_prof = 'user-male.png' WHERE sexe_prof = 'male' AND (image_prof IS NULL OR image_prof = '') ";
-        mysqli_query($con, $rq);
-    }
-    
-/***********************************
-    START GROUPES FUNCTIONS
-***********************************/
-    // get groupe name
-    function get_groupeName($id){
-        global $con;
-        $rq = "SELECT nom FROM groupe WHERE id = '$id'";
-        $res = mysqli_query($con, $rq);
-        $row = mysqli_fetch_assoc($res);
-        return $row['nom'];
-    }
-
-    // get groupes count
-    function get_group_count($pseudo_prof){
-        global $con;
-        $rq = "SELECT count(id) FROM groupe WHERE pseudo_prof = '$pseudo_prof'";
-        $res = mysqli_query($con,$rq);
-        $row = mysqli_fetch_assoc($res);
-        return $row['count(id)'];
-    }
-
-    // get groupe id by prof username
-    function get_grpId_byProf($pseudo){
-        global $con;
-        $rq = "SELECT id FROM groupe WHERE pseudo_prof = '$pseudo'";
-        $res = mysqli_query($con,$rq);
-        $row = mysqli_fetch_assoc($res);
-        return $row['id'];
-    }
-
-    // get groupe id by student username
-    function get_grpId_byStud($pseudo){
-        global $con;
-        $rq = "SELECT groupe_id FROM etudient WHERE pseudo_etu = '$pseudo'";
-        $res = mysqli_query($con,$rq);
-        $row = mysqli_fetch_assoc($res);
-        return $row['groupe_id'];
-    }
-
-/***********************************
-    END GROUPES FUNCTIONS
-***********************************/
-
-    // redirect url
-    function redirect_url($page)
-    {
-        $user = $_SESSION['user'];
-        header ('location: '.$page.'?user='.$user.'');
-    }
-        
-    // get actual name page
-    function get_pageName(){
-        $page = explode('.', basename($_SERVER['PHP_SELF']));
-        return ucfirst($page[0]);
-    }
-
     // get register theme 
-    function get_theme(){
+    function get_register_theme(){
         if(isset($_GET['plan']))
         {
             $plan = $_GET['plan'];
@@ -91,17 +26,124 @@
             header('location: login.php');
     }
 
+    // insert registerSecurity query
+    function insert_register_query($table,$username,$email,$prenom,$nom,$pass,$gender,$reponse,$question){
+        global $con;
+        if($table == 'professeur')
+            $rq = "insert into $table values('$username','$email','$prenom','$nom','$pass',NULL, NULL, NULL, NULL, '$gender', NULL, NULL, '$reponse', '$question')";
+        else if($table == 'etudient')
+            $rq = "insert into $table values('$username','$email','$prenom','$nom','$pass',NULL, NULL, NULL, NULL,'$gender', NULL, NULL,'$reponse','$question',null)";
+        // admin
+        return mysqli_query($con,$rq);
+    }
+
+    // select login query 
+    function select_login_query($select,$table,$where,$username,$pass){
+        global $con;
+        $rq = "SELECT $select FROM $table WHERE $where = '$username' AND pass='$pass'";      
+        return mysqli_query($con,$rq);
+    }
+
+/**************************************************************
+    END login.php / register.php / registerSecurity.php  FUNCTIONS
+**************************************************************/
+    
+/***********************************
+    START groups FUNCTIONS
+***********************************/
+
+    // get groupe name by id
+    function get_groupeName($id){
+        global $con;
+        $rq = "SELECT nom FROM groupe WHERE id = '$id'";
+        $res = mysqli_query($con, $rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['nom'];
+    }
+
+    // get groupes count
+    function get_group_count($username_prof){
+        global $con;
+        $rq = "SELECT count(id) FROM groupe WHERE pseudo_prof = '$username_prof'";
+        $res = mysqli_query($con,$rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['count(id)'];
+    }
+
+    // get groupe id by prof username
+    function get_grpId_byProf($username){
+        global $con;
+        $rq = "SELECT id FROM groupe WHERE pseudo_prof = '$username'";
+        $res = mysqli_query($con,$rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['id'];
+    }
+
+    // get groupe id by student username
+    function get_grpId_byStud($username){
+        global $con;
+        $rq = "SELECT groupe_id FROM etudient WHERE pseudo_etu = '$username'";
+        $res = mysqli_query($con,$rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['groupe_id'];
+    }
+
+    // get groupe id by name
+    function get_groupeId_byName($name){
+        global $con;
+        $rq = "SELECT id FROM groupe WHERE id = '$name'";
+        $res = mysqli_query($con, $rq);
+        $row = mysqli_fetch_assoc($res);
+        return $row['id'];
+    }
+
+
+/***********************************
+    END groups FUNCTIONS
+***********************************/
+
+/***********************************
+    START FUNCTIONS RELATED IN PAGES
+***********************************/
+
+    // get actual name page
+    function get_pageName(){
+        $page = explode('.', basename($_SERVER['PHP_SELF']));
+        return ucfirst($page[0]);
+    }
+
+/***********************************
+    END FUNCTIONS RELATED IN PAGES
+***********************************/
+
+/***********************************
+    START index FUNCTIONS
+***********************************/
+
+    // add default pictures
+    function image_query(){
+        global $con;
+        $rq = "UPDATE etudient SET image_etu = 'user-male.png' WHERE sexe_etu = 'male' AND (image_etu IS NULL OR image_etu = '') ";
+        mysqli_query($con, $rq);
+        $rq = "UPDATE etudient SET image_etu = 'user-female.png' WHERE sexe_etu = 'female' AND (image_etu IS NULL OR image_etu = '') ";
+        mysqli_query($con, $rq);
+        $rq = "UPDATE professeur SET image_prof = 'user-female.png' WHERE sexe_prof = 'female' AND (image_prof IS NULL OR image_prof = '') ";
+        mysqli_query($con, $rq);
+        $rq = "UPDATE professeur SET image_prof = 'user-male.png' WHERE sexe_prof = 'male' AND (image_prof IS NULL OR image_prof = '') ";
+        mysqli_query($con, $rq);
+    }
+
     // get register theme 
     function get_index_theme(){
         if(isset($_SESSION['plan']))
         {
             $plan = $_SESSION['plan'];
             if($plan == 'student')
-                return '<link rel="stylesheet" type="text/css" href="../assets/style/themes/student_theme.css">';
+                return '<link rel="stylesheet" type="text/css" href="../assets/style/themes/student_theme.css"/>';
             else if($plan == 'professor')
-                return '<link rel="stylesheet" type="text/css" href="../assets/style/themes/prof_theme.css">';
+                return '<link rel="stylesheet" type="text/css" href="../assets/style/themes/prof_theme.css"/>';
             else if($plan == 'admin')
-                return '<link rel="stylesheet" type="text/css" href="../assets/style/themes/admin_theme.css">';
+                return '<link rel="stylesheet" type="text/css" href="../assets/style/themes/admin_theme.css"/>';
             else
                 header('location: plans/plans.php');
             
@@ -111,38 +153,40 @@
             header('location: login.php');
     }
 
-    // get account type
-    function get_account_type($column){
-        global $con;
-        $rq = "SELECT DISTINCT TABLE_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME = '$column' AND TABLE_SCHEMA='demosite'";
-        return mysqli_query($con,$rq);
-    }
-
-    // insert registerSecurity query
-    function insert_register_query($table,$pseudo,$email,$prenom,$nom,$pass,$gender,$reponse,$quetion){
-        global $con;
-        if($table == 'professeur')
-            $rq = "insert into $table values('$pseudo','$email','$prenom','$nom','$pass',NULL, NULL, NULL, NULL,'$gender',NULL,'$reponse','$question')";
-        else if($table == 'etudient')
-            $rq = "insert into $table values('$pseudo','$email','$prenom','$nom','$pass',NULL, NULL, NULL, NULL,'$gender',NULL,'$reponse','$question',null)";
-        // admin
-        return mysqli_query($con,$rq);
-    }
-
-    // select login query 
-    function select_login_query($select,$table,$where,$pseudo,$pass){
-        global $con;
-        $rq = "SELECT $select FROM $table WHERE $where = '$pseudo' AND pass='$pass'";      
-        return mysqli_query($con,$rq);
-    }
-
     // select home query 
-    function select_index_query($select,$table,$where,$pseudo){
+    function select_index_query($select,$table,$where,$username){
         global $con;
-        $rq = "SELECT $select FROM $table WHERE $where = '$pseudo'";
+        $usern = mysqli_real_escape_string($con, $username);
+        $rq = "SELECT $select FROM $table WHERE $where = '$usern'";
         $res = mysqli_query($con,$rq);
         return mysqli_fetch_assoc($res);
     }
+
+    // set groupe first login && set group if groupe history is not exists
+    function set_groupe_history($username){
+        global $con;
+        // check if prof has a history group 
+        $res = mysqli_query($con,"SELECT grp_id FROM groupe_historique WHERE pseudo_prof ='$username'");
+        if(mysqli_num_rows($res) == 0){
+            // if not has a history group => check if has created a group before
+            $rq = "select id FROM groupe WHERE pseudo_prof = '$username' order by date_creation desc";
+            $res = mysqli_query($con,$rq);
+            // if have a group => get the last group created and set it as a group history
+            if(mysqli_num_rows($res) != 0){
+                $row = mysqli_fetch_assoc($res);
+                $rq = " INSERT INTO groupe_historique VALUES('$username','".$row['id']."')";
+                mysqli_query($con,$rq);
+            }
+        }
+    }
+
+/***********************************
+    END index FUNCTIONS
+***********************************/
+
+/***********************************
+    START files FUNCTIONS
+***********************************/
 
     // insert file query
     function insert_file_query($grp_id, $file_name, $file_type){
@@ -184,7 +228,7 @@
     }
 
     // load courses
-    function load_coures_query($grp_id,$file_type,$current_page){
+    function load_files_query($grp_id,$file_type,$current_page){
         global $con;
         $courses = array();
         $rq = "SELECT * FROM fichier WHERE type = '$file_type' AND groupe_id = '$grp_id' ORDER BY fich_date DESC";
@@ -212,7 +256,7 @@
             // ajax data
             $courses[$i] = '<div class="file col-xs-6 col-sm-4 col-md-2 col-lg-3" style="border:1px solid #ddd;height:200px;margin-top:20px;padding:0;position:relative;background-image: url('.$icon_dir.');'.$css.'">
             <div class="file-date" style="padding:5px;color:#fff;background-color:#708ba2;opacity:0.7;width:100%"><span id="date">'.$time_left.' '.$unit.'</span>
-            <i id="'.$file_name.'" style="float:right;font-size:large;cursor:pointer;" class="delete_file fas fa-times-circle"></i>
+            <i id="'.$file_name.'" style="float:right;font-size:large;cursor:pointer;display:none;" class="delete_file fas fa-times-circle"></i>
             </div>
             <div id="ms-container">
                 <label class="label-ms"  for="ms-download">
@@ -246,7 +290,7 @@
         return $file_extension;
     }
 
-    // generate course icons
+    // generate files icons
     function generate_icon($file_name,$current_page){
         // variables
         $icon_file_dir = null;
@@ -280,39 +324,13 @@
         return $icon_file_dir;    
     }
 
-    // set groupe first login && set group if groupe history is not exists
-    function set_groupe_history($pseudo){
-        global $con;
-        // check
-        $res = mysqli_query($con,"SELECT grp_id FROM groupe_historique WHERE pseudo_prof ='$pseudo'");
-        if(mysqli_num_rows($res) == 0){
-            $rq = "select id FROM groupe order by date_creation desc";
-            $res = mysqli_query($con,$rq);
-            $row = mysqli_fetch_assoc($res);
-            $rq = " INSERT INTO groupe_historique VALUES('$pseudo','".$row['id']."')";
-            mysqli_query($con,$rq);
-        }
-    }
+    // hide files controls --> (if prof has not group && if user is student and has not permission)
 
-    // hide controls (student)
-    function hide_controls(){
-        return $script = '<script>
-            $(document).ready(function(){
-                $(".file-controls, #list-groupe-li, .delete_file").show();
-            });
-        </script>';
-    }
 
-    // show controls (prof)
-    function show_controls(){
-        return $script = '<script>
-            $(document).ready(function(){
-                $(".file-controls, #list-groupe-li").show();
-            });
-        </script>';
-    }
+    // show files controls --> (if prof has group && if user is student and has the permission)
 
-    // get count count
+
+    // get files count
     function get_files_count($current_page, $grp_id){
         global $con;
         switch($current_page){
@@ -325,7 +343,11 @@
       
         $res = mysqli_query($con,"select count(nom) from fichier WHERE type = '$type' AND groupe_id = '$grp_id' ");
         $row = mysqli_fetch_assoc($res);
-        return $row['count(nom)']; 
-    
+        return $row['count(nom)'];   
     }
+
+/***********************************
+    END files FUNCTIONS
+***********************************/
+
 ?>

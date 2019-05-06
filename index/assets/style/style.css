@@ -52,6 +52,7 @@
 
 .top-panel{
     margin-bottom: 10px;
+	padding-right: 15px;
 }
 
 ul.CTAs {
@@ -209,4 +210,9 @@ a.download{
     background-color: #3472F7;
     color: white;
     border: none;
+}
+
+#img-group-td{
+	width: 9.7%;
+	width: -moz-min-content;
 }

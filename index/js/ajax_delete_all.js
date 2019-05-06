@@ -32,12 +32,12 @@ $(document).ready(function() {
                 $('.courses_count').html("<img style='' class='avatar border-gray' src='../assets/icons/Rolling-1s-20px.svg' alt='...'/>");
             },   
             success:function(data){
-                    if(type == "course")
-                        $('.courses_count').html(data + "Courses");
-                    else if(type == "exercice")
-                        $('.courses_count').html(data + "Exams");
-                    else
-                        $('.courses_count').html(data + "Other files");
+                if(type == "course")
+                    $('.courses_count').html(data + "Courses");
+                else if(type == "exercice")
+                    $('.courses_count').html(data + "Exams");
+                else
+                    $('.courses_count').html(data + "Files");
             }
         });
     });   

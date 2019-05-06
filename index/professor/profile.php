@@ -4,30 +4,30 @@
     ?>
     
     <?php
-        // global session variables
-        $pseudo = $_SESSION['user'];
-        
-        // update
-        if(isset($_POST['update']))
+        if(isset($_GET['user']) && isset($_SESSION['plan']) && isset($_SESSION['user']))
         {
-            //$email = $_POST['email'];
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
-            $adress = $_POST['adress'];
-            $city = $_POST['city'];
-            $country = $_POST['country'];
-            $phone = $_POST['phone'];
-            $about = $_POST['about'];
-            $rq = "UPDATE professeur SET prenom_prof = '$fname', nom_prof = '$lname', adresse_prof = '$adress', ville_prof = '$city', pays_prof = '$country', tele_prof = '$phone', propos_prof = '$about' WHERE pseudo_prof = '$pseudo'";
-            $res = mysqli_query($con,$rq);
-        }
-
-        // getting 
-        if(isset($_GET['user']))
-        {
-            if(!empty($pseudo) && $pseudo == $_SESSION['user'])
+            $get_username = $_GET['user'];
+            if(!empty($get_username) && $get_username == $_SESSION['user'])
             {
-                $row = select_index_query('*','professeur','pseudo_prof',$pseudo);
+                // global session variables
+                $username = $_SESSION['user'];
+
+                // update
+                if(isset($_POST['update']))
+                {
+                    $email = $_POST['email'];
+                    $fname = $_POST['fname'];
+                    $lname = $_POST['lname'];
+                    $adress = $_POST['adress'];
+                    $city = $_POST['city'];
+                    $country = $_POST['country'];
+                    $phone = $_POST['phone'];
+                    $about = $_POST['about'];
+                    $rq = "UPDATE professeur SET prenom_prof = '$fname', nom_prof = '$lname', adresse_prof = '$adress', ville_prof = '$city', pays_prof = '$country', tele_prof = '$phone', propos_prof = '$about' WHERE pseudo_prof = '$username'";
+                    $res = mysqli_query($con,$rq);
+                }
+
+                $row = select_index_query('*','professeur','pseudo_prof',$username);
                 // getting data
                 $imageName = $row['image_prof'];
                 $username = $row['pseudo_prof'];
@@ -48,17 +48,17 @@
     ?>
 
         <div class="wrapper">
-       
-            <!-- include sidebar --> 
-            <?php include '../includes/sidebar.php'; ?>
-   
+            
             <div class="main-panel">
-       
+            
             <!-- include top navigation -->
             <?php include '../includes/top_nav.php'; ?>
-
+                
+            <!-- include sidebar --> 
+            <?php include '../includes/sidebar.php'; ?>
+            
             <!-- content -->
-            <div class="content">
+            <div class="profile-content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-8">
@@ -66,13 +66,18 @@
                                 <div class="header">
                                     <h4 class="title">Edit Profile</h4>
                                 </div>
-                                <div class="content">
-                                    <form action="profile.php?user=<?php echo $pseudo ?>" id="profile" method="post">
+                                <div class="profile-content">
+                                    <form action="profile.php?user=<?php echo $username ?>" id="profile" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Actual groupe</label>
-                                                    <input id="actual_groupe" type="text" class="form-control" disabled value="<?php echo $_SESSION['grp_id'] ?>">
+                                                    <input id="actual_groupe" type="text" class="form-control" disabled value="<?php 
+                                                        if(isset($_SESSION['grp_id']))
+                                                            echo $grp_name = get_groupeName($_SESSION['grp_id']);
+                                                        else
+                                                            echo 'N/A';
+                                                    ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -420,7 +425,7 @@
                                 <div class="image">
                                     <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
                                 </div>
-                                <div class="content">
+                                <div class="content-inf">
                                     <div class="author">
                                          <a href="#">
                                             <div id="uploaded_image" class="image">
@@ -449,21 +454,14 @@
                     </div>
                 </div>
             </div>
-    <?php 
-                }
-            }
-            else 
-                header ('location: ../login.php');
-        }
-        else
-            redirect_url('profile.php');
-    ?>
 
     <!-- include footer -->
     <?php include '../includes/footer.php'; ?>
-
-                <script>
-
-                    let vall = "<?php echo $country ?>";
-
-                </script>
+                
+    <?php 
+            }
+            else
+                header ('location: home.php?user='.$_SESSION['user']);
+        }
+    }
+    ?>

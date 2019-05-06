@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/style/main.css">
         <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
         <?php 
-            echo $link = get_theme();
+            echo $link = get_register_theme();
         ?>
         <script src="js/jquery-3.3.1.js"></script>
 		<script src="js/functions.js"></script>
@@ -36,7 +36,7 @@
 			if(isset($_POST['submitFinish']))
 			{
                 // get account information
-				$pseudo = $_SESSION['user'];
+				$username = $_SESSION['user'];
                 $prenom = $_SESSION['prenom'];
                 $nom = $_SESSION['nom'];
                 $email = $_SESSION['email'];
@@ -46,19 +46,19 @@
                 $question = $_POST['question'];
                 $reponse = $_POST['answer'];
              
-                // translate variable value
+                // get table from session variables 
                 $plan = $_SESSION['plan'];
                 if($plan == 'student')
-                    $plan = 'etudient';
+                    $table = 'etudient';
                 else if($plan = 'professor')
-                    $plan = 'professeur';
+                    $table = 'professeur';
                 else
-                    $plan = 'admin';
+                    $table = 'administrateur';
                 
                 // insert query
-                if($res = insert_register_query($plan,$pseudo,$email,$prenom,$nom,$pass,$gender,$reponse,$question))
+                if($res = insert_register_query($table,$username,$email,$prenom,$nom,$pass,$gender,$reponse,$question))
                 {
-                    header('location: login.php?user='.$pseudo.''); 
+                    header('location: login.php?user='.$username.''); 
                     $_SESSION['pass'] = $pass;
                 }
                 else{

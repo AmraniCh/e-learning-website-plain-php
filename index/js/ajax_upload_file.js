@@ -1,19 +1,23 @@
 $(document).ready(function(){
     
     $(document).on('change', '#file_course', function(){
-        var name = document.getElementById("file_course").files[0].name;
-        var form_data = new FormData();
+        // extension control
+        /*var name = document.getElementById("file_course").files[0].name;
         var ext = name.split('.').pop().toLowerCase();
-        /*if(jQuery.inArray(ext, ['png','jpg','jpeg']) == -1) 
+        if(jQuery.inArray(ext, ['png','jpg','jpeg']) == -1) 
         {
             alert("Invalid Image File");
             return false;
         }*/
+        
+        var form_data = new FormData();
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("file_course").files[0]);
-        var f = document.getElementById("file_course").files[0];
-        var fsize = f.size||f.fileSize;
-        if(fsize > 5000000)
+        var file = document.getElementById("file_course").files[0];
+        
+        // size control
+        var filesize = file.size||file.fileSize;
+        if(filesize > 5000000)
         {
             alert("Image File Size is very big");
             return false;
@@ -22,6 +26,7 @@ $(document).ready(function(){
         {
             // get type file from current page using function
             var page_name = get_page_name(window.location.pathname);
+            var type = null;
             switch(page_name){
                 case "courses.php":
                     type = "course";break;
@@ -31,7 +36,7 @@ $(document).ready(function(){
             }
             
             // formdata parameters
-            form_data.append("file", document.getElementById('file_course').files[0]);
+            form_data.append("file", file);
             form_data.append("type", type);
             $.ajax({
                 url:"../includes/upload_file.php",
@@ -46,7 +51,7 @@ $(document).ready(function(){
                     $('#file_container').html(data);  
                 }
             });
-            // refersh courses counts
+            // refersh courses count
             $.ajax({
                 url: "../includes/files_count.php",
                 method:"POST",
@@ -57,7 +62,12 @@ $(document).ready(function(){
                     $('.courses_count').html("<img style='' class='avatar border-gray' src='../assets/icons/Rolling-1s-20px.svg' alt='...'/>");
                 },   
                 success:function(data){
-                    $('.courses_count').html(data + " Courses");
+                    if(type == "course")
+                        $('.courses_count').html(data + "Courses");
+                    else if(type == "exercice")
+                        $('.courses_count').html(data + "Exams");
+                    else
+                        $('.courses_count').html(data + "Files");
                 }
             });
         }

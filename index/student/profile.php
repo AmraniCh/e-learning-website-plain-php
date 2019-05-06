@@ -5,7 +5,7 @@
 
     <?php
         // global session variables
-        $pseudo = $_SESSION['user'];
+        $username = $_SESSION['user'];
         
         // update
         if(isset($_POST['update']))
@@ -18,16 +18,18 @@
             $country = $_POST['country'];
             $phone = $_POST['phone'];
             $about = $_POST['about'];
-            $rq = "UPDATE etudient SET prenom_etu = '$fname', nom_etu = '$lname', adresse_etu = '$adress', ville_etu = '$city', pays_etu = '$country', tele_etu = '$phone', propos_etu = '$about' WHERE pseudo_etu = '$pseudo'";
+            $rq = "UPDATE etudient SET prenom_etu = '$fname', nom_etu = '$lname', adresse_etu = '$adress', ville_etu = '$city', pays_etu = '$country', tele_etu = '$phone', propos_etu = '$about' WHERE pseudo_etu = '$username'";
             $res = mysqli_query($con,$rq);
         }
 
         // getting 
         if(isset($_GET['user']))
         {
-            if(!empty($pseudo) && $pseudo == $_SESSION['user'])
+            if(!empty($username) && $username == $_SESSION['user'])
             {
-                $row = select_index_query('*','etudient','pseudo_etu',$pseudo);
+                $row = select_index_query('*','etudient','pseudo_etu',$username);
+                // get groupe name by groupe id
+                $grp_name = get_groupeName($row['groupe_id']);
                 // get iinfo
                 $imageName = $row['image_etu'];
                 $username = $row['pseudo_etu'];
@@ -44,20 +46,20 @@
                     $image_dir = 'assets/images/';
                     if($imageName == 'user-male.png' || $imageName == 'user-female.png')
                         $image_dir = 'assets/default-images/';
-    ?>
+        ?>
 
-    <div class="wrapper">
-
-        <!-- include sidebar -->
-        <?php include '../includes/sidebar.php'; ?>
-
-        <div class="main-panel">
-
+        <div class="wrapper">
+  
+            <div class="main-panel">
+            
             <!-- include top navigation -->
             <?php include '../includes/top_nav.php'; ?>
+                
+            <!-- include sidebar --> 
+            <?php include '../includes/sidebar.php'; ?>
 
             <!-- content -->
-            <div class="content">
+            <div class="profile-content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-8">
@@ -65,7 +67,7 @@
                                 <div class="header">
                                     <h4 class="title">Edit Profile</h4>
                                 </div>
-                                <div class="content">
+                                <div class="profile-content">
                                     <form action="profile.php" id="profile" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
@@ -420,7 +422,7 @@
                                 <div class="image">
                                     <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." />
                                 </div>
-                                <div class="content">
+                                <div class="content-inf">
                                     <div class="author">
                                         <a href="#">
                                             <div id="uploaded_image" class="image">

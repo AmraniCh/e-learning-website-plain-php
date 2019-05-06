@@ -5,13 +5,13 @@
     
     // session variables
     $plan = $_SESSION['plan'];
-    $pseudo = $_SESSION['user'];
+    $username = $_SESSION['user'];
 
     // get groupe id by pseudo
     if($plan == 'professor')
-        $grp_id = get_grpId_byProf($pseudo);
+        $grp_id = get_grpId_byProf($username);
     else
-        $grp_id = get_grpId_byStud($pseudo);
+        $grp_id = get_grpId_byStud($username);
         
     // delete files in database
     $file_type = $_POST['type'];
@@ -20,7 +20,7 @@
 
     // ajax data -- load courses
     $current_page = get_pageName();
-    $files = load_coures_query($grp_id,$file_type,$current_page);
+    $files = load_files_query($grp_id,$file_type,$current_page);
     if($files[0] != null){
         foreach ($files as $file) {
             echo $file;
