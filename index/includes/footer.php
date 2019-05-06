@@ -27,8 +27,6 @@
     <script src="../js/ajax_upload_file.js"></script>
     <script src="../js/ajax_delete_file.js"></script>
     <script src="../js/ajax_delete_all.js"></script>   
-    <!-- substruct file titles  -->
-    <script>subtruct_title()</script>
     <!-- validation inputs  -->
     <script src="../js/validation.js"></script>
     <!-- download animation -->
@@ -51,11 +49,10 @@
             });
         });
     </script>
+
     <!-- script php -->
-    <script>let vall = "<?php echo $country ?>";</script>
-        
+    <script>let vall = "<?php echo $country ?>";</script>  
     <?php
-    
         // add group notification form
         if(isset($_GET['user']) && isset($_SESSION['plan']) && isset($_SESSION['user'])){         
             if($_SESSION['plan'] == 'professor'){

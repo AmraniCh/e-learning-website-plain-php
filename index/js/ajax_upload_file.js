@@ -48,7 +48,7 @@ $(document).ready(function(){
                     $('#file_container').prepend("<div class='loading col-xs-6 col-sm-4 col-md-2 col-lg-3 text-center' style='height:auto;margin-top:20px;padding:0'><img style='width:50%;' class='avatar border-gray' src='../assets/icons/Rolling-1s-20px.svg' alt='...'/></div>");
                 },   
                 success:function(data){
-                    $('#file_container').html(data);  
+                    $('#file_container').html(data); 
                 }
             });
             // refersh courses count

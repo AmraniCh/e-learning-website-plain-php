@@ -89,7 +89,6 @@
                                         }
                                         // if prof has not group
                                         else{             
-                                            echo '<script>hide_controls()</script>';
                                             if(isset($_SESSION['grp_id']))
                                                 unset($_SESSION['grp_id']);
                                         }

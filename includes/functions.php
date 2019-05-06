@@ -274,7 +274,7 @@
             <div class="desc" style="padding:5px;color:#fff;background-color:#333;bottom:0;opacity:.9;position:absolute;width:100%"><span class="title">'.$file_name.'</span></div>
             <div class="download-container text-center" style="height:0"><a href="../cloud/'.$file_name.'" download><button type="button" class="btn-download btn btn-default" style="background-color:#333;color:#fff;z-index:999;margin-top:45px;">DOWNLOAD</button></a>
 		    </div>
-            </div>';
+            </div><script>subtruct_title()</script>';
             $i= $i + 1;
         }
         
@@ -323,12 +323,6 @@
         // return icon file directory
         return $icon_file_dir;    
     }
-
-    // hide files controls --> (if prof has not group && if user is student and has not permission)
-
-
-    // show files controls --> (if prof has group && if user is student and has the permission)
-
 
     // get files count
     function get_files_count($current_page, $grp_id){
