@@ -179,3 +179,10 @@ function hide_controls(){
         $(".file-controls, #list-groupe-li, .delete_file").hide();
     });
 }
+
+// show delete file control
+function show_delete_file_control(){
+    $(document).ready(function(){
+        $(".delete_file").show();
+    });
+}

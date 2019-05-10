@@ -274,7 +274,7 @@
             <div class="desc" style="padding:5px;color:#fff;background-color:#333;bottom:0;opacity:.9;position:absolute;width:100%"><span class="title">'.$file_name.'</span></div>
             <div class="download-container text-center" style="height:0"><a href="../cloud/'.$file_name.'" download><button type="button" class="btn-download btn btn-default" style="background-color:#333;color:#fff;z-index:999;margin-top:45px;">DOWNLOAD</button></a>
 		    </div>
-            </div><script>subtruct_title()</script>';
+            </div><script>subtruct_title()</script><script>show_delete_file_control()</script>';
             $i= $i + 1;
         }
         
