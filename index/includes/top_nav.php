@@ -34,6 +34,8 @@
                                     echo "<i class='fas fa-folder-open' aria-hidden='true'></i>"; break;
                                 case 'groups';
                                     echo "<i class='fas fa-users' aria-hidden='true'></i>"; break;
+                                case 'students';
+                                    echo "<i class='fas fa-user-graduate' aria-hidden='true'></i>"; break;
                                 default: echo "<i class='fa fa-home' aria-hidden='true'></i>";
                             }
                             ?>
@@ -61,7 +63,7 @@
                                             $grp_name_histo = get_groupeName($row2['grp_id']);  
 
                                             $grp_history_founded = false;
-                                            // comparison between groups ids and last group id => get selected group in the menu  
+                                            // comparison between groups ids and last group id => get selected group in the menu 
                                             while($row = mysqli_fetch_assoc($res)){      
                                                 // if one of  group id is equal to last group used id => set this one
                                                 if($row['id'] == $row2['grp_id'] && mysqli_num_rows($res2) != 0){
@@ -79,12 +81,19 @@
                                             // if group history is not founded => set the last one created by prof
                                             if($grp_history_founded == false)
                                             {
+                                     
+                                                // GET LAST ONE CREATED
                                                 $res = mysqli_query($con,"SELECT id FROM groupe WHERE pseudo_prof = '$username' ORDER BY date_creation DESC");
                                                 if(mysqli_num_rows($res) != 0)
                                                 {
                                                     $row = mysqli_fetch_assoc($res);
-                                                    $_SESSION['grp_id'] = reset($row);
+                                                    $grp_id = reset($row);
+                                                    $_SESSION['grp_id'] = $grp_id;
+                    
+                                                    // SET GROUPE HISTORY
+                                                    $res = mysqli_query($con,"INSERT INTO groupe_historique VALUES('$username',$grp_id) ON DUPLICATE KEY UPDATE grp_id = $grp_id");
                                                 }
+                                                
                                             }
                                         }
                                         // if prof has not group

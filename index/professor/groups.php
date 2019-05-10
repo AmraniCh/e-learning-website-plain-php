@@ -22,17 +22,17 @@
 
             <!-- content -->
             <div class="groups-content">
-                <div class="container-fluid">
+                <div class="groups-container container-fluid">
                     <div id="top-panel" class="top-panel row">
                         <span class="courses_count" style="line-height:40px;font-size:x-large;"><?php 
                             $res = mysqli_query($con, "SELECT count(id) FROM groupe WHERE pseudo_prof = '$get_username'");
                             $row = mysqli_fetch_row($res);
                             echo $row[0]?> Groups</span>
-                        <div class="file-controls" style="display:none">
-                            <button type="button" id="delete-button" class="btn btn-primary">
+                        <div class="file-controls">
+                            <button type="button" id="deletegroups-button" class="btn btn-primary" style="display:none;">
                                 Delete All groups
                             </button>
-                            <button type="button" id="file-button" class="btn btn-primary" onclick=" load_add_groupe_form()">
+                            <button type="button" id="group-button" class="btn btn-primary" onclick=" load_add_groupe_form()">
                                 Add group
                             </button>
                         </div>
@@ -51,7 +51,8 @@
                                         <th>Name</th>
                                     	<th>Description</th>
                                     	<th>Creation date</th>
-                                    	<th>Files number</th>
+                                    	<th>Files count</th>
+                                        <th>Students count</th>
                                         <th>Group key</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
@@ -63,10 +64,11 @@
                                                 echo '<tr><td id="img-group-td"><img id="group-pic" src="assets/groups-images/'.$row['image_groupe'].'" class="img-responsive" style="height:60px;border-radius:50%"><style scoped>@media (max-width:768px){
                                                 #group-pic{height:auto!important;}
                                                 }</style></td>';
-                                                echo '<td>'.$row['nom'].'</td>';
+                                                echo '<td id="nom-group-td">'.$row['nom'].'</td>';
                                                 echo '<td>'.$row['description'].'</td>';
                                                 echo '<td>'.$row['date_creation'].'</td>';
                                                 echo '<td>'.$row['nbr_fichier'].'</td>';
+                                                echo '<td>'.$row['nbr_etudient'].'</td>';
                                                 echo '<td>key</td>';
                                                 echo '<td><button style="color: #fff;background-color: #138496; border: none;" type="button" id="btn-edit" class="btn btn-primary">Edit</button></td>';
                                                 echo '<td><button style="color: #fff;background-color: #dc3545; border: none;" type="button" id='.$row['id'].' class="btn-delete btn btn-danger">delete</button></td></tr>';

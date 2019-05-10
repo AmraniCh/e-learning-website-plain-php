@@ -14,3 +14,7 @@
     background-color: var(--main-color)!important;
     border: none!important;
 }
+
+section div [type="submit"]{
+	background-color: var(--main-color);
+}

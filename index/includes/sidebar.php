@@ -88,6 +88,12 @@
                         <p>Groups admin</p>
                     </a>
                 </li>
+                <li <?php if($page_name == 'Students') echo 'class="active"'; ?> >
+                    <a href="students.php?user=<?php echo $username ?>">
+                        <i aria-hidden="true"><img src="../assets/icons/student.png"></i>
+                        <p>Students admin</p>
+                    </a>
+                </li>
                 <?php } ?>
             </ul>
             <ul class="list-unstyled CTAs">

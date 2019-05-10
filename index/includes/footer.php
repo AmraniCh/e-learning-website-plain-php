@@ -11,7 +11,7 @@
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="">Creative Tim</a>, made with love for a better web
                 </p>
             </div>
         </footer>
@@ -22,6 +22,7 @@
     <script src="assets/js/ajax_load_image.js"></script>
     <script src="assets/js/ajax_create_group.js"></script>
     <script src="assets/js/ajax_change_group.js"></script>
+    <script src="assets/js/ajax_create_post.js"></script>
     <script src="assets/js/ajax_delete_edit_group.js"></script>
     <script src="../../js/ajax_logout.js"></script>
     <script src="../js/ajax_upload_file.js"></script>
