@@ -69,7 +69,7 @@
                                                 echo '<td>'.$row['date_creation'].'</td>';
                                                 echo '<td>'.$row['nbr_fichier'].'</td>';
                                                 echo '<td>'.$row['nbr_etudient'].'</td>';
-                                                echo '<td>key</td>';
+                                                echo '<td><span title="'.$row['groupe_cle'].'"><code>'.$row['groupe_cle'].'</code></span></td>';
                                                 echo '<td><button style="color: #fff;background-color: #138496; border: none;" type="button" id="btn-edit" class="btn btn-primary">Edit</button></td>';
                                                 echo '<td><button style="color: #fff;background-color: #dc3545; border: none;" type="button" id='.$row['id'].' class="btn-delete btn btn-danger">delete</button></td></tr>';
                                             }

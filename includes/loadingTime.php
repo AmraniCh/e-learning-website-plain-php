@@ -26,8 +26,8 @@
       }
       timer();
    </script>
-    <div class="container text-center">
-        <img class="loading" src="../assets/icons/Cube-1s-116px.gif" style="margin: 20% auto 0 auto;">
+    <div class="container text-center" style="margin: 16% auto 0 auto;">
+        <img class="loading" src="../assets/icons/Cube-1s-116px.gif">
         <h5 style="color:#626f6f;font-size:1rem;margin-top: 1%">You have tried more than 3 times, you must wait <span id="timer">10</span> s !<br>You will be automatically redirected to a login page.</h5>
     </div>
 </body>

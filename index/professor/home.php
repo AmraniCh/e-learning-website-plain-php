@@ -27,53 +27,41 @@
                 <div id="posts-container" style="width:79%">
                     <div class="row">
                         <section style="width:90%;">
-                          <div class="text">
-                            <img src="http://placehold.it/100/100"/>
-                            <textarea id="post-content" placeholder="What's in your mind"></textarea>
-                            <input type="submit" id="publish-post" value="Publish"/>
-                            <div class="post-info" style="margin:1% 0 0% 8%">
-                                
-                                <label for="file-post" id="file-button" class="btn btn-default btn-file" style="margin-bottom:5px;margin-top:5px;font-size:15px;max-width:150px;width:100%">
-                                    Add Files <input type="file" id="file-post" style="display: none;">
-                                </label>
+                              <div class="text">
+                                <img src="http://placehold.it/100/100"/>
+                                <textarea id="post-content" placeholder="What's in your mind"></textarea>
+                                <input type="submit" id="publish-post" value="Publish"/>
+                                <div class="post-info" style="margin:1% 0 0% 8%">
 
-                                <label for="type-post" style="margin-left: 2%;font-weight: 400">Post Type : </label>
-                                <select name="type-post" id="type-post" class="form-control" style="max-width:140px;width:100%;display:inline;">
-                                    <option id="nrm-post">Normal</option>
-                                    <option id="imp-post">Important</option>
-                                </select>
-                                <script>
-                                    $("#imp-post").click(function(){
-            
-                                        $(".date-imp-post").css("display","inline-table")
-                                        $(".date-imp-post").show("slide");
-                                    });
+                                    <label for="file-post" id="file-button" class="btn btn-default btn-file" style="margin-bottom:5px;margin-top:5px;font-size:15px;max-width:150px;width:100%">
+                                        Add Files <input type="file" id="file-post" style="display: none;">
+                                    </label>
 
-                                    $("#nrm-post").click(function(){
-            
-                                        $(".date-imp-post").css("display","none")
-                                        $(".date-imp-post").hide("slide");
-                                    });
-                                </script>
-                                <div class="date-imp-post date" style="display:none;vertical-align:middle;">
-                                        <div class="input-group date" id="datetimepicker1">
-                                            <input type="text" id="date-imp-post" class="form-control">
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </span>
+                                    <label for="type-post" style="margin-left: 2%;font-weight: 400">Post Type : </label>
+                                    <select name="type-post" id="type-post" class="form-control" style="max-width:140px;width:100%;display:inline;">
+                                        <option id="nrm-post">Normal</option>
+                                        <option id="imp-post">Important</option>
+                                    </select>
+                                    <script>
+                                        $("#imp-post").click(function(){
+
+                                            $(".date-imp-post").css("display","inline-table")
+                                            $(".date-imp-post").show("slide");
+                                        });
+
+                                        $("#nrm-post").click(function(){
+
+                                            $(".date-imp-post").css("display","none")
+                                            $(".date-imp-post").hide("slide");
+                                        });
+                                    </script>
+                                    <div class="date-imp-post date" style="display:none;vertical-align:middle;">
+                            
+
                                     </div>
                                 </div>
-                            </div>
-                          </div>
+                              </div>
                         </section>
-                        <script>
-                            $(function(){
-                               
-                                $("#datee").on('click', function(){
-                                    $(this).prev("input.datetimepicker").data("Datetimepicker").toggle();
-                                });
-                            });
-                        </script>
                         <div class="overlay"></div>
                         <script>
                         $(document).ready(function () {

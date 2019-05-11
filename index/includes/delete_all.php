@@ -17,7 +17,11 @@
     $file_type = $_POST['type'];
     $rq = "DELETE FROM fichier WHERE type = '$file_type' AND groupe_id = '$grp_id'";
     $res = mysqli_query($con, $rq);
-
+    
+    // set files count in group table
+    $rq = "UPDATE groupe SET nbr_fichier = 0 WHERE pseudo_prof = '$username' ";
+    mysqli_query($con,$rq);
+    
     // ajax data -- load courses
     $current_page = get_pageName();
     $files = load_files_query($grp_id,$file_type,$current_page);

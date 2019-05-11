@@ -7,7 +7,7 @@ $(document).ready(function(){
 		var type = $("#type-post option:selected").html();
 		var date_imp = null;
 		if(type == 'Important')
-			var date_imp = $("#date-imp-post").val();
+			date_imp = $("#date-imp-post").val();
 
 		// files upload
 		var form_data = new FormData();
@@ -23,14 +23,13 @@ $(document).ready(function(){
 		$.ajax({
 			url: "includes/create_post.php",
 			method: "POST",
-			date: form_data,
+			data: form_data,
 			processData: false,
 			contentType: false,
 			beforeSend: function(){
-alert("dd");
 			},
 			success: function(){
-				alert();
+				alert("success");
 			}
 
 		});

@@ -22,19 +22,6 @@
 		<script src="js/validation.js"></script>
 	</head>
 	<body>
-
-	    <style scoped>
-                @media (max-width:1920px){
-                    body{
-                        background-color:#092239;
-                    }
-                }
-                @media (max-width:768px){
-                    body{
-                        background-color:#fff;
-                    }
-                }
-            </style>
 		<?php
             
             // unset session pseudo
@@ -67,27 +54,6 @@
 			}
 		?>
 		<div class="container" style="background:#fff;border-radius:3%;text-align:center;">
-           <!--768-576-375-320-992-1200 -->
-            <style scoped>
-                @media (max-width:1920px){
-                    .container
-                    {
-                        width:400px;
-                    }
-                }
-                @media (max-width:768px){
-                    .container
-                    {
-                        width:80%;
-                    }
-                }
-                @media (max-width:480px){
-                    .container
-                    {
-                        width:100%;
-                    }
-                }
-            </style>
             <form id="login_form" action="login.php" method="post">
                 <!-- titre -->
                 <div class="titre">

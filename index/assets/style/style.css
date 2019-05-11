@@ -228,8 +228,8 @@ section .text {
   background-color: #fff;
   overflow: hidden;
   padding: 20px 20px 15px 20px;
-  border-radius: 3px;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  border-radius: 15px;
+  box-shadow:0 0 1px 1px #ddd;
   z-index: 3;
   position: relative;
 }
@@ -239,7 +239,7 @@ section div img {
   height: 60px;
 }
 section div textarea {
-  width: 78%;
+  width: 75%;
   height: 80px;
   border: none;
   padding: 5px 10px;
@@ -262,11 +262,10 @@ section div [type = submit] {
   border: none;
   background-color: #0077CC;
   color: #fff;
-  font-weight: bold;
-  padding: 10px 15px;
+  padding: 8px 15px;
   border-radius: 3px;
   font-size: 16px;
-  width: 10%;
+  width: 13%;
 }
 .overlay {
   background-color: rgba(0,0,0,.5);
@@ -286,4 +285,12 @@ section div [type = submit] {
   color: #333;
   box-shadow: 1px 1px 1px rgba(0,0,0,.3);
   border-radius: 3px;
+}
+
+/* code tag css */
+code{
+    background-color: #4e379b!important;
+    color: #fff!important;
+    padding: 9px 5px!important;
+    
 }

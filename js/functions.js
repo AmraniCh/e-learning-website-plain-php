@@ -1,5 +1,5 @@
 /*********************************
-    START COOKIES FUNCTIONS
+    START cookies FUNCTIONS
 **********************************/
 
 function setCookie(key, value) {
@@ -14,11 +14,11 @@ function getCookie(key) {
 }
 
 /*********************************
-    END COOKIES FUNCTIONS
+    END cookies FUNCTIONS
 **********************************/
 
 /*********************************
-     START VALIDATION FUNCTIONS
+     START validation FUNCTIONS
 **********************************/
 
 // check if all letters are string words
@@ -114,7 +114,60 @@ function check_numberPhone(number) {
 }
 
 /*********************************
-    END VALIDATION FUNCTIONS
+    END validation FUNCTIONS
+**********************************/
+
+/****************************************************************************************
+    START (addFile-deleteFile-deleteAllFiles-AddGroup-deleteAllgroups) controls FUNCTIONS
+****************************************************************************************/
+
+// show controls --> files/groups/students controls
+function show_controls(){
+    $(document).ready(function(){
+        $(".file-controls, #list-groupe-li, .delete_file, #deletegroups-button").show();
+    });   
+}
+
+// hide controls --> files/groups/students controls
+function hide_controls(){
+    $(document).ready(function(){
+        $(".file-controls, #list-groupe-li, .delete_file").hide();
+    });
+}
+
+// show delete file control
+function show_delete_file_control(){
+    $(document).ready(function(){
+        $(".delete_file").show();
+    });
+}
+
+/***************************************************************************************
+    END (addFile-deleteFile-deleteAllFiles-AddGroup-deleteAllgroups) controls FUNCTIONS
+***************************************************************************************/
+
+/*********************************
+    START groups FUNCTIONS
+**********************************/
+
+// add groupe notification
+function load_add_groupe_notification() {
+    $("#files-container").css("display", "none");
+    $(".content").html("<div class='msg-container container-fluid text-center'><div class='msg-container'><div id='error-msg'><h3>no files founded Please Create A New Group</h3></div><div id='not-found-image' style='text-align: center;text-align: -webkit-center;text-align: -moz-center;text-align: -ms-center;margin-bottom:1%'><img class='img-responsive' src='../assets/icons/exclamation-mark.png'></div><div id='btn-group'><a href='#'><button type='button' id='btn-load-groupe-form' class='btn btn-primary'>Create groupe</button></a></div></div></div>");
+}
+
+// add groupe div
+function load_add_groupe_form() {
+    $(".content, .groups-content").html("<div class='grp-add-container col-12 col-sm-12 col-md-6'><div class='grp-add-second-container container-fluid text-center'><div class='img-add-group'><img class='img-responsive' style='width:45%' src='../assets/icons/group.png'></div><div class='form-group'><label for='grp-name'>Group name : </label><input type='text' id='grp-name' class='form-control'></div><div class='form-group'><label for='grp-name'>Description : </label><input type='text' id='grp-desc' class='form-control'></div><div class='add-group from-group'><label for='file_image'>Group picture</label><input type='file' id='group-pic-file' class='btn btn-primaty' style=''></div><div class='form-group'><button type='button' id='btn-add-group' class='btn btn-primary'>Add group</button></div></div></div></div>");
+}
+
+// get page name -> exemple : test.php
+function get_page_name(path){
+     return path.substring(path.lastIndexOf('/') + 1);
+}
+
+/*********************************
+    END groups FUNCTIONS
 **********************************/
 
 // subtruct titles
@@ -150,39 +203,3 @@ function downloadAnimation(e){
     }, 5000);
 }
 
-// add groupe notification
-function load_add_groupe_notification() {
-    $("#files-container").css("display", "none");
-    $(".content").html("<div class='msg-container container-fluid text-center'><div class='msg-container'><div id='error-msg'><h3>no files founded Please Create A New Group</h3></div><div id='not-found-image' style='text-align: center;text-align: -webkit-center;text-align: -moz-center;text-align: -ms-center;margin-bottom:1%'><img class='img-responsive' src='../assets/icons/exclamation-mark.png'></div><div id='btn-group'><a href='#'><button type='button' id='btn-load-groupe-form' class='btn btn-primary'>Create groupe</button></a></div></div></div>");
-}
-
-// add groupe div
-function load_add_groupe_form() {
-    $(".content, .groups-content").html("<div class='grp-add-container col-12 col-sm-12 col-md-6'><div class='grp-add-second-container container-fluid text-center'><div class='img-add-group'><img class='img-responsive' style='width:45%' src='../assets/icons/group.png'></div><div class='form-group'><label for='grp-name'>Group name : </label><input type='text' id='grp-name' class='form-control'></div><div class='form-group'><label for='grp-name'>Description : </label><input type='text' id='grp-desc' class='form-control'></div><div class='add-group from-group'><label for='file_image'>Group picture</label><input type='file' id='group-pic-file' class='btn btn-primaty' style=''></div><div class='form-group'><button type='button' id='btn-add-group' class='btn btn-primary'>Add group</button></div></div></div></div>");
-}
-
-// get page name -> exemple : test.php
-function get_page_name(path){
-     return path.substring(path.lastIndexOf('/') + 1);
-}
-
-// show controls --> files/groups/students controls
-function show_controls(){
-    $(document).ready(function(){
-        $(".file-controls, #list-groupe-li, .delete_file, #deletegroups-button").show();
-    });   
-}
-
-// hide controls --> files/groups/students controls
-function hide_controls(){
-    $(document).ready(function(){
-        $(".file-controls, #list-groupe-li, .delete_file").hide();
-    });
-}
-
-// show delete file control
-function show_delete_file_control(){
-    $(document).ready(function(){
-        $(".delete_file").show();
-    });
-}

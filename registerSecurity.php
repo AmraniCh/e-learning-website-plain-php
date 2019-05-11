@@ -68,27 +68,6 @@
 			}                  
 		?>
 		<div class="container" id="containerRegister" style="background:#fff;border-radius:3%; margin: 2% auto;">
-           <!--768-576-375-320-992-1200 -->
-            <style scoped>
-                @media (max-width:1920px){
-                    .container
-                    {
-                        width:400px;
-                    }
-                }
-                @media (max-width:768px){
-                    .container
-                    {
-                        width:80%;
-                    }
-                }
-                @media (max-width:480px){
-                    .container
-                    {
-                        width:100%;
-                    }
-                }
-            </style>
             <form id="register_security_form" action="registerSecurity.php" method="post">
                 <!-- titre -->
                 <div class="titre" style="text-align:-webkit-center;text-align:-moz-center;text-align:center;margin-bottom:5%">
