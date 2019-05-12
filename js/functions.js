@@ -201,19 +201,26 @@ function copiedAnimation(){
     $(document).ready(function () {
 
         $(document).on("click", ".code-td", function () {
+
+            $(this).css("animation", "shake 0.8s");
             $(this).children(".copied").hide();
-            $(this).children(".copied").delay(500).show(0);
-            $(this).css("animation", "shake 0.5s");
-          
+            // show
+            $(this).children(".copied").delay(600).show(0);
+            // hide
+            $(this).children(".copied").delay(2000).hide(0);
+   
             // copy code here
+            
+        });
+    
 
         $(document).on("mouseleave", ".code-td", function () {
-            $(this).children(".copied").hide();
+            // reset animation
             $(this).css("animation", "none");
-
         });
     });
 }
+
 
 /*********************************
     END groups FUNCTIONS

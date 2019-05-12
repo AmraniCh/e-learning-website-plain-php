@@ -5,7 +5,6 @@ $(document).ready(function() {
         var grp_id = $(this).attr("id");
         var deleted_grp_name = $(this).parent().parent().children("#nom-group-td").html();
         var actual_grp_name = $(".groupe-text").html();
-        alert(actual_grp_name);
         $.ajax({
             url: "includes/edit_delete_groupe.php",
             method: "POST",

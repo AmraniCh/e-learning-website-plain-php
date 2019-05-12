@@ -59,7 +59,7 @@
         // add group notification form
         if(isset($_GET['user']) && isset($_SESSION['plan']) && isset($_SESSION['user'])){         
             if($_SESSION['plan'] == 'professor'){
-                $grp_count = get_group_count($username);
+                $grp_count = get_group_count($_SESSION['user']);
                 // if count = 0 => show notification no groupe founded
                 if($grp_count == 0)
                     echo '<script>load_add_groupe_notification();</script>';
