@@ -1258,10 +1258,6 @@ fieldset[disabled] .btn-neutral.active {
     min-width: 90px;
 }
 
-.table > tbody > tr {
-    position: relative;
-}
-
 .table > tbody > tr:hover .td-actions .btn {
     opacity: 1;
     filter: alpha(opacity=100);

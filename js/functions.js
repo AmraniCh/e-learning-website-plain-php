@@ -170,16 +170,9 @@ function get_page_name(path){
     END groups FUNCTIONS
 **********************************/
 
-// subtruct titles
-function subtruct_title(){ 
-    var titles = $(".title");
-    for(title of titles){
-        if($(title).html().length > 25){
-            var new_title = $(title).html().substr(0,25)+" ...";
-            $(title).replaceWith(new_title);
-        }
-    }
-}
+/*********************************
+    START animation FUNCTIONS
+**********************************/
 
 // download animation control
 function downloadAnimation(e){
@@ -202,4 +195,39 @@ function downloadAnimation(e){
         $(e.target).show();
     }, 5000);
 }
+
+// group click copied animation
+function copiedAnimation(){
+    $(document).ready(function () {
+
+        $(document).on("click", ".code-td", function () {
+            $(this).children(".copied").hide();
+            $(this).children(".copied").delay(500).show(0);
+            $(this).css("animation", "shake 0.5s");
+          
+            // copy code here
+
+        $(document).on("mouseleave", ".code-td", function () {
+            $(this).children(".copied").hide();
+            $(this).css("animation", "none");
+
+        });
+    });
+}
+
+/*********************************
+    END groups FUNCTIONS
+**********************************/
+
+// subtruct titles
+function subtruct_title(){ 
+    var titles = $(".title");
+    for(title of titles){
+        if($(title).html().length > 25){
+            var new_title = $(title).html().substr(0,25)+" ...";
+            $(title).replaceWith(new_title);
+        }
+    }
+}
+
 

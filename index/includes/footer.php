@@ -30,13 +30,15 @@
     <script src="../js/ajax_delete_all.js"></script>   
     <!-- validation inputs  -->
     <script src="../js/validation.js"></script>
-    <!-- download animation -->
+    <!-- animation scripts -->
     <script>
         $(document).ready(function() {
             $(".btn-download").click(function(e) {
                 downloadAnimation(e);
             });
         });
+        
+        copiedAnimation();
     </script>
     <!-- add group form load -->
     <script>

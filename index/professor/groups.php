@@ -51,8 +51,8 @@
                                         <th>Name</th>
                                     	<th>Description</th>
                                     	<th>Creation date</th>
-                                    	<th>Files count</th>
-                                        <th>Students count</th>
+                                    	<th>Files</th>
+                                        <th>Students</th>
                                         <th>Group key</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
@@ -69,7 +69,13 @@
                                                 echo '<td>'.$row['date_creation'].'</td>';
                                                 echo '<td>'.$row['nbr_fichier'].'</td>';
                                                 echo '<td>'.$row['nbr_etudient'].'</td>';
-                                                echo '<td><span title="'.$row['groupe_cle'].'"><code>'.$row['groupe_cle'].'</code></span></td>';
+                                                echo '<td class="code-td"><code class=".code" >'.$row['groupe_cle'].'</code>
+                                                    <span class="copied" style="position: absolute;display:none;margin-top: 28px;margin-left:-8.7%;color: white;
+                                                    background: #333;
+                                                    padding: 5px 5px;
+                                                    width:8%;
+                                                    text-align:center;
+                                                    border-radius: 15px;"></span></td>';
                                                 echo '<td><button style="color: #fff;background-color: #138496; border: none;" type="button" id="btn-edit" class="btn btn-primary">Edit</button></td>';
                                                 echo '<td><button style="color: #fff;background-color: #dc3545; border: none;" type="button" id='.$row['id'].' class="btn-delete btn btn-danger">delete</button></td></tr>';
                                             }

@@ -11,7 +11,7 @@
         
         $username = $_SESSION['user'];
         $plan = $_SESSION['plan'];
-        // get groupe id by pseudo
+        // get groupe id
         if($plan == 'professor')
             $grp_id = $_SESSION['grp_id'];
         else
@@ -22,9 +22,9 @@
         insert_file_query($grp_id, $file_name, $file_type); // groupe id, file name, file type
         
         // set files count in group table
-        $res = mysqli_query($con,"SELECT COUNT(nom) FROM fichier WHERE groupe_id = $grp_id");
+        $res = mysqli_query($con,"SELECT COUNT(nom) FROM fichier WHERE groupe_id = $grp_id ");
         $file_count = mysqli_fetch_row($res)[0];
-        $rq = "UPDATE groupe SET nbr_fichier = $file_count WHERE pseudo_prof = '$username' ";
+        $rq = "UPDATE groupe SET nbr_fichier = $file_count WHERE id = $grp_id ";
         mysqli_query($con,$rq);
         
         // ajax data -- load courses 

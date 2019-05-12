@@ -115,7 +115,7 @@
     if (getCookie("block")<=0){
         window.setTimeout(function() {
         window.location.href = 'includes/loadingTime.php';
-        }, 0);
+        }, 10);
     }
 </script>
 </html>
