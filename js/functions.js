@@ -205,7 +205,7 @@ function copiedAnimation(){
             $(this).css("animation", "shake 0.8s");
             $(this).children(".copied").hide();
             // show
-            $(this).children(".copied").delay(600).show(0);
+            $(this).children(".copied").delay(650).show(0);
             // hide
             $(this).children(".copied").delay(2000).hide(0);
    

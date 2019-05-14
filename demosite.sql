@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 10 مايو 2019 الساعة 03:32
--- إصدار الخادم: 5.7.24
+-- Generation Time: May 14, 2019 at 10:03 PM
+-- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `etudient`
+-- Table structure for table `etudient`
 --
 
 DROP TABLE IF EXISTS `etudient`;
@@ -52,17 +52,17 @@ CREATE TABLE IF NOT EXISTS `etudient` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `etudient`
+-- Dumping data for table `etudient`
 --
 
 INSERT INTO `etudient` (`pseudo_etu`, `email_etu`, `prenom_etu`, `nom_etu`, `pass`, `adresse_etu`, `pays_etu`, `ville_etu`, `tele_etu`, `sexe_etu`, `propos_etu`, `image_etu`, `reponse`, `question`, `groupe_id`) VALUES
-('chou500', 'el@gmail.com', 'dqsdff', 'qsdqsd', 'elamrani00', 'ggfdsdf\'', 'Maldives', 'Tangier', '84451', 'Male', '', 'cat_snow_eyes_fluffy_95615_1920x1080.jpg', 'aaa', '', 198),
-('chou900', 'aa@gmail.com', 'safwane', 'el amrani', 'MOmo0514', 'tanger', 'maroc', 'tanger adresse', '0651479811', 'Male', NULL, 'cat_snow_eyes_fluffy_95615_1920x1080.jpg', 'ddgg', '', 208);
+('chou500', 'el@gmail.com', 'dqsdff', 'qsdqsd', 'elamrani00', 'ggfdsdf\'', 'Maldives', 'Tangier', '84451', 'Male', '', 'cat_computer_curiosity_56487_1920x1080.jpg', 'aaa', '', 198),
+('chou900', 'aa@gmail.com', 'safwane', 'el amrani', 'MOmo0514', 'tanger', 'maroc', 'tanger adresse', '0651479811', 'Male', NULL, 'fifty_shades_of_grey_2015_christian_gray_jamie_dornan_96584_1920x1080.jpg', 'ddgg', '', 208);
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `fichier`
+-- Table structure for table `fichier`
 --
 
 DROP TABLE IF EXISTS `fichier`;
@@ -70,41 +70,28 @@ CREATE TABLE IF NOT EXISTS `fichier` (
   `nom` varchar(200) NOT NULL,
   `type` varchar(100) NOT NULL,
   `fich_date` datetime DEFAULT NULL,
-  `groupe_id` int(11) NOT NULL,
-  PRIMARY KEY (`nom`),
+  `groupe_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`nom`,`type`),
   KEY `groupe_id` (`groupe_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- إرجاع أو استيراد بيانات الجدول `fichier`
+-- Dumping data for table `fichier`
 --
 
 INSERT INTO `fichier` (`nom`, `type`, `fich_date`, `groupe_id`) VALUES
-('fifty_shades_of_grey_2015_christian_gray_jamie_dornan_96584_1920x1080.jpg', 'autre', '2019-05-09 01:23:56', 208),
-('glass_drop_rain_moisture_9427_1920x1080.jpg', 'course', '2019-05-08 22:56:47', 202),
-('background_close-up_fence_86066_1920x1080.jpg', 'exercice', '2019-05-08 22:39:54', 202),
-('big_hero_6_2014_beymaks_robot_97786_1600x1200.jpg', 'exercice', '2019-05-08 04:05:55', 198),
-('city_china_japan_people_street_59088_1920x1080.jpg', 'exercice', '2019-05-09 01:20:36', 198),
-('cat_computer_curiosity_56487_1920x1080.jpg', 'exercice', '2019-05-08 22:41:23', 202),
-('assassins_creed_logo_art_113285_1920x1080.jpg', 'course', '2019-05-08 04:24:29', 198);
-
---
--- القوادح `fichier`
---
-DROP TRIGGER IF EXISTS `fichier_after_insert_groupe`;
-DELIMITER $$
-CREATE TRIGGER `fichier_after_insert_groupe` AFTER INSERT ON `fichier` FOR EACH ROW BEGIN 
-	DECLARE fichier_count int; 
-    SET fichier_count= (SELECT COUNT(nom) FROM fichier);
-	UPDATE groupe SET nbr_fichier = fichier_count;
-END
-$$
-DELIMITER ;
+('road_marking_bridge_123398_1920x1080.jpg', 'course', '2019-05-12 00:31:10', 229),
+('playstation_sony_joystick_consoles_101956_1920x1080.jpg', 'course', '2019-05-12 00:29:53', 228),
+('road_trees_shadow_119606_1280x720.jpg', 'course', '2019-05-12 00:31:12', 229),
+('butterfly_surface_wooden_116623_1920x1080.jpg', 'exercice', '2019-05-13 03:27:45', 233),
+('railroad_underground_man_line_light_119354_1920x1080.jpg', 'course', '2019-05-12 00:22:54', 228),
+('parrot_bird_beak_background_84109_1920x1080.jpg', 'course', '2019-05-12 00:29:48', 228),
+('cat_black_breed_russian_blue_eyes_green_eyes_black_background_81774_1920x1080.jpg', 'exercice', '2019-05-13 03:27:43', 233);
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `groupe`
+-- Table structure for table `groupe`
 --
 
 DROP TABLE IF EXISTS `groupe`;
@@ -114,26 +101,28 @@ CREATE TABLE IF NOT EXISTS `groupe` (
   `description` text,
   `image_groupe` text,
   `date_creation` datetime DEFAULT CURRENT_TIMESTAMP,
-  `pseudo_prof` varchar(100) NOT NULL,
+  `groupe_cle` varchar(100) DEFAULT NULL,
   `nbr_fichier` int(11) DEFAULT '0',
   `nbr_etudient` int(11) DEFAULT '0',
+  `pseudo_prof` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom` (`nom`),
+  UNIQUE KEY `groupe_cle` (`groupe_cle`),
   KEY `pseudo_prof` (`pseudo_prof`)
-) ENGINE=MyISAM AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=234 DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `groupe`
+-- Dumping data for table `groupe`
 --
 
-INSERT INTO `groupe` (`id`, `nom`, `description`, `image_groupe`, `date_creation`, `pseudo_prof`, `nbr_fichier`, `nbr_etudient`) VALUES
-(198, 'TDI', 'DEV', 'architecture_city_view_from_above_buildings_river_118446_1920x1080.jpg', '2019-05-08 04:05:30', 'prof900', 8, 0),
-(208, 'qsd', 'qsd', 'cat_snow_eyes_fluffy_95615_1920x1080.jpg', '2019-05-09 00:34:29', 'prof500', 8, 0);
+INSERT INTO `groupe` (`id`, `nom`, `description`, `image_groupe`, `date_creation`, `groupe_cle`, `nbr_fichier`, `nbr_etudient`, `pseudo_prof`) VALUES
+(198, 'TDI', 'DEV', 'architecture_city_view_from_above_buildings_river_118446_1920x1080.jpg', '2019-05-08 04:05:30', NULL, 2, 0, 'prof900'),
+(233, 'qds', 'qsd', 'shapes_shape_line_points_92772_1920x1080.jpg', '2019-05-13 03:24:39', 'GPIbTkDXwdxhM', 2, 0, 'prof500');
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `groupe_historique`
+-- Table structure for table `groupe_historique`
 --
 
 DROP TABLE IF EXISTS `groupe_historique`;
@@ -145,17 +134,17 @@ CREATE TABLE IF NOT EXISTS `groupe_historique` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- إرجاع أو استيراد بيانات الجدول `groupe_historique`
+-- Dumping data for table `groupe_historique`
 --
 
 INSERT INTO `groupe_historique` (`pseudo_prof`, `grp_id`) VALUES
-('prof500', 208),
+('prof500', 233),
 ('prof900', 198);
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `post`
+-- Table structure for table `post`
 --
 
 DROP TABLE IF EXISTS `post`;
@@ -173,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `post` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `professeur`
+-- Table structure for table `professeur`
 --
 
 DROP TABLE IF EXISTS `professeur`;
@@ -198,17 +187,17 @@ CREATE TABLE IF NOT EXISTS `professeur` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `professeur`
+-- Dumping data for table `professeur`
 --
 
 INSERT INTO `professeur` (`pseudo_prof`, `email_prof`, `prenom_prof`, `nom_prof`, `pass`, `adresse_prof`, `pays_prof`, `ville_prof`, `tele_prof`, `sexe_prof`, `propos_prof`, `image_prof`, `reponse`, `question`) VALUES
-('prof500', 'bb@gmail.com', 'prof', 'prof', 'california744', 'ssdq', 'Austria', 'qsd', 'qsd', 'Male', 'qsd', 'fifty_shades_of_grey_2015_christian_gray_jamie_dornan_96584_1920x1080.jpg', 'aaa', ''),
+('prof500', 'bb@gmail.com', 'prof', 'prof', 'california744', 'ssdq', 'Austria', 'qsd', 'qsd', 'Male', 'qsd', 'road_marking_bridge_123398_1920x1080.jpg', 'aaa', ''),
 ('prof900', 'aa@gmail.com', 'elqsdqsd', 'qsdqsd', 'MOmo0514', NULL, NULL, NULL, NULL, 'Male', NULL, 'clouds_sky_abstract_88538_1920x1080.jpg', 'sfdsdfsdf', '');
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `question`
+-- Table structure for table `question`
 --
 
 DROP TABLE IF EXISTS `question`;
@@ -219,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- إرجاع أو استيراد بيانات الجدول `question`
+-- Dumping data for table `question`
 --
 
 INSERT INTO `question` (`id`, `quest`) VALUES

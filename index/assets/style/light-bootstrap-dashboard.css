@@ -427,6 +427,7 @@ input:focus {
     opacity: .77;
 }
 
+
 .sidebar[data-color="blue"]:after {
     background: #1F77D0;
     background: -moz-linear-gradient(top, #1F77D0 0%, #533ce1 100%);

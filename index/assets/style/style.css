@@ -219,72 +219,74 @@ a.download{
 
 /* post style */
 *{
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+ 	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 section .text {
-  width: 100%;
-  background-color: #fff;
-  overflow: hidden;
-  padding: 20px 20px 15px 20px;
-  border-radius: 15px;
-  box-shadow:0 0 1px 1px #ddd;
-  z-index: 3;
-  position: relative;
+	width: 100%;
+	background-color: #fff;
+	overflow: hidden;
+	padding: 20px 20px 15px 20px;
+	border-radius: 15px;
+	box-shadow:0 0 1px 1px #ddd;
+	z-index: 3;
+	position: relative;
 }
 section div img {
-  float: left;
-  width: 60px;
-  height: 60px;
+	float: left;
+	width: 60px;
+	border-radius: 50%;
+	height: 60px;
 }
 section div textarea {
-  width: 75%;
-  height: 80px;
-  border: none;
-  padding: 5px 10px;
-  font-family: arial;
-  resize: none;
-  outline: none;
-  border-bottom: 2px solid #0077CC;
+	width: 75%;
+	height: 80px;
+	border: none;
+	padding: 5px 10px;
+	font-family: arial;
+	resize: none;
+	outline: none;
+	border-bottom: 2px solid #0077CC;
+	font-size: 140%;
 }
 textarea::-webkit-scrollbar {
-  width: 0px;
-  background-color: transparent;
+    width: 0px;
+    background-color: transparent;
 }
 textarea::-webkit-scrollbar-thumb {
-  background-color: #CCC;
-  border-radius: 2px
+    background-color: #CCC;
+    border-radius: 2px
 }
 section div [type = submit] {
-  float: right;
-  margin: 15px 10px auto auto;
-  border: none;
-  background-color: #0077CC;
-  color: #fff;
-  padding: 8px 15px;
-  border-radius: 3px;
-  font-size: 16px;
-  width: 13%;
+	float: right;
+	margin: 15px 10px auto auto;
+	border: none;
+	background-color: #0077CC;
+	color: #fff;
+	padding: 8px 15px;
+	border-radius: 3px;
+	font-size: 16px;
+	width: 13%;
 }
 .overlay {
-  background-color: rgba(0,0,0,.5);
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 2;
-  display: none;
+	background-color: rgba(0, 0, 0, .3);
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 2;
+	display: none;
 }
 .post {
-  background-color: #fff;
-  width: 500px;
-  margin: 10px auto;
-  padding: 10px;
-  color: #333;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
-  border-radius: 3px;
+	background-color: #fff;
+	width: 500px;
+	margin: 10px auto;
+	padding: 10px;
+	color: #333;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+	border-radius: 3px;
 }
 
 /* code group css */

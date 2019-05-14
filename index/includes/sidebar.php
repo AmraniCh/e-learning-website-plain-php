@@ -24,7 +24,7 @@
                 $image_dir = 'assets/images/';
                 if($imageName == 'user-male.png' || $imageName == 'user-female.png')
                     $image_dir = '../assets/default-images/'; ?>
-        <div class="sidebar" >
+        <div class="sidebar"  style="background-image: url('../includes/sidebar-2.jpg')">
 
         <!--
             Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"

@@ -29,7 +29,7 @@
                         <section style="width:90%;">
                               <div class="text">
                                 <img src="http://placehold.it/100/100"/>
-                                <textarea id="post-content" placeholder="What's in your mind"></textarea>
+                                <textarea id="post-content" placeholder="Share Your School News or Events ..."></textarea>
                                 <input type="submit" id="publish-post" value="Publish"/>
                                 <div class="post-info" style="margin:1% 0 0% 8%">
 
@@ -62,23 +62,24 @@
                                 </div>
                               </div>
                         </section>
-                        <div class="overlay"></div>
+                        <div class="overlay">
                         <script>
-                        $(document).ready(function () {
-                          $(".text").click(function () {
-                            $(".overlay").fadeIn(500);
-                          });
-                            
-                        $(".overlay").not(".text").click(function() {
-                            $(".overlay").fadeOut(500);
-                        });
-                            
-                          $("[type = submit]").click(function () {
-                            var post = $("textarea").val();
-                            $("<p class='post'>" + post + "</p>").appendTo("section");
-                          });
-                        });
+                            $(document).ready(function () {
+                              $(".text").click(function () {
+                                $(".overlay").fadeIn(500);
+                              });
+
+                            $(".overlay").not(".text").click(function() {
+                                $(".overlay").fadeOut(500);
+                            });
+
+                              $("[type = submit]").click(function () {
+                                var post = $("textarea").val();
+                                $("<p class='post'>" + post + "</p>").appendTo("section");
+                              });
+                            });
                         </script>
+                        </div>
                     </div>
                     
                 </div>
