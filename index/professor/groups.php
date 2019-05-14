@@ -69,7 +69,7 @@
                                                 echo '<td>'.$row['date_creation'].'</td>';
                                                 echo '<td>'.$row['nbr_fichier'].'</td>';
                                                 echo '<td>'.$row['nbr_etudient'].'</td>';
-                                                echo '<td class="code-td"><code class=".code" >'.$row['groupe_cle'].'</code>
+                                                echo '<td class="code-td" onclick="copyvalue(this)"><code class=".code" id="codeid">'.$row['groupe_cle'].'</code>
                                                     <span class="copied" style="position: absolute;display:none;margin-top: 28px;margin-left:-8.7%;color: white;
                                                     background: #333;
                                                     padding: 5px 5px;
@@ -98,3 +98,6 @@
                 header ('location: home.php?user='.$_SESSION['user']);
         }
     ?>
+
+
+                <script src="../../js/functions.js"></script>
