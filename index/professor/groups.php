@@ -1,7 +1,9 @@
     <!-- include header -->
     <?php
-        include '../includes/header.php';     
+        include '../includes/header.php';
     ?>
+
+
     <?php    
         if(isset($_GET['user']) && isset($_SESSION['plan']) && isset($_SESSION['user']))
         {        
@@ -57,9 +59,9 @@
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="tbody">
                                         <?php 
-                                            $res = mysqli_query($con, "SELECT * FROM groupe WHERE pseudo_prof = '$username'");
+                                            $res = mysqli_query($con, "SELECT * FROM groupe WHERE pseudo_prof = '$username' LIMIT 2");
                                             while($row = mysqli_fetch_assoc($res)){
                                                 echo '<tr><td id="img-group-td"><img id="group-pic" src="assets/groups-images/'.$row['image_groupe'].'" class="img-responsive" style="height:60px;border-radius:50%"><style scoped>@media (max-width:768px){
                                                 #group-pic{height:auto!important;}
@@ -83,6 +85,8 @@
                                     </tbody>
                                 </table>
 
+                                <button type="button" onclick="f()">show more</button>
+
                             </div>
                         </div>
                     </div>
@@ -91,6 +95,7 @@
 
     <!-- include footer -->
     <?php include '../includes/footer.php'; ?>
+
                 
     <?php 
             }
@@ -100,4 +105,25 @@
     ?>
 
 
+
+
                 <script src="../../js/functions.js"></script>
+
+
+                <script>
+                    function f() {
+
+                        alert("call");
+
+                        let count = 2;
+
+                        count = count + 2;
+                        $("#tbody").load("loadcontent.php");
+
+
+                    }
+
+
+
+                </script>
+
