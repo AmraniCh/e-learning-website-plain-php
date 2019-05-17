@@ -107,14 +107,11 @@
 
 
 
-                <script src="../../js/functions.js"></script>
-
 
                 <script>
                     function f() {
 
-                        alert("call");
-
+        
                         let count = 2;
 
                         count = count + 2;

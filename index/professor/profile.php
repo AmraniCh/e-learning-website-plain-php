@@ -15,7 +15,6 @@
                 // update
                 if(isset($_POST['update']))
                 {
-                    $email = $_POST['email'];
                     $fname = $_POST['fname'];
                     $lname = $_POST['lname'];
                     $adress = $_POST['adress'];
