@@ -1,12 +1,11 @@
 :root{
     --back-color: #64647e;
-    --main-color: #fa6e6f;
+    --main-color: #e15757;
     --second-color: #64647e;
 }
 
 .sidebar{
     background: var(--main-color);
-    background: linear-gradient(to bottom, var(--main-color) 0%, var(--back-color) 150%);
     background-size: 150% 150%;
 }
 

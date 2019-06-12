@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 12, 2019 at 05:31 AM
--- Server version: 5.7.24
+-- Generation Time: 08 مايو 2019 الساعة 05:57
+-- إصدار الخادم: 5.7.24
 -- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -21,11 +21,13 @@ SET time_zone = "+00:00";
 --
 -- Database: `demosite`
 --
+CREATE DATABASE IF NOT EXISTS `demosite` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `demosite`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etudient`
+-- بنية الجدول `etudient`
 --
 
 DROP TABLE IF EXISTS `etudient`;
@@ -52,16 +54,17 @@ CREATE TABLE IF NOT EXISTS `etudient` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `etudient`
+-- إرجاع أو استيراد بيانات الجدول `etudient`
 --
 
 INSERT INTO `etudient` (`pseudo_etu`, `email_etu`, `prenom_etu`, `nom_etu`, `pass`, `adresse_etu`, `pays_etu`, `ville_etu`, `tele_etu`, `sexe_etu`, `propos_etu`, `image_etu`, `reponse`, `question`, `groupe_id`) VALUES
-('ELAMRANI744', 'elamrani.sv.laza@gmail.com', 'chakir', 'el amrani', 'MOmo0659630023', 'tanger', 'Morocco', 'tanger', '', 'Male', 'about me', 'boat_sea_view_from_above_water_119937_1920x1080.jpg', 'orio', 'What is your pet', 238);
+('chou500', 'el@gmail.com', 'dqsdff', 'qsdqsd', 'elamrani00', 'ggfdsdf\'', 'Maldives', 'Tangier', '84451', 'Male', '', 'cat_snow_eyes_fluffy_95615_1920x1080.jpg', 'aaa', '', 104),
+('chou900', 'aa@gmail.com', 'sdqdqs', 'qsdqsdqs', 'MOmo0514', NULL, NULL, NULL, NULL, 'Male', NULL, 'user-male.png', 'ddgg', '', 166);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fichier`
+-- بنية الجدول `fichier`
 --
 
 DROP TABLE IF EXISTS `fichier`;
@@ -69,30 +72,35 @@ CREATE TABLE IF NOT EXISTS `fichier` (
   `nom` varchar(200) NOT NULL,
   `type` varchar(100) NOT NULL,
   `fich_date` datetime DEFAULT NULL,
-  `groupe_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`nom`,`type`),
+  `groupe_id` int(11) NOT NULL,
+  PRIMARY KEY (`nom`),
   KEY `groupe_id` (`groupe_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `fichier`
+-- إرجاع أو استيراد بيانات الجدول `fichier`
 --
 
 INSERT INTO `fichier` (`nom`, `type`, `fich_date`, `groupe_id`) VALUES
-('board_black_line_texture_background_wood_55220_1920x1080.jpg', 'autre', '2019-06-12 05:30:06', 238),
-('boat_sea_view_from_above_water_119937_1920x1080.jpg', 'autre', '2019-06-12 05:30:09', 238),
-('board_black_line_texture_background_wood_55220_1920x1080.jpg', 'exercice', '2019-06-12 05:16:45', 238),
-('raven_bird_flying_smoke_black_white_92907_1920x1080.jpg', 'course', '2019-06-12 02:36:14', 238),
-('EFMV4.docx', 'course', '2019-06-12 02:36:25', 238),
-('127_0_0_1.sql', 'course', '2019-06-12 02:36:35', 238),
-('TP XML SCHEMA.zip', 'course', '2019-06-12 02:37:07', 238),
-('text.txt', 'course', '2019-06-12 02:37:46', 238),
-('license.html', 'course', '2019-06-12 02:38:56', 238);
+('big_hero_6_2014_beymaks_robot_97786_1600x1200.jpg', 'exercice', '2019-05-08 04:05:55', 198),
+('autumn_macro_red_foliage_background_84016_1920x1080.jpg', 'course', '2019-05-08 04:24:22', 198),
+('assassins_creed_logo_art_113285_1920x1080.jpg', 'course', '2019-05-08 04:24:29', 198);
+
+--
+-- القوادح `fichier`
+--
+DROP TRIGGER IF EXISTS `fichier_after_insert_groupe`;
+DELIMITER $$
+CREATE TRIGGER `fichier_after_insert_groupe` AFTER INSERT ON `fichier` FOR EACH ROW BEGIN 
+	insert into fichier values('dd','dd',now(),198);
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groupe`
+-- بنية الجدول `groupe`
 --
 
 DROP TABLE IF EXISTS `groupe`;
@@ -102,29 +110,24 @@ CREATE TABLE IF NOT EXISTS `groupe` (
   `description` text,
   `image_groupe` text,
   `date_creation` datetime DEFAULT CURRENT_TIMESTAMP,
-  `groupe_cle` varchar(100) DEFAULT NULL,
-  `nbr_fichier` int(11) DEFAULT '0',
-  `nbr_etudient` int(11) DEFAULT '0',
   `pseudo_prof` varchar(100) NOT NULL,
+  `nbr_fichier` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom` (`nom`),
-  UNIQUE KEY `groupe_cle` (`groupe_cle`),
   KEY `pseudo_prof` (`pseudo_prof`)
-) ENGINE=MyISAM AUTO_INCREMENT=239 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=199 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `groupe`
+-- إرجاع أو استيراد بيانات الجدول `groupe`
 --
 
-INSERT INTO `groupe` (`id`, `nom`, `description`, `image_groupe`, `date_creation`, `groupe_cle`, `nbr_fichier`, `nbr_etudient`, `pseudo_prof`) VALUES
-(238, 'TDI204', 'Dev Informatique', 'butterfly_surface_wooden_116623_1920x1080.jpg', '2019-06-12 02:56:00', 'GPOqHY7mCVTFg', 9, 0, 'prof900'),
-(236, 'dd', 'dd', 'board_black_line_texture_background_wood_55220_1920x1080.jpg', '2019-05-15 22:19:17', 'GPTPsagbWTKSI', 0, 0, 'prof500'),
-(237, 'fsd', 'sdf', '540162_523365594342861_1400803203_n.jpg', '2019-05-17 21:28:47', 'GPQzGr5wQod9A', 6, 0, 'prof500');
+INSERT INTO `groupe` (`id`, `nom`, `description`, `image_groupe`, `date_creation`, `pseudo_prof`, `nbr_fichier`) VALUES
+(198, 'TDI', 'DEV', 'architecture_city_view_from_above_buildings_river_118446_1920x1080.jpg', '2019-05-08 04:05:30', 'prof900', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groupe_historique`
+-- بنية الجدول `groupe_historique`
 --
 
 DROP TABLE IF EXISTS `groupe_historique`;
@@ -136,43 +139,16 @@ CREATE TABLE IF NOT EXISTS `groupe_historique` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `groupe_historique`
+-- إرجاع أو استيراد بيانات الجدول `groupe_historique`
 --
 
 INSERT INTO `groupe_historique` (`pseudo_prof`, `grp_id`) VALUES
-('prof500', 237),
-('prof900', 238);
+('prof900', 198);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
---
-
-DROP TABLE IF EXISTS `post`;
-CREATE TABLE IF NOT EXISTS `post` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date_post` datetime DEFAULT CURRENT_TIMESTAMP,
-  `contenu` text NOT NULL,
-  `type_post` varchar(100) NOT NULL,
-  `date_imp` datetime DEFAULT NULL,
-  `groupe_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `groupe_id` (`groupe_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `post`
---
-
-INSERT INTO `post` (`id`, `date_post`, `contenu`, `type_post`, `date_imp`, `groupe_id`) VALUES
-(1, '2019-06-12 01:49:02', 'salam drari ghada maneraf shni kayn f ista et kolshi ykun tema wlah manearf shni wa9a3 ', 'normal', NULL, 238),
-(2, '2019-06-12 02:07:46', 'salam kayn nhar tnin mtihan', 'important', '2019-06-17 00:00:00', 238);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `professeur`
+-- بنية الجدول `professeur`
 --
 
 DROP TABLE IF EXISTS `professeur`;
@@ -197,16 +173,17 @@ CREATE TABLE IF NOT EXISTS `professeur` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `professeur`
+-- إرجاع أو استيراد بيانات الجدول `professeur`
 --
 
 INSERT INTO `professeur` (`pseudo_prof`, `email_prof`, `prenom_prof`, `nom_prof`, `pass`, `adresse_prof`, `pays_prof`, `ville_prof`, `tele_prof`, `sexe_prof`, `propos_prof`, `image_prof`, `reponse`, `question`) VALUES
-('prof900', 'elamrani.sv.laza@gmail.com', 'chakir', 'el amrani', 'MOmo0659630023', 'Tanger', 'Morocco', 'Tanger', '0659630023', 'Male', 'About me', 'triangle_dark_background_light_line_shape_88539_1920x1080.jpg', 'orio', 'What is your pet');
+('prof500', 'bb@gmail.com', 'prof', 'prof', 'california744', 'ssdq', 'Austria', 'qsd', 'qsd', 'Male', 'qsd', 'mac_os_x_apple_mavericks_waves_wave_94219_1920x1080.jpg', 'aaa', ''),
+('prof900', 'aa@gmail.com', 'elqsdqsd', 'qsdqsd', 'MOmo0514', NULL, NULL, NULL, NULL, 'Male', NULL, 'clouds_sky_abstract_88538_1920x1080.jpg', 'sfdsdfsdf', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `question`
+-- بنية الجدول `question`
 --
 
 DROP TABLE IF EXISTS `question`;
@@ -217,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `question`
+-- إرجاع أو استيراد بيانات الجدول `question`
 --
 
 INSERT INTO `question` (`id`, `quest`) VALUES

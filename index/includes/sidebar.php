@@ -34,7 +34,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <div class="simple-text">
-                    Sharing files
+                    E-Learning System
                 </div>
             </div>
             <div class="profile">
@@ -98,7 +98,7 @@
             </ul>
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="#" class="download">Download code</a>
+                    <a href="#" class="download">Boîte de messages</a>
                 </li>
    		    </ul>
     	</div>

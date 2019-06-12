@@ -4,29 +4,30 @@
     ?>
 
     <?php
-        // global session variables
-        $username = $_SESSION['user'];
-        
-        // update
-        if(isset($_POST['update']))
-        {
-            //$email = $_POST['email'];
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
-            $adress = $_POST['adress'];
-            $city = $_POST['city'];
-            $country = $_POST['country'];
-            $phone = $_POST['phone'];
-            $about = $_POST['about'];
-            $rq = "UPDATE etudient SET prenom_etu = '$fname', nom_etu = '$lname', adresse_etu = '$adress', ville_etu = '$city', pays_etu = '$country', tele_etu = '$phone', propos_etu = '$about' WHERE pseudo_etu = '$username'";
-            $res = mysqli_query($con,$rq);
-        }
 
-        // getting 
-        if(isset($_GET['user']))
+        if(isset($_GET['user']) && isset($_SESSION['plan']) && isset($_SESSION['user']))
         {
-            if(!empty($username) && $username == $_SESSION['user'])
+            $get_username = $_GET['user'];
+            if(!empty($get_username) && $get_username == $_SESSION['user'])
             {
+                // global session variables
+                $username = $_SESSION['user'];
+                
+                // update
+                if(isset($_POST['update']))
+                {
+                    //$email = $_POST['email'];
+                    $fname = $_POST['fname'];
+                    $lname = $_POST['lname'];
+                    $adress = $_POST['adress'];
+                    $city = $_POST['city'];
+                    $country = $_POST['country'];
+                    $phone = $_POST['phone'];
+                    $about = $_POST['about'];
+                    $rq = "UPDATE etudient SET prenom_etu = '$fname', nom_etu = '$lname', adresse_etu = '$adress', ville_etu = '$city', pays_etu = '$country', tele_etu = '$phone', propos_etu = '$about' WHERE pseudo_etu = '$username'";
+                    $res = mysqli_query($con,$rq);
+                }
+                
                 $row = select_index_query('*','etudient','pseudo_etu',$username);
                 // get groupe name by groupe id
                 $grp_name = get_groupeName($row['groupe_id']);
@@ -68,7 +69,7 @@
                                     <h4 class="title">Edit Profile</h4>
                                 </div>
                                 <div class="profile-content">
-                                    <form action="profile.php" id="profile" method="post">
+                                    <form action="profile.php?user=<?php echo $username ?>" id="profile" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group">
@@ -441,9 +442,9 @@
                                 </div>
                                 <hr>
                                 <div class="text-center">
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                                    <button href="#" class="btn btn-simple"><i class="fab fa-facebook"></i></button>
+                                    <button href="#" class="btn btn-simple"><i class="fab fa-twitter-square"></i></button>
+                                    <button href="#" class="btn btn-simple"><i class="fab fa-google-plus-square"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -451,16 +452,6 @@
                     </div>
                 </div>
             </div>
-            <?php 
-                        }
-                    }
-                    else 
-                        header ('location: ../../login.php');
-                }
-                else
-                    redirect_url('profile.php');
-        ?>
-
             <!-- include footer -->
             <?php include '../includes/footer.php'; ?>
 
@@ -469,3 +460,8 @@
                 let vall = "<?php echo $country ?>";
 
             </script>
+            <?php 
+            }
+        }
+    }
+    ?>

@@ -443,9 +443,9 @@
                                 </div>
                                 <hr>
                                 <div class="text-center">
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                    <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                                    <button href="#" class="btn btn-simple"><i class="fab fa-facebook"></i></button>
+                                    <button href="#" class="btn btn-simple"><i class="fab fa-twitter-square"></i></button>
+                                    <button href="#" class="btn btn-simple"><i class="fab fa-google-plus-square"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -459,8 +459,6 @@
                 
     <?php 
             }
-            else
-                header ('location: home.php?user='.$_SESSION['user']);
         }
     }
     ?>

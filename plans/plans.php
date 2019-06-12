@@ -39,11 +39,11 @@
 				    </div>
 				    <div class="price-bg">
 				        <ul>
-				            <li class="whyt"><a href="#">kouskous </a></li>
-				            <li><a href="#">kouskous</a></li>
-				            <li class="whyt"><a href="#">kouskous</a></li>
-				            <li><a href="#">kouskous</a></li>
-				            <li class="whyt"><a href="#">kouskous</a></li>
+				            <li class="whyt"><a href="#">Full control of the academy or school</a></li>
+				            <li><a href="#">Access to all data</a></li>
+				            <li class="whyt"><a href="#">Send email messages - interface</a></li>
+				            <li><a href="#">Full control of teachers and students</a></li>
+				            <li class="whyt"><a href="#">Desktop application available</a></li>
 				        </ul>
 				        <div class="cart1">
 				    		<form action="" method="post">
@@ -64,11 +64,11 @@
 				    </div>
 				    <div class="price-bg">
 						<ul>
-            				<li class="whyt"><a href="#">kouskous</a></li>
-            				<li><a href="#">kouskous</a></li>
-        					<li class="whyt"><a href="#">kouskous</a></li>
-    						<li><a href="#">kouskous</a></li>
-				            <li class="whyt"><a href="#">kouskous</a></li>
+            				<li class="whyt"><a href="#">Full control of groups &amp; students</a></li>
+            				<li><a href="#">Access to all groups &amp; students data</a></li>
+        					<li class="whyt"><a href="#">Send email messages - interface</a></li>
+    						<li><a href="#">Unlimited upload of files</a></li>
+    						<li><a href="#">More than 190 extensions files available</a></li>
 				        </ul>
 				    	<div class="cart2">
                 		    <style scoped>
@@ -97,11 +97,11 @@
 				    </div>
 				    <div class="price-bg">
 				        <ul>
-				            <li class="whyt"><a href="#">kouskous</a></li>
-				            <li><a href="#">kouskous</a></li>
-				        	<li class="whyt"><a href="#">kouskous</a></li>
-				    		<li><a href="#">kouskous</a></li>
-							<li class="whyt"><a href="#">kouskous</a></li>
+            				<li><a href="#">Access to all group data</a></li>
+        					<li class="whyt"><a href="#">Send email messages - interface</a></li>
+    						<li><a href="#">Unlimited upload of files</a></li>
+    						<li><a href="#">More than 190 extensions files available</a></li>
+    						<li><a href="#">#############</a></li>
 				        </ul>
 				        <div class="cart3">
 				            <form action="" method="post">

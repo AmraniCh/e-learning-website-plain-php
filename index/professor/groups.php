@@ -72,7 +72,7 @@
                                                 echo '<td>'.$row['nbr_fichier'].'</td>';
                                                 echo '<td>'.$row['nbr_etudient'].'</td>';
                                                 echo '<td class="code-td" onclick="copyvalue(this)"><code class=".code" id="codeid">'.$row['groupe_cle'].'</code>
-                                                    <span class="copied" style="position: absolute;display:none;margin-top: 28px;margin-left:-8.7%;color: white;
+                                                    <span class="copied" style="display:none;margin: 80px auto;color: white;
                                                     background: #333;
                                                     padding: 5px 5px;
                                                     width:8%;
@@ -84,8 +84,6 @@
                                         ?>
                                     </tbody>
                                 </table>
-
-                                <button type="button" onclick="f()">show more</button>
 
                             </div>
                         </div>
@@ -106,19 +104,6 @@
 
 
 
-
-
-                <script>
-                    function f() {
-
-        
-                        let count = 2;
-
-                        count = count + 2;
-                        $("#tbody").load("loadcontent.php");
-
-
-                    }
 
 
 

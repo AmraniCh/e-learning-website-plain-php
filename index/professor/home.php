@@ -10,6 +10,7 @@
             {
                 // set groupe first login && set group if groupe history is not exists
                 set_groupe_history($_SESSION['user']);
+                $row = select_index_query('*','professeur','pseudo_prof',$get_username);
     ?>
         <div class="wrapper">
       
@@ -24,72 +25,95 @@
             <!-- content -->
             <div class="content container-fluid" style="display:flex">
                <!-- posts -->
-                <div id="posts-container" style="width:79%">
+                <div id="posts-container" style="width:100%">
                     <div class="row">
-                        <section style="width:90%;">
+                        <section style="width:85%;">
                               <div class="text">
-                                <img src="http://placehold.it/100/100"/>
+                                <img src="assets/images/<?php echo $row['image_prof'] ?>"/>
                                 <textarea id="post-content" placeholder="Share Your School News or Events ..."></textarea>
                                 <input type="submit" id="publish-post" value="Publish"/>
                                 <div class="post-info" style="margin:1% 0 0% 8%">
-
                                     <label for="file-post" id="file-button" class="btn btn-default btn-file" style="margin-bottom:5px;margin-top:5px;font-size:15px;max-width:150px;width:100%">
                                         Add Files <input type="file" id="file-post" style="display: none;">
                                     </label>
-
                                     <label for="type-post" style="margin-left: 2%;font-weight: 400">Post Type : </label>
                                     <select name="type-post" id="type-post" class="form-control" style="max-width:140px;width:100%;display:inline;">
-                                        <option id="nrm-post">Normal</option>
-                                        <option id="imp-post">Important</option>
+                                        <option id="imp-post" value="normal">Normal</option>
+                                        <option id="nrm-post" value="important">Important</option>
                                     </select>
-                                    <script>
-                                        $("#imp-post").click(function(){
-
-                                            $(".date-imp-post").css("display","inline-table")
-                                            $(".date-imp-post").show("slide");
-                                        });
-
-                                        $("#nrm-post").click(function(){
-
-                                            $(".date-imp-post").css("display","none")
-                                            $(".date-imp-post").hide("slide");
-                                        });
-                                    </script>
                                     <div class="date-imp-post date" style="display:none;vertical-align:middle;">
-                            
-
+                                        <input id="dateImp" type="date" class="form-control">
                                     </div>
                                 </div>
                               </div>
                         </section>
-                        <div class="overlay">
-                        <script>
-                            $(document).ready(function () {
-                              $(".text").click(function () {
-                                $(".overlay").fadeIn(500);
-                              });
-
-                            $(".overlay").not(".text").click(function() {
-                                $(".overlay").fadeOut(500);
-                            });
-
-                              $("[type = submit]").click(function () {
-                                var post = $("textarea").val();
-                                $("<p class='post'>" + post + "</p>").appendTo("section");
-                              });
-                            });
-                        </script>
-                        </div>
                     </div>
-                    
+                    <div class="row looding text-center" style="padding:16px 0 0 0;width:85%">
+                       
+                   </div>
+                    <div class="overlay"></div>
+                        <!-- post -->
+                        <?php
+                            $grp_id = get_grpId_byProf($row['pseudo_prof']);
+                            $rq = "SELECT * FROM post WHERE groupe_id = $grp_id order by id desc";
+                            $res = mysqli_query($con,$rq);
+                            $imp = "";
+                            while($row2 = mysqli_fetch_assoc($res)){
+                                if($row2['type_post'] == 'important')
+                                    $imp = "<i class='far fa-calendar-alt' style='float:inline-end;padding-right:15px;font-size:140%'></i>";
+                                echo '<div class="row post-row" id="" style="margin-top: 2%">
+                        <section style="width:85%;">
+                            <div class="text">'.$imp.'<div class="date" style="margin-left: 65px;color:#2f88de">'.$row2['date_post'].'</div>
+                                <img src="assets/images/'.$row['image_prof'].'" />
+                                <textarea id="post-content" style="border:none;color:#999;font-size:120%" disabled>'.$row2['contenu'].'</textarea>
+                                <input type="submit" id="republish-post" value="Republish" />
+                            </div>
+                        </section>
+                    </div>';
+                            }
+                        ?>         
                 </div>
                 <!-- aside -->
-                <div id="aside-container" style="background:#eee;width:29%">
+                <div id="aside-container" style="width:29%">
                     <div class="aside row">               
-                       
+
                     </div>
                 </div>
             </div>
+            <script>
+                $("#nrm-post").click(function() {
+                    $(".date-imp-post").css("display", "inline-table");
+                    $(".date-imp-post").show("slide");
+                });
+
+                $("#imp-post").click(function() {
+                    $(".date-imp-post").css("display", "none");
+                    $(".date-imp-post").hide("slide");
+                });
+                
+                $(document).on("click","#publish-post",(function(){
+                    alert();
+                    var post_content = $("#post-content").val();
+                    var type_post = $("#type-post option:selected").val();
+                    var date_imp = null;
+                    if(type_post == "important"){
+                        date_imp = new Date($("#dateImp").val());
+                    }
+                    $.ajax({
+                        url: "includes/add_post.php",
+                        type: "post",
+                        data: {post_content: post_content, type_post: type_post, date_imp: date_imp},
+                        beforeSend: function(){
+                 
+                            $(".looding").prepend("<img src='../assets/icons/Dual%20Ring-1.6s-200px.svg' class='image-responsive' alt='Looding...' style='width:8%'/>");
+                        },
+                        success: function(){
+                 
+                            $("#posts-container").load(location.href+" #posts-container");
+                        }
+                    });
+                }));
+            </script>
 
     <!-- include footer -->
     <?php include '../includes/footer.php'; ?>

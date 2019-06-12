@@ -218,16 +218,11 @@ a.download{
 }
 
 /* post style */
-*{
- 	-webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
 section .text {
 	width: 100%;
 	background-color: #fff;
 	overflow: hidden;
-	padding: 20px 20px 15px 20px;
+	padding: 20px 20px 10px 20px;
 	border-radius: 15px;
 	box-shadow:0 0 1px 1px #ddd;
 	z-index: 3;
@@ -248,7 +243,7 @@ section div textarea {
 	resize: none;
 	outline: none;
 	border-bottom: 2px solid #0077CC;
-	font-size: 140%;
+	font-size: 125%;
 }
 textarea::-webkit-scrollbar {
     width: 0px;
@@ -287,6 +282,9 @@ section div [type = submit] {
 	color: #333;
 	box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
 	border-radius: 3px;
+}
+section div [disabled=""]{
+	background-color: #fff;
 }
 
 /* code group css */

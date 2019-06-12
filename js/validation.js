@@ -133,9 +133,9 @@ $(function(){
             show_msg("fname_error_msg", "First name should be between 3-20 characters", $("#fname"));
             fname_error = true;
         }
-        else if(allLetters(fname) == false)
+        else if(allLettersWithSpace(fname) == false)
         {
-            show_msg("fname_error_msg", "First name should not contain numbers or spaces", $("#fname"));
+            show_msg("fname_error_msg", "First name should not contain numbers", $("#fname"));
             fname_error = true;
         }
         else
@@ -153,7 +153,7 @@ $(function(){
             show_msg("lname_error_msg", "Last name should be between 3-20 characters", $("#lname"));
             lname_error = true;
         }
-        else if(allLetters(lname) == false)
+        else if(allLettersWithSpace(lname) == false)
         {        
             show_msg("lname_error_msg", "Last name should not contain numbers or spaces", $("#lname"));
             lname_error = true;
@@ -250,9 +250,11 @@ $(function(){
             }
             
         }
-        if(idInput == "pass2" && idInput == "pass"){
+        
+        if(idInput == "pass2"){
             
             if($("#pass1").val() != $("#pass2").val()){
+
                 pass_match_error = true;
                 show_msg("pass2_error_msg", "password does not match", $("#pass2"));
             }

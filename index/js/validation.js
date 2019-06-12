@@ -21,9 +21,9 @@ $(document).ready(function(){
     }
 
     function checkPhone() {
-        hide_msg("phone_error_msg", $("#phone_error_msg"));
+        hide_msg("phone_error_msg", $("#phone"));
         if (!check_numberPhone($("#phone")))
-            show_msg("phone_error_msg", "put your correct number", $("#phone_error_msg"));
+            show_msg("phone_error_msg", "put your correct number", $("#phone"));
     }
 
     $("#fname").focusout(checkFname);

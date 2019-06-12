@@ -57,6 +57,8 @@
                                     	<th>Country</th>
                                         <th>City</th>
                                         <th>Phone</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </thead>
                                     <tbody>
                                         <?php 
